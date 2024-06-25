@@ -1,13 +1,15 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Main from './components/Main';
 import axios from 'axios';
+import Header from './components/Header';
+import Body from './components/Body';
 
 function App() {
   return (
     <div className='App'>
-      <Navbar/>
-      <Main/>
+      <div className='relative'>
+      <Header/>
+      <Body/>
+      </div>
     </div>
   );
 }
