@@ -1,15 +1,54 @@
-import React from "react";
-import Sidebar from "./Sidebar";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { LuMenuSquare } from "react-icons/lu";
 import { IoMdShare } from "react-icons/io";
 import special_draw from "../img/ball.png";
 import branch_logo from "../img/magnum.svg";
-import nav_icon from "../img/ball.png";
-import logo from "../img/magnum.svg";
-import { RxDividerVertical } from "react-icons/rx";
+import userEvent from "@testing-library/user-event";
 
 const Body = () => {
+  //baseURL
+  const axiosPublic = axios.create({
+    baseURL: "https://dev.backend.4dnum.com/",
+  });
+
+  //
+  const API_V1 = "api/v1";
+
+  //interceptors
+  axiosPublic.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    function (error) {}
+  );
+
+  //result/currentDate
+  const currentDate = new Date().toISOString().split("T")[0];
+  const [dateData, setDateData] = useState({});
+  useEffect(() => {
+    axiosPublic
+      .get(`/${API_V1}/result/${currentDate}`)
+      
+      .then((res) => setDateData(res.data))
+      .then((res) => console.log(res))
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err))
+  });
+
+  //specialDraw
+  const [specialDateList, setSpecialDateList] = useState([]);
+
+  useEffect(() => {
+    axiosPublic
+      .get(`/${API_V1}/specialDraw`)
+      .then((res) => {
+        setSpecialDateList(res.data);
+      })
+      .catch((err) => console.log(err));
+  },[]);
+
   return (
     <main>
       <section className="xl:block absolute top-0 -z-10 hidden bg-white w-full max-w-72 h-screen py-20 px-8 rounded-r-[60px]">
@@ -34,9 +73,14 @@ const Body = () => {
         </div>
       </section>
 
-      <section className="xl:mx-[18%] lg:mx-[0.5%]  md:mx-[10%]">
+      {/* need to check for undefined */}
+      {/* {dateData && dateData.map((date, index) => (
+                  <li key={index}>{date}</li>
+                ))} */}
+
+      <section className="xl:mx-[330px] lg:mx-[20px]  md:mx-[60px]">
         <div className="grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-          <div className="bg-white rounded-3xl relative">
+          <div className="bg-white rounded-3xl md:h-auto h-screen relative">
             <div className="relative bg-black flex justify-center md:rounded-t-3xl rounded-none pt-5 px-5 pb-12 rounded-b-[50px]">
               <div>
                 <div className="">
@@ -44,13 +88,15 @@ const Body = () => {
                 </div>
                 <h1 className="text-white">Magnum 4D</h1>
               </div>
-              <IoMdShare className="text-white absolute right-0 mx-5 text-xl" />
+              <button className=" absolute right-0 mx-5 ">
+                <IoMdShare className="text-white text-xl" />
+              </button>
             </div>
 
             <div className="absolute bg-white top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 flex gap-3 justify-around shadow-md rounded-xl p-3">
               <div className="text-center space-y-2">
                 <h1 className="text-xs font-thin">Date</h1>
-                <h1 className="font-bold text-sm">2024-06-23(Sun)</h1>
+                <h1 className="font-bold text-sm">{}</h1>
               </div>
               <div className="border-l-[0.5px] border-solid border-dark-grey my-2" />
               <div className="text-center space-y-2">
@@ -85,9 +131,9 @@ const Body = () => {
               </div>
 
               <div className="bg-black text-center text-white p-2 rounded-xl">
-                4D Jack 1 Prize | 4D Jackpot 2 Prizw
+                4D Jack 1 Prize | 4D Jackpot 2 Prize
               </div>
-              <div className="grid grid-cols-5">
+              <div className="grid grid-cols-2">
                 <div className="flex items-start gap-1 bg-white shadow-md justify-center rounded-md p-1">
                   <h1 className="text-red-sports text-xs">A</h1>
                   <h1>5288</h1>
@@ -106,14 +152,13 @@ const Body = () => {
               Upcomping Special Draw Date
             </h1>
             <ul className="list-disc mx-10">
-            <li>2024-06-25</li>
-            <div className="border-t-2 border-solid border-dark-grey m-2" />
-            <li>2024-06-25</li>
-            <li>2024-06-25</li>
-            <li>2024-06-25</li>
-          </ul>
+              <div className="border-t-2 border-solid border-dark-grey m-2" />
+              {specialDateList &&
+                specialDateList.map((date, index) => (
+                  <li key={index}>{date}</li>
+                ))}
+            </ul>
           </div>
-          
         </div>
         <img
           src={special_draw}
