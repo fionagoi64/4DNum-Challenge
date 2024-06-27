@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios"
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.min.css'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 import fourD_logo from "../img/logo.png";
 import logo_text from "../img/4dnumText.svg";
@@ -13,30 +13,9 @@ import { MdLightMode } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 
 const Header = () => {
-  const [startDate, setStartDate] = useState(new Date());
-
-  const handleDateChange = ()=>{
-    
-  }
-
-   //baseURL
-   const axiosPublic = axios.create({
-    baseURL: "https://dev.backend.4dnum.com/",
-  });
-
-  //
-  const API_V1 = "api/v1";
-
-   //result/selectedDate
-   const getResult = (formattedDate:string) =>{
-    axios.get(`/${API_V1}/result/${formattedDate}`);
-  }  
-
-
-  //https://dev.backend.4dnum.com/public/images/gd.svg
 
   return (
-    <header className="sticky top-0 z-10">
+    <header className="sticky top-0 z-10 md:rounded-none md:shadow-none rounded-b-xl shadow-md">
       {/* web view */}
       <nav className="md:flex hidden gap-3 items-center justify-between pt-2 pb-4 px-8">
         <button className="xl:hidden md:flex">
@@ -87,7 +66,7 @@ const Header = () => {
       </nav>
 
       {/* mobile view */}
-      <nav className="flex md:hidden bg-white rounded-b-xl shadow-md">
+      <nav className="flex md:hidden ">
         <div>
           <ul className="flex gap-2 items-center p-3">
             <li>
