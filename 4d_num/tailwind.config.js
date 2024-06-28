@@ -9,6 +9,7 @@ module.exports = {
      'black':'#000000',
      'light-grey':'#F3F3F3',
      'dark-grey':'#6C6C6C',
+     'red-sabah':'#FA0404',
      'red-sports':'#EC2024',
      'blue-sg':'#0093D8',
      'blue-lucky':'#1A81BB',

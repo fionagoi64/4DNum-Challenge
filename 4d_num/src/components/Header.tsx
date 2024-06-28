@@ -15,7 +15,7 @@ import { GrLanguage } from "react-icons/gr";
 const Header = () => {
 
   return (
-    <header className="sticky top-0 z-10 md:rounded-none md:shadow-none rounded-b-xl shadow-md">
+    <header className="fixed w-full top-0 z-10 md:bg-light-grey bg-white md:rounded-none md:shadow-none rounded-b-xl shadow-md">
       {/* web view */}
       <nav className="md:flex hidden gap-3 items-center justify-between pt-2 pb-4 px-8">
         <button className="xl:hidden md:flex">
