@@ -1,24 +1,28 @@
 import React from 'react'
+import { LuMenuSquare } from "react-icons/lu";
+
 import { IoCloseOutline } from "react-icons/io5";
 
 const Sidebar = () => {
   return (
-    <section className="bg-white pt-12 ">
-    <IoCloseOutline className="" />
+    <section className="xl:block fixed top-0 -z-10 hidden bg-white w-full max-w-72 h-screen py-20 px-8 rounded-r-[60px]">
     <div>
-      <h3>Results</h3>
+      <h1 className="font-bold text-xs pt-4">Results</h1>
       <ul>
-        <li className="active-nav">
-          <img src="" alt="" />
-          <h1> Dashboard </h1>
+        <li className="flex gap-2 items-center py-3 hover:bg-light-grey hover:rounded-md">
+          {/* <img src={nav_icon} alt="" /> */}
+          <LuMenuSquare />
+          <a href="/" className="text-sm text-dark-grey">
+            Dashboard
+          </a>
         </li>
       </ul>
     </div>
     <div>
-      <h2>Install App</h2>
-      <div className="flex gap-3">
-        <img src="" alt="App Store" />
-        <img src="" alt="APK" />
+      <h1 className="font-bold text-xs pt-4">Install App</h1>
+      <div className="flex items-center gap-2">
+        <img src="" alt="" />
+        <img src="" alt="" />
       </div>
     </div>
   </section>

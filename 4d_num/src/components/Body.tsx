@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { LuMenuSquare } from "react-icons/lu";
 import { IoMdShare } from "react-icons/io";
+import { LuMenuSquare } from "react-icons/lu";
+import { IoCloseOutline } from "react-icons/io5";
 import special_draw from "../img/ball.png";
 
 const BaseURL = "https://dev.backend.4dnum.com/";
@@ -17,7 +18,7 @@ axiosPublic.interceptors.response.use(
   function (response) {
     return response;
   },
-  function (error) {}
+  function (error) { }
 );
 //#endregion
 
@@ -169,7 +170,12 @@ const Body: React.FC = () => {
 
   return (
     <main>
-      <section className="xl:block fixed top-0 -z-10 hidden bg-white w-full max-w-72 h-screen py-20 px-8 rounded-r-[60px]">
+      <section className="xl:block fixed top-0 z-10 hidden bg-white w-full max-w-[300px] h-screen py-5 px-8 rounded-r-[60px]">
+        <div className="flex lg:hidden justify-end ">
+        <button >
+            <IoCloseOutline className="text-2xl m-2"/>
+        </button>
+        </div>
         <div>
           <h1 className="font-bold text-xs pt-4">Results</h1>
           <ul>
@@ -197,11 +203,9 @@ const Body: React.FC = () => {
             return (
               <div
                 key={allDataIndex}
-                className="bg-white rounded-3xl md:h-auto h-screen relative"
-              >
+                className="bg-white rounded-3xl md:h-auto h-screen relative">
                 <div
-                  className={`relative ${allItem.bg} flex justify-center md:rounded-t-3xl rounded-none pt-5 px-5 pb-12 rounded-b-[50px]`}
-                >
+                  className={`relative ${allItem.bg} flex justify-center md:rounded-t-3xl rounded-none pt-5 px-5 pb-12 rounded-b-[50px]`}>
                   <div>
                     <div className="">
                       {/* <div className="w-[70px] h-[70px] mx-auto bg-white rounded-full"/> */}
@@ -229,7 +233,7 @@ const Body: React.FC = () => {
                       {")"}
                     </h5>
                   </div>
-                  <div className="border-l border-dark-grey h-7" />
+                  <div className="border-l border-light-gray h-7" />
                   <div className="flex-1 text-center">
                     <h6 className="text-xs font-thin">Draw No.</h6>
                     <h5 className="font-bold text-sm"> {allItem.fdData.dn}</h5>
@@ -239,125 +243,100 @@ const Body: React.FC = () => {
                 <div className="space-y-5 pt-14 pb-5 px-5">
                   {title.map((titleItem, titleIndex) => {
                     let cols = "grid-cols-5";
-                    let fdLetter = "";
+                    let fdLetter = "" ;
                     let alpha = 0;
 
-                    if (
-                      Array.isArray(titleItem) &&
-                      titleItem.includes("1st")
-                    ) {
-                      return (
-                        <div
-                          key={titleIndex}
-                          className="grid grid-cols-3 gap-3"
-                        >
-                          {title.map((prizeItem, prizeIndex) => (
-                            <div
-                              key={prizeIndex}
-                              className={`${allItem.prize} shadow-md text-center rounded-xl px-1 py-2`}
-                            >
-                              <h1 className="font-thin text-nowrap text-lg">
-                                <span className="font-bold uppercase">
-                                  {prizeItem}
-                                </span>{" "}
-                                Prize
-                              </h1>
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    } else {
-                      if (titleItem === "Special") {
-                        fdLetter = "s";
-                        alpha = 65;
-                      } else if (titleItem === "Consolation") {
-                        fdLetter = "c";
-                        alpha = 78;
-                      } else if (
-                        Array.isArray(titleItem) &&
-                        titleItem.includes("4D Jackpot 1 Prize")
-                      ) {
-                        cols = "grid-cols-2";
-                        fdLetter = "jp";
-                      }
-
-                      return (
-                        <div key={titleIndex}>
-                          <div
-                            className={`${allItem.bg} text-center p-2 mb-3 rounded-xl font-bold`}
-                          >
-                            {Array.isArray(titleItem) ? (
-                              <div className="flex items-center">
-                                <h1 className="flex-1 text-center">
-                                  4D Jackpot 1 Prize
-                                </h1>
-                                <div className="border-l border-solid border-gray-500 h-8"></div>
-                                <h1 className="flex-1 text-center">
-                                  4D Jackpot 2 Prize
-                                </h1>
-                              </div>
-                            ) : (
-                              <h1>{titleItem}</h1>
-                            )}
-                          </div>
-                          <div className={`grid ${cols} gap-2`}>
-                            {fdLetter &&
-                              allItem.fdData &&
-                              Object.keys(allItem.fdData)
-                                .filter((numbers) =>
-                                  numbers.startsWith(fdLetter)
-                                )
-                                .map((numbers, numbersIndex) => {
-                                  const value = allItem.fdData[numbers];
-                                  let c = true;
-                                  let jp = true;
-                                  let sp = false;
-                                  // Conditionally render based on fdData value for 4D Jackpot
-                                  if (
-                                    fdLetter === "jp" &&
-                                    value === "----" &&
-                                    value === 0 &&
-                                    value === ""
-                                  ) {
-                                    jp = false;
-                                    return null; // Hide the box if value is "----"
-                                  } else if (fdLetter === "c" && value === "") {
-                                    c = false;
-                                    return null; // Hide the box if value is "----"
-                                  }
-
-                                  return (
-                                    jp &&
-                                    c && (
-                                      <div
-                                        key={numbersIndex}
-                                        className="flex items-start gap-1 bg-white shadow-md justify-center rounded-xl p-1"
-                                      >
-                                        <h1 className="text-red-sports text-xs">
-                                          {String.fromCharCode(
-                                            alpha + numbersIndex
-                                          )}
-                                        </h1>
-                                        <h1 className="font-medium text-lg">
-                                          {value}
-                                        </h1>
-                                      </div>
-                                    )
-                                  );
-                                })}
-                          </div>
-                        </div>
-                      );
+                    if (Array.isArray(titleItem) && titleItem.includes("1st")) {
+                      fdLetter = "n";
+                      cols = "grid-cols-3";
+                      alpha = 0
                     }
+                    else if (titleItem === "Special") {
+                      fdLetter = "s";
+                      alpha = 65;
+                    } else if (titleItem === "Consolation") {
+                      fdLetter = "c";
+                      alpha = 78;
+                    } else if (Array.isArray(titleItem) && titleItem.includes("4D Jackpot 1 Prize")) {
+                      cols = "grid-cols-2";
+                      fdLetter = "jp";
+                    }
+
+                    return (
+                      <div key={titleIndex}>
+                        {titleItem.includes("1st") ? (
+                          <div className="grid grid-cols-3 gap-3">
+                            <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
+                              <h1>{titleItem[0]}<span className="font-thin"> Prize</span></h1>
+                            </div>
+                            <div  className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
+                              <h1>{titleItem[1]}<span className="font-thin"> Prize</span></h1>
+                            </div>
+                            <div  className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
+                              <h1>{titleItem[2]}<span className="font-thin"> Prize</span></h1>
+                            </div>
+                          </div>) : (
+                          <div className="grid grid-cols-1 gap-3">
+                            <div className={`${allItem.bg} text-center p-2 mb-3 rounded-xl font-bold`}>
+                              {
+                                titleItem.includes("4D Jackpot 1 Prize") ? (
+                                  <div className="flex items-center">
+                                    <h1 className="flex-1 text-center">{titleItem[0]}</h1>
+                                    <div className="border-l border-solid border-gray-500 h-4 "></div>
+                                    <h1 className="flex-1 text-center">{titleItem[1]}</h1>
+                                  </div>
+                                ) : (
+                                  <h1>{titleItem}</h1>
+                                )}
+                            </div>
+                          </div>)
+
+                        }
+
+                        <div className={`grid ${cols} gap-2`}>
+                          {fdLetter &&
+                            allItem.fdData &&
+                            Object.keys(allItem.fdData)
+                              .filter((numbers) => numbers.startsWith(fdLetter))
+                              .map((numbers, numbersIndex) => {
+                                const value = allItem.fdData[numbers];
+
+                                let isShow = true;
+
+                                if ((fdLetter === "n" || fdLetter === "jp") && (value === "----" || value === 0 || value === null)) {
+                                  isShow = false;
+                                  
+                                  return null;
+                                } else if ((fdLetter === "c" || fdLetter === "sp") && value === null) {
+                                  isShow = false;
+                                  return null;
+                                } 
+
+                                return (isShow && (
+                                  <div
+                                    key={numbersIndex}
+                                    className="flex items-start gap-1 bg-white shadow-md justify-center rounded-xl p-1">
+                                    <h1 className="text-red-sports text-xs">
+                                      {String.fromCharCode(alpha + numbersIndex)}
+                                    </h1>
+                                    <h1 className="font-medium text-lg">{value}</h1>
+                                  </div>
+                                )
+                                );
+                              })}
+                        </div>
+                      </div>
+                    )
                   })}
                 </div>
+
               </div>
             );
           })}
         </div>
       </section>
 
-      <section className="xl:block fixed hidden top-1/2 bg-white w-full max-w-72 right-0 rounded-l-[60px] py-10">
+      <section className="xl:block fixed hidden top-1/2 bg-white w-full max-w-72 right-0 rounded-l-[60px] py-8">
         <div className="relative">
           <div className="text-center">
             <h1 className="font-bold text-dark-grey">Special Draw Date</h1>
@@ -365,10 +344,13 @@ const Body: React.FC = () => {
               Upcomping Special Draw Date
             </h1>
             {specialDraw.map((specialDrawItem, specialDrawIndex) => (
-              <ul key={specialDrawIndex} className="list-disc mx-auto">
+              <ul key={specialDrawIndex} >
                 <li>
-                  <h1>{specialDrawItem}</h1>
-                  <div className="border-t-2 border-solid border-dark-grey m-2" />
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="rounded-full h-1 w-1 bg-light-gray"/>
+                  <h1> {specialDrawItem}</h1>
+                  </div>
+                  <div className="border-t-2 border-solid border-light-grey mx-6 my-2" />
                 </li>
               </ul>
             ))}
@@ -377,7 +359,7 @@ const Body: React.FC = () => {
         <img
           src={special_draw}
           alt=""
-          className="absolute -top-20 left-1/2 -translate-x-1/2"
+          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[102px] h-auto"
         />
       </section>
     </main>
