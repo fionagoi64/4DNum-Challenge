@@ -4,14 +4,14 @@ import { LuMenuSquare } from "react-icons/lu";
 import { IoMdShare } from "react-icons/io";
 import special_draw from "../img/ball.png";
 
-//#region api connection
-export const axiosPublic = axios.create({
-  baseURL: "https://dev.backend.4dnum.com/",
-});
-
 const BaseURL = "https://dev.backend.4dnum.com/";
 const API_V1 = "api/v1";
 const publicImage = "public/images/";
+
+//#region api connection
+export const axiosPublic = axios.create({
+  baseURL: BaseURL,
+});
 
 axiosPublic.interceptors.response.use(
   function (response) {
@@ -22,14 +22,12 @@ axiosPublic.interceptors.response.use(
 //#endregion
 
 const Body: React.FC = () => {
-  //#region simple map
-  const prize = ["1st", "2nd", "3rd"];
   const title = [
+    ["1st", "2nd", "3rd"],
     "Special",
     "Consolation",
     ["4D Jackpot 1 Prize", "4D Jackpot 2 Prize"],
   ];
-  //#endregion
 
   const extraData = [
     {
@@ -106,7 +104,11 @@ const Body: React.FC = () => {
 
   //#region ../result/date
   const [date, setDate] = useState(new Date());
-  const [apiData, setApiData] = useState<Array<{[key: string]: string | number | { [key: string]: string | number }}>>([]);
+  const [apiData, setApiData] = useState<
+    Array<{
+      [key: string]: string | number | { [key: string]: string | number };
+    }>
+  >([]);
   const [allData, setAllData] = useState<any[]>([]);
 
   const getResult = async (selectedDate: Date) => {
@@ -126,16 +128,18 @@ const Body: React.FC = () => {
 
   useEffect(() => {
     const AllData = apiData
-    .filter((selectedData) => 
-      extraData.some((extraItem)=>extraItem.type === selectedData.type)) //filter data w type in extraData
-    .map((apiItem) => {
-      const all = extraData.find((extraItem) => extraItem.type === apiItem.type) //join apiData & extraData
-      return { ...apiItem, ...all }
-    });
+      .filter((selectedData) =>
+        extraData.some((extraItem) => extraItem.type === selectedData.type)
+      ) //filter data w type in extraData
+      .map((apiItem) => {
+        const all = extraData.find(
+          (extraItem) => extraItem.type === apiItem.type
+        ); //join apiData & extraData
+        return { ...apiItem, ...all };
+      });
     setAllData(AllData);
     console.log(AllData);
   }, [apiData]);
-
 
   const handleDateChange = () => {
     setDate(date);
@@ -214,99 +218,137 @@ const Body: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="absolute bg-white top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 flex gap-3 justify-around shadow-md rounded-xl p-3">
-                  <div className="text-center space-y-2">
-                    <h1 className="text-xs font-thin">Date</h1>
-                    <h1 className="font-bold text-sm">
+                <div className="flex items-center bg-white rounded-xl shadow-md absolute top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 p-3">
+                  <div className="flex-1 text-center">
+                    <h6 className="text-xs font-thin">Date</h6>
+                    <h5 className="font-bold text-sm">
+                      {" "}
                       {allItem.fdData.dd}
                       {"("}
                       {allItem.fdData.day}
                       {")"}
-                    </h1>
+                    </h5>
                   </div>
-                  <div className="border-l-[0.5px] border-solid border-dark-grey my-2" />
-                  <div className="text-center space-y-2">
-                    <h1 className="text-xs font-thin">Draw No.</h1>
-                    <h1 className="font-bold text-sm">{allItem.fdData.dn}</h1>
+                  <div className="border-l border-dark-grey h-7" />
+                  <div className="flex-1 text-center">
+                    <h6 className="text-xs font-thin">Draw No.</h6>
+                    <h5 className="font-bold text-sm"> {allItem.fdData.dn}</h5>
                   </div>
                 </div>
 
                 <div className="space-y-5 pt-14 pb-5 px-5">
-                  <div className="grid grid-cols-3 gap-3">
-                    {prize.map((place, prizeIndex) => (
-                      <div
-                        key={prizeIndex}
-                        className={`${allItem.prize} shadow-md text-center rounded-xl px-1 py-2`}
-                      >
-                        <h1 className="font-thin text-nowrap text-lg">
-                          <span className="font-bold uppercase">{place} </span>
-                          Prize
-                        </h1>
-                      </div>
-                    ))}
-
-                    {allItem.fdData && (
-                      <div className=" bg-white shadow-md  rounded-xl px-1 py-2">
-                        {allItem.fdData.c1 && (
-                          <div className="flex items-start gap-2 justify-center">
-                            <h1 className="text-red-sports text-xs">A</h1>
-                            <h1 className="font-bold text-xl">
-                              {allItem.fdData.c1}
-                            </h1>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
                   {title.map((titleItem, titleIndex) => {
-                    //function
                     let cols = "grid-cols-5";
-                    let letter = "";
+                    let fdLetter = "";
                     let alpha = 0;
-                    if (titleItem === "Special") {
-                      letter = "s";
-                      alpha = 65;
-                    } else if (titleItem === "Consolation") {
-                      letter = "c";
-                      alpha = 78;
-                    } else if ((titleItem = ["4DJackpot 1 Prize", ""])) {
-                      cols = "grid-cols-2";
-                      letter = "jp";
-                    }
 
-                    return (
-                      <div>
+                    if (
+                      Array.isArray(titleItem) &&
+                      titleItem.includes("1st")
+                    ) {
+                      return (
                         <div
                           key={titleIndex}
-                          className={`${allItem.bg} text-center p-2 mb-3 rounded-xl font-bold`}
+                          className="grid grid-cols-3 gap-3"
                         >
-                          {titleItem}
+                          {title.map((prizeItem, prizeIndex) => (
+                            <div
+                              key={prizeIndex}
+                              className={`${allItem.prize} shadow-md text-center rounded-xl px-1 py-2`}
+                            >
+                              <h1 className="font-thin text-nowrap text-lg">
+                                <span className="font-bold uppercase">
+                                  {prizeItem}
+                                </span>{" "}
+                                Prize
+                              </h1>
+                            </div>
+                          ))}
                         </div>
+                      );
+                    } else {
+                      if (titleItem === "Special") {
+                        fdLetter = "s";
+                        alpha = 65;
+                      } else if (titleItem === "Consolation") {
+                        fdLetter = "c";
+                        alpha = 78;
+                      } else if (
+                        Array.isArray(titleItem) &&
+                        titleItem.includes("4D Jackpot 1 Prize")
+                      ) {
+                        cols = "grid-cols-2";
+                        fdLetter = "jp";
+                      }
 
-                        <div className={`grid ${cols} gap-2`}>
-                          {Object.keys(allItem.fdData)
-                            .filter((numbers) => {
-                              return numbers.startsWith(letter);
-                            })
-                            .map((numbers, numbersIndex) => {
-                              return (
-                                <div className="flex items-start gap-1 bg-white shadow-md justify-center rounded-xl p-1">
-                                  <h1 className="text-red-sports text-xs">
-                                    {String.fromCharCode(alpha + numbersIndex)}
-                                  </h1>
-                                  <h1
-                                    key={numbersIndex}
-                                    className="font-medium text-lg"
-                                  >
-                                    {allItem.fdData[numbers]}
-                                  </h1>
-                                </div>
-                              );
-                            })}
+                      return (
+                        <div key={titleIndex}>
+                          <div
+                            className={`${allItem.bg} text-center p-2 mb-3 rounded-xl font-bold`}
+                          >
+                            {Array.isArray(titleItem) ? (
+                              <div className="flex items-center">
+                                <h1 className="flex-1 text-center">
+                                  4D Jackpot 1 Prize
+                                </h1>
+                                <div className="border-l border-solid border-gray-500 h-8"></div>
+                                <h1 className="flex-1 text-center">
+                                  4D Jackpot 2 Prize
+                                </h1>
+                              </div>
+                            ) : (
+                              <h1>{titleItem}</h1>
+                            )}
+                          </div>
+                          <div className={`grid ${cols} gap-2`}>
+                            {fdLetter &&
+                              allItem.fdData &&
+                              Object.keys(allItem.fdData)
+                                .filter((numbers) =>
+                                  numbers.startsWith(fdLetter)
+                                )
+                                .map((numbers, numbersIndex) => {
+                                  const value = allItem.fdData[numbers];
+                                  let c = true;
+                                  let jp = true;
+                                  let sp = false;
+                                  // Conditionally render based on fdData value for 4D Jackpot
+                                  if (
+                                    fdLetter === "jp" &&
+                                    value === "----" &&
+                                    value === 0 &&
+                                    value === ""
+                                  ) {
+                                    jp = false;
+                                    return null; // Hide the box if value is "----"
+                                  } else if (fdLetter === "c" && value === "") {
+                                    c = false;
+                                    return null; // Hide the box if value is "----"
+                                  }
+
+                                  return (
+                                    jp &&
+                                    c && (
+                                      <div
+                                        key={numbersIndex}
+                                        className="flex items-start gap-1 bg-white shadow-md justify-center rounded-xl p-1"
+                                      >
+                                        <h1 className="text-red-sports text-xs">
+                                          {String.fromCharCode(
+                                            alpha + numbersIndex
+                                          )}
+                                        </h1>
+                                        <h1 className="font-medium text-lg">
+                                          {value}
+                                        </h1>
+                                      </div>
+                                    )
+                                  );
+                                })}
+                          </div>
                         </div>
-                      </div>
-                    );
+                      );
+                    }
                   })}
                 </div>
               </div>
