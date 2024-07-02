@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+*{
+  font-family: "Roboto", sans-serif;
+  user-select: none;
+}
+
+html,body{
+@apply select-none h-full max-w-[2560px] max-h-[1440px] font-extrabold bg-neutral-100
+}
+
+.card .img-bg{
+  @apply relative bg-white h-[70px] w-[70px] rounded-full overflow-hidden
+}
+
+.card .img
+{
+  @apply block absolute h-full m-auto -top-full -right-full -bottom-full -left-full
+}
