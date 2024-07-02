@@ -2,6 +2,11 @@ import React from "react";
 import Card from "./Card";
 
 const Main = () => {
+
+const extraData = {
+  
+}
+
   return (
     <main className="grid grid-cols-5">
       <section>
@@ -10,7 +15,7 @@ const Main = () => {
 
       <section className="col-span-3">
        <div className="grid grid-cols-3 gap-3">
-         <Card imgSrc="" branchName=""/>
+         <Card  img="" branch=""/>
        </div>
       </section>
 
