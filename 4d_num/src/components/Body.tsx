@@ -30,6 +30,36 @@ const Body: React.FC = () => {
     ["4D Jackpot 1 Prize", "4D Jackpot 2 Prize"],
   ];
 
+  const sidebar = [
+    {
+      label: "Result",
+      active: true,
+      list_items: [
+          { icon:"",label: "Dashboard" },
+          { icon:"",label: "Jackpot" }
+      ]
+  },
+  {
+    label: "Toolbox",
+    active: true,
+    list_items: [
+        { icon:"",label: "Special Draw Date" },
+        { icon:"",label: "4D Number Analysis" },
+        { icon:"",label: "Spin My Luck" },
+        { icon:"",label: "Hot 4D Number" },
+        { icon:"",label: "Lucky Book" }
+    ]
+},
+{
+  label: "Install App",
+  active: true,
+  list_items: [
+      { icon:"" },
+      { icon:"" },
+  ]
+}
+];
+
   const extraData = [
     {
       type: "M",
@@ -105,11 +135,7 @@ const Body: React.FC = () => {
 
   //#region ../result/date
   const [date, setDate] = useState(new Date());
-  const [apiData, setApiData] = useState<
-    Array<{
-      [key: string]: string | number | { [key: string]: string | number };
-    }>
-  >([]);
+  const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
   const getResult = async (selectedDate: Date) => {
@@ -172,9 +198,9 @@ const Body: React.FC = () => {
     <main>
       <section className="xl:block fixed top-0 z-10 hidden bg-white w-full max-w-[300px] h-screen py-5 px-8 rounded-r-[60px]">
         <div className="flex lg:hidden justify-end ">
-        <button >
-            <IoCloseOutline className="text-2xl m-2"/>
-        </button>
+          <button >
+            <IoCloseOutline className="text-2xl m-2" />
+          </button>
         </div>
         <div>
           <h1 className="font-bold text-xs pt-4">Results</h1>
@@ -243,8 +269,10 @@ const Body: React.FC = () => {
                 <div className="space-y-5 pt-14 pb-5 px-5">
                   {title.map((titleItem, titleIndex) => {
                     let cols = "grid-cols-5";
-                    let fdLetter = "" ;
+                    let fdLetter = "";
                     let alpha = 0;
+                    let pos = true;
+                    let noPos = true;
 
                     if (Array.isArray(titleItem) && titleItem.includes("1st")) {
                       fdLetter = "n";
@@ -269,10 +297,10 @@ const Body: React.FC = () => {
                             <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
                               <h1>{titleItem[0]}<span className="font-thin"> Prize</span></h1>
                             </div>
-                            <div  className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
+                            <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
                               <h1>{titleItem[1]}<span className="font-thin"> Prize</span></h1>
                             </div>
-                            <div  className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
+                            <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
                               <h1>{titleItem[2]}<span className="font-thin"> Prize</span></h1>
                             </div>
                           </div>) : (
@@ -297,34 +325,54 @@ const Body: React.FC = () => {
                           {fdLetter &&
                             allItem.fdData &&
                             Object.keys(allItem.fdData)
-                              .filter((numbers) => numbers.startsWith(fdLetter))
+                              .filter((key, index) => {
+                                if (fdLetter === "n") {
+                                  if (noPos) {
+                                    return !key.endsWith("_pos") && index < 5 && index % 2 === 0;
+                                  }
+                                  else if (pos) { 
+                                    return key.endsWith("_pos") && index % 2 === 1; 
+                                  }
+                                  return key.startsWith("n");
+                                }
+                                else {
+                                  return key.startsWith(fdLetter);
+                                }
+                              })
                               .map((numbers, numbersIndex) => {
                                 const value = allItem.fdData[numbers];
-
                                 let isShow = true;
 
-                                if ((fdLetter === "n" || fdLetter === "jp") && (value === "----" || value === 0 || value === null)) {
-                                  isShow = false;
-                                  
-                                  return null;
-                                } else if ((fdLetter === "c" || fdLetter === "sp") && value === null) {
-                                  isShow = false;
-                                  return null;
-                                } 
+                                if (fdLetter === "sp" || fdLetter === "c") {
+                                  if (value === null) {
+                                    isShow = false;
+                                  }
+                                }
+                                else if (fdLetter === "jp") {
+                                  if (value === "----" || value === 0 || value === null) {
+                                    isShow = false;
+                                  }
+                                }
 
-                                return (isShow && (
-                                  <div
-                                    key={numbersIndex}
-                                    className="flex items-start gap-1 bg-white shadow-md justify-center rounded-xl p-1">
-                                    <h1 className="text-red-sports text-xs">
-                                      {String.fromCharCode(alpha + numbersIndex)}
-                                    </h1>
-                                    <h1 className="font-medium text-lg">{value}</h1>
-                                  </div>
-                                )
+                                return (
+                                  isShow && (
+                                    <div
+                                      key={numbersIndex}
+                                      className="flex items-start gap-1 bg-white shadow-md justify-center rounded-xl p-1" >
+                                      <h1 className="text-red-sports text-xs">
+                                        {fdLetter === "n" && pos ? (
+                                          <>{value}</>
+                                        ) : (
+                                          <>{String.fromCharCode(alpha + numbersIndex)}</>
+                                        )}
+                                      </h1>
+                                      <h1 className="font-medium text-lg">{fdLetter === "n" && noPos ? <>{value}</> : <>{value}</>}</h1>
+                                    </div>
+                                  )
                                 );
                               })}
                         </div>
+
                       </div>
                     )
                   })}
@@ -347,8 +395,8 @@ const Body: React.FC = () => {
               <ul key={specialDrawIndex} >
                 <li>
                   <div className="flex items-center justify-center gap-2">
-                    <div className="rounded-full h-1 w-1 bg-light-gray"/>
-                  <h1> {specialDrawItem}</h1>
+                    <div className="rounded-full h-1 w-1 bg-light-gray" />
+                    <h1> {specialDrawItem}</h1>
                   </div>
                   <div className="border-t-2 border-solid border-light-grey mx-6 my-2" />
                 </li>
