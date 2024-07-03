@@ -1,26 +1,26 @@
-import React from "react";
-import Card from "./Card";
+import React from "react"
+
+import { axiosPublic } from "../data/api"
+import { extraData } from "../data/extraData"
+import { sidebar } from "../data/sidebar"
+import SideMenu from "./SideMenu"
+import SpecialDraw from "./SpecialDraw"
+import Card from "./Card"
 
 const Main = () => {
 
-const extraData = {
-  
-}
-
   return (
-    <main className="grid grid-cols-5">
-      <section>
-        <div></div>
+    <main className="">
+      <section className="fixed">
+        <SideMenu sidebar={sidebar} />
       </section>
 
-      <section className="col-span-3">
-       <div className="grid grid-cols-3 gap-3">
-         <Card  img="" branch=""/>
-       </div>
+      <section className="max-w-[1225px] container mx-auto">
+        <Card />
       </section>
 
-      <section>
-        <div></div>
+      <section >
+        <SpecialDraw />
       </section>
     </main>
   );
