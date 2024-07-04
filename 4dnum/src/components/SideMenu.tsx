@@ -1,5 +1,9 @@
-import apk from '../images/navMenu/APK.png'
-import appstore from '../images/navMenu/appStore.svg'
+import React, { useState } from "react";
+import apk from '../images/navMenu/APK.png';
+import appstore from '../images/navMenu/appStore.svg';
+import { IoMdClose } from "react-icons/io";
+import fourD_logo from "../images/4DNumLogo.png";
+import logo_text from "../images/4dnumText.svg";
 
 type SideMenuProps = {
   sidebar: {
@@ -11,54 +15,65 @@ type SideMenuProps = {
   }[]
 }
 
-
 export const SideMenu = (props: SideMenuProps) => {
 
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
 
-    <div className="">
-      <div className=" bg-white h-screen w-[300px] rounded-r-[50px]">
+    <div>
+      {isOpen &&
+        <div className={`absolute z-10 bg-white h-screen w-[200px] rounded-r-[50px] `}>
 
-        <button className="">
-          <img src="" alt="" />
-        </button>
+          <div className="mx-5">
+            <div className="xl:flex hidden flex-row gap-3">
+              <img src={fourD_logo} alt="" className="rounded-full h-12" />
+              <img src={logo_text} alt="" className="h-auto w-20" />
+            </div>
 
-        {
-          props.sidebar.map((sidebarItem, index) => {
-            return (
-              <div key={index} className="text-sm p-5">
-                <h1 className="font-semibold">{sidebarItem.label}</h1>
-                {sidebarItem.label.includes("Install App") ?
-                  <div className="flex flex-row gap-3">
-                    <img src={apk} className="h-12" alt="" />
-                    <img src={appstore} alt="" />
-                  </div> :
-                  <div> {sidebarItem.list_items.map((listItem, index) => {
-                    return (
-                      <div>
-                        {sidebarItem.label.includes("Install App") ?
-                          <div className="flex flex-row">
-                            <img src={listItem.icon} alt="" />
-                          </div> :
-                          <ul className="">
-                            <li key={index} className="mx-5 py-2">
-                              <a href={`${listItem.url}`} className="flex flex-row gap-3 items-center">
-                                <img src={listItem.icon} alt="" />
-                                <p className="font-medium text-zinc-400">{listItem.label}</p>
-                              </a>
-                            </li>
-                          </ul>}
-                      </div>
-                    )
-                  })
-                  }</div>}
-              </div>
-            )
-          })
-        }
-      </div>
-    </div>
+            <div className="flex justify-end">
+              <button onClick={() => setIsOpen(false)} className="m-5 cursor-pointer text-xl xl:hidden">
+                <IoMdClose />
+              </button>
+            </div>
+          </div>
+
+          {
+            props.sidebar.map((sidebarItem, index) => {
+              return (
+                <div key={index} className="text-sm p-5">
+                  <h1 className="font-semibold">{sidebarItem.label}</h1>
+                  {sidebarItem.label.includes("Install App") ?
+                    <div className="flex flex-row gap-3 mt-2 items-center">
+                      <img src={appstore} alt="" className='h-6' />
+                      <img src={apk} className="h-8" alt="" />
+                    </div> :
+                    <div>
+                      {sidebarItem.list_items.map((listItem, listItemIndex) => {
+                        return (
+                          <div key={listItemIndex}>
+                            <ul className="">
+                              <li className="py-2">
+                                <a href={`${listItem.url}`} className="flex flex-row gap-3 items-center">
+                                  <img src={listItem.icon} alt="" />
+                                  <p className="font-medium text-xs text-dark-grey">{listItem.label}</p>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  }
+                </div>
+              );
+            })
+          }
+        </div>
+
+
+      }
+    </div >
   )
 }
 

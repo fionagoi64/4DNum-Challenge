@@ -10,7 +10,7 @@
 }
 
 html,body{
-@apply select-none h-full font-extrabold bg-neutral-100
+@apply select-none h-full font-extrabold bg-light-grey
 }
 
 .card .logos-bg{
