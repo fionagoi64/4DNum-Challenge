@@ -44,7 +44,7 @@ const Card = () => {
 
 
     return (
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-2 grid-cols-1 ">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-2 grid-cols-1 ">
             {
                 allData.map((allItem, allDataIndex) => {
                     return (
@@ -86,11 +86,12 @@ const Card = () => {
                                     sectionTitle.map((titleItem, titleIndex) => {
                                         let fdLetter = "";
                                         let alpha = 0;
+                                        let cols = "grid-cols-5";
 
                                         if (Array.isArray(titleItem) && titleItem.includes("1st")) {
                                             fdLetter = "n";
                                             alpha = 0
-
+                                            cols = "grid-cols-3"
                                         }
                                         else if (titleItem === "Special") {
                                             fdLetter = "s";
@@ -100,13 +101,23 @@ const Card = () => {
                                             alpha = 78;
                                         } else if (Array.isArray(titleItem) && titleItem.includes("4D Jackpot 1 Prize")) {
                                             fdLetter = "jp";
+                                            cols = "grid-cols-2"
                                         }
 
                                         const fd = Object.keys(allItem.fdData)
                                         const nData = fd.filter((ndata, index) => ndata.startsWith("n") && !ndata.endsWith("_pos") && index < 5)
-                                        const othersData = fd.filter(others => others.startsWith(fdLetter) && !others.startsWith("count"))
+                                        let othersData = fd.filter(others => others.startsWith(fdLetter) && !others.startsWith("count"))
 
                                         let isShow = true;
+
+                                        if (fdLetter === "jp") {
+                                            othersData = othersData.filter(data => (data.startsWith("jp1") || data.startsWith("jp2"))
+                                                && (allItem.fdData[data] !== 0 && allItem.fdData[data] !== "----"))
+                                        }
+
+                                        if (fdLetter === "jp") {
+                                            isShow = othersData.length > 0
+                                        }
 
                                         return (
                                             <div key={titleIndex}>
@@ -123,7 +134,7 @@ const Card = () => {
                                                                 <h1>{titleItem[2]}<span className="font-thin"> Prize</span></h1>
                                                             </div>
                                                         </div>
-                                                        <div className="grid grid-cols-3 gap-2 mt-2 mb-5">
+                                                        <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                                                             {nData.map(nItem =>
                                                             (<div className="relative bg-white shadow-md rounded-md text-center">
                                                                 <p className="absolute text-[8px] font-medium text-red-sports px-[3px]">{allItem.fdData[`${nItem}_pos`]}</p>
@@ -138,7 +149,7 @@ const Card = () => {
                                                             <div className="bg-black text-white text-center rounded-xl py-2">
                                                                 {titleItem}
                                                             </div>
-                                                            <div className="grid grid-cols-5 gap-2 mt-2 mb-5">
+                                                            <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                                                                 {othersData.map((othersItem, otherIndex) =>
                                                                 (<div className="relative bg-white shadow-md rounded-md text-center">
                                                                     <p className="absolute text-[8px] font-medium text-red-sports px-[3px]">{String.fromCharCode(alpha + otherIndex)}</p>

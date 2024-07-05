@@ -23,12 +23,12 @@ export const SideMenu = (props: SideMenuProps) => {
 
     <div>
       {isOpen &&
-        <div className={`absolute z-10 bg-white h-screen w-[200px] rounded-r-[50px] `}>
+        <div className={`absolute z-10 bg-white h-screen w-[300px] rounded-r-[50px]`}>
 
-          <div className="mx-5">
-            <div className="xl:flex hidden flex-row gap-3">
-              <img src={fourD_logo} alt="" className="rounded-full h-12" />
-              <img src={logo_text} alt="" className="h-auto w-20" />
+          <div className="mx-5 mb-5 mt-6">
+            <div className="xl:flex hidden flex-row gap-3 items-center">
+              <img src={fourD_logo} alt="" className="rounded-full h-9" />
+              <img src={logo_text} alt="" className="h-[17px]" />
             </div>
 
             <div className="flex justify-end">
@@ -42,7 +42,7 @@ export const SideMenu = (props: SideMenuProps) => {
             props.sidebar.map((sidebarItem, index) => {
               return (
                 <div key={index} className="text-sm p-5">
-                  <h1 className="font-semibold">{sidebarItem.label}</h1>
+                  <h1 className="font-semibold text-xs mb-2">{sidebarItem.label}</h1>
                   {sidebarItem.label.includes("Install App") ?
                     <div className="flex flex-row gap-3 mt-2 items-center">
                       <img src={appstore} alt="" className='h-6' />
@@ -53,9 +53,9 @@ export const SideMenu = (props: SideMenuProps) => {
                         return (
                           <div key={listItemIndex}>
                             <ul className="">
-                              <li className="py-2">
+                              <li className="py-3">
                                 <a href={`${listItem.url}`} className="flex flex-row gap-3 items-center">
-                                  <img src={listItem.icon} alt="" />
+                                  <img className="h-5" src={listItem.icon} alt="" />
                                   <p className="font-medium text-xs text-dark-grey">{listItem.label}</p>
                                 </a>
                               </li>

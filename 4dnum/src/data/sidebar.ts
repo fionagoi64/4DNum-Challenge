@@ -9,7 +9,7 @@ import inactive_luckybook from '../images/APK.png'
 
 // active images
 import active_dashboard from '../images/navMenu/activeDashboard.svg'
-import active_jackpot from '../images/APK.png'
+import active_jackpot from '../images/navMenu/jackpotInactive.svg'
 import active_specaildate from '../images/APK.png'
 import active_dddd from '../images/APK.png'
 import active_spin from '../images/APK.png'
@@ -30,7 +30,7 @@ export const sidebar = [
                 url: "/"
             },
             {
-                icon: "openFeaturesDropdown ? active_jackpot : inactive_jackpot",
+                icon: active_jackpot,
                 label: "Jackpot",
                 url: "/jackpot"
             },

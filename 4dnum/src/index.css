@@ -4,6 +4,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+
 *{
   font-family: "Roboto", sans-serif;
   user-select: none;
@@ -23,3 +24,16 @@ html,body{
   @apply block absolute h-full m-auto 
   -top-full -right-full -bottom-full -left-full
 }
+
+button {
+  cursor: pointer;
+}
+
+select{
+  @apply bg-light-grey
+}
+
+select:focus{
+  @apply border-blue-indigo
+}
+
