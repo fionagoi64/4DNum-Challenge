@@ -28,7 +28,7 @@ const SpecialDraw = () => {
   }
 
   return (
-    <div className="relative bg-white px-1 pt-8 pb-5 rounded-l-[60px] text-center shadow-md w-[300px]">
+    <div className="relative white-bg dark:text-white px-1 pt-8 pb-5 rounded-l-[60px] text-center shadow-md w-[300px]">
       <img className="absolute -top-16 left-1/2 -translate-x-1/2 w-[102px] h-auto" src={ball} alt="" />
       <div>
         <h1 className="font-semibold text-[17px] text-dark-grey">Special Draw Date</h1>

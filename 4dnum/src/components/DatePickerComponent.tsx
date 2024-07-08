@@ -4,6 +4,8 @@ import { getMonth, getYear } from 'date-fns';
 import { IoCalendarOutline } from "react-icons/io5";
 
 const DatePickerComponent = () => {
+
+    const [isCalendarOpen, SetisCalendarOpen] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const range = (start: number, end: number, step = 1) => {
         let arr = [];
@@ -19,14 +21,18 @@ const DatePickerComponent = () => {
         "July", "August", "September", "October", "November", "December"
     ];
 
+    const handleCalendar = () => {
+        SetisCalendarOpen(!isCalendarOpen)
+    }
+
     return (
         <div className='flex z-20 justify-center'>
             <DatePicker
                 customInput={
-                    <button className="w-52 bg-white font-semibold text-dark-grey rounded-xl py-2 border-[0.5px] border-light-grey shadow-md hover:border-blue-indigo hover:text-blue-indigo">
+                    <button onClick={handleCalendar} className="w-52 white-bg font-semibold text-dark-grey rounded-xl py-2 border-[0.5px] border-gray-100 shadow-md hover:border-blue-indigo hover:text-blue-indigo">
                         <div className='flex flex-row gap-5 justify-center items-center'>
                             <IoCalendarOutline className='text-lg' />
-                            <p className='pt-[0.8px] pr-1'>20024-07-05</p>
+                            <p className='pt-[0.8px] pr-1'>2024-07-05</p>
                         </div>
                     </button>}
                 renderCustomHeader={({ date, changeYear, changeMonth, decreaseMonth, increaseMonth, prevMonthButtonDisabled, nextMonthButtonDisabled }) => (

@@ -23,7 +23,7 @@ export const SideMenu = (props: SideMenuProps) => {
 
     <div>
       {isOpen &&
-        <div className={`absolute z-10 bg-white h-screen w-[300px] rounded-r-[50px]`}>
+        <div className={`absolute z-10 white-bg h-screen w-[300px] rounded-r-[50px]`}>
 
           <div className="mx-5 mb-5 mt-6">
             <div className="xl:flex hidden flex-row gap-3 items-center">

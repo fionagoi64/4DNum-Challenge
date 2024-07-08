@@ -5,35 +5,80 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 
+
 *{
   font-family: "Roboto", sans-serif;
   user-select: none;
 }
 
 html,body{
-@apply select-none h-full font-extrabold bg-light-grey
+@apply select-none h-full
 }
 
-.card .logos-bg{
-  @apply relative bg-white h-[70px] w-[70px] 
-  rounded-full overflow-hidden
+.md-bg{
+  @apply md:bg-gray-100 md:dark:bg-black-300
 }
 
-.card .logos
-{
-  @apply block absolute h-full m-auto 
-  -top-full -right-full -bottom-full -left-full
+.white-bg {
+  @apply bg-white dark:bg-gray-400
 }
+
 
 button {
   cursor: pointer;
 }
 
-select{
-  @apply bg-light-grey
+/* ====== Nav ====== */
+
+
+/* ====== Card ====== */
+.card{
+  @apply bg-white dark:bg-black-300
 }
 
-select:focus{
-  @apply border-blue-indigo
+.card .background
+{
+    @apply bg-white dark:bg-black-300 text-black-300 dark:text-white
+}
+
+.card title{
+  @apply text-black-300 dark:text-white
+}
+
+.card .logos-bg {
+  @apply relative white-bg h-[70px] w-[70px] rounded-full overflow-hidden
+}
+
+.card .logos {
+  @apply block absolute h-full m-auto -top-full -right-full -bottom-full -left-full
+}
+
+.card .date {
+  @apply flex-1 text-center space-y-3
+}
+
+.card .date h6 {
+  @apply font-thin text-[10px]
+}
+
+.card .date p {
+  @apply text-sm
+}
+
+.card .prize {
+  @apply text-center p-2 mb-3 rounded-xl font-bold
+}
+
+.card .prize span {
+  @apply font-thin
+}
+
+/* ====== Date Picker ====== */
+select {
+  @apply bg-gray-100
+}
+
+select:focus {
+  @apply border-blue-400
 }
 

@@ -2,10 +2,12 @@ import { sidebar } from "../data/sidebar"
 import SideMenu from "./SideMenu"
 import SpecialDraw from "./SpecialDraw"
 import Card from "./Card"
+import React, { useRef } from 'react';
 
 const Main = () => {
+
   return (
-    <main>
+    <main className="md-bg">
       <section className="xl:block hidden fixed z-10">
         <SideMenu sidebar={sidebar} />
       </section>

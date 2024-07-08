@@ -42,15 +42,14 @@ const Card = () => {
         console.log(AllData);
     }, [apiData]);
 
-
     return (
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-2 grid-cols-1 ">
             {
                 allData.map((allItem, allDataIndex) => {
                     return (
-                        <div key={allDataIndex} className="card relative bg-white rounded-3xl">
+                        <div key={allDataIndex} className="card relative rounded-3xl dark:border-4 dark:border-blue-100">
                             {/* branch name  */}
-                            <div className={`${allItem.bg} flex flex-row justify-between items-start p-4 pb-16 rounded-b-[60px] rounded-3xl`}>
+                            <div className={`${allItem.bg} dark:bg-black-100  dark:border-b-4 dark:border-blue-100 flex flex-row justify-between items-start p-4 pb-16 rounded-b-[60px] rounded-3xl`}>
                                 <div className="flex flex-grow justify-center">
                                     <div className="flex flex-col items-center gap-1">
                                         <div className="logos-bg">
@@ -64,19 +63,19 @@ const Card = () => {
                                 </button>
                             </div>
                             {/* date */}
-                            <div className="absolute top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 bg-white flex flex-row rounded-2xl shadow-md py-3 my-2 items-center">
-                                <div className='flex-1 text-center space-y-3'>
-                                    <p className="font-thin text-[10px]">Date</p>
-                                    <p className='text-sm'> {" "}
+                            <div className="background absolute top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 rounded-2xl shadow-md py-3 my-2 flex flex-row items-center">
+                                <div className="date">
+                                    <h6>Date</h6>
+                                    <p> {" "}
                                         {allItem.fdData.dd}
                                         {"("}
                                         {allItem.fdData.day}
                                         {")"}</p>
                                 </div>
                                 <div className="border-l-[0.2px] border-gray-400 h-6" />
-                                <div className="flex-1 text-center space-y-3">
-                                    <p className="font-thin text-[10px]">Draw No.</p>
-                                    <p className='text-sm'>{allItem.fdData.dn}</p>
+                                <div className="date">
+                                    <h6>Draw No.</h6>
+                                    <p>{allItem.fdData.dn}</p>
                                 </div>
                             </div>
 
@@ -124,20 +123,20 @@ const Card = () => {
                                                 {titleItem.includes("1st") && nData !== null ?
                                                     <div>
                                                         <div className="grid grid-cols-3 gap-3">
-                                                            <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
-                                                                <h1>{titleItem[0]}<span className="font-thin"> Prize</span></h1>
+                                                            <div className={`${allItem.prize} prize`}>
+                                                                <h1>{titleItem[0]}<span> Prize</span></h1>
                                                             </div>
-                                                            <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
-                                                                <h1>{titleItem[1]}<span className="font-thin"> Prize</span></h1>
+                                                            <div className={`${allItem.prize} prize`}>
+                                                                <h1>{titleItem[1]}<span> Prize</span></h1>
                                                             </div>
-                                                            <div className={`${allItem.prize} text-center p-2 mb-3 rounded-xl font-bold`}>
-                                                                <h1>{titleItem[2]}<span className="font-thin"> Prize</span></h1>
+                                                            <div className={`${allItem.prize} prize`}>
+                                                                <h1>{titleItem[2]}<span> Prize</span></h1>
                                                             </div>
                                                         </div>
                                                         <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                                                             {nData.map(nItem =>
-                                                            (<div className="relative bg-white shadow-md rounded-md text-center">
-                                                                <p className="absolute text-[8px] font-medium text-red-sports px-[3px]">{allItem.fdData[`${nItem}_pos`]}</p>
+                                                            (<div className="relative bg-white border-[0.2px] border-gray-100 dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center">
+                                                                <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">{allItem.fdData[`${nItem}_pos`]}</p>
                                                                 <h1 className="text-xl font-medium py-[1px]">{allItem.fdData[nItem]}</h1>
                                                             </div>)
                                                             )}
@@ -146,13 +145,13 @@ const Card = () => {
                                                     (
                                                         isShow &&
                                                         (< div >
-                                                            <div className="bg-black text-white text-center rounded-xl py-2">
+                                                            <div className={`${allItem.bg} ${allItem.others}  text-center rounded-xl py-2`}>
                                                                 {titleItem}
                                                             </div>
                                                             <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                                                                 {othersData.map((othersItem, otherIndex) =>
-                                                                (<div className="relative bg-white shadow-md rounded-md text-center">
-                                                                    <p className="absolute text-[8px] font-medium text-red-sports px-[3px]">{String.fromCharCode(alpha + otherIndex)}</p>
+                                                                (<div className="relative border-[0.2px] border-gray-100 bg-white dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center">
+                                                                    <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">{String.fromCharCode(alpha + otherIndex)}</p>
                                                                     <h1 className="text-xl font-medium py-[1px]">{allItem.fdData[othersItem]}</h1>
                                                                 </div>)
                                                                 )}

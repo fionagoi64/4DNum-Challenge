@@ -11,7 +11,7 @@ const Switch = () => {
     };
     return (
         <div className="flex gap-3 items-center ">
-            {isLightOn ? <MdLightMode className="text-xl" /> : <AiFillMoon className="text-xl" />}
+            {isLightOn ? <MdLightMode className="text-xl" /> : <AiFillMoon className="text-xl icon" />}
             <h1 className="text-sm">{` ${isLightOn ? "Light Mode" : "Dark Mode"}`}</h1>
             <button onClick={handleSwitch}>
                 <div className={`relative w-7 h-4 rounded-full ${isLightOn ? "bg-gray" : "bg-purple"}`}>
