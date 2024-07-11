@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
-import { getMonth, getYear } from 'date-fns';
+import { getMonth, getYear, addDays } from 'date-fns'; // Import addDays
 import { IoCalendarOutline } from "react-icons/io5";
 
-const DatePickerComponent = () => {
-
-    const [isCalendarOpen, SetisCalendarOpen] = useState(false);
+const DatePickerComponent = ({ onSelectDate }: { onSelectDate: (date: Date) => void }) => {
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
+    const selectedDate = startDate.toISOString().split("T")[0];
+
     const range = (start: number, end: number, step = 1) => {
         let arr = [];
         for (let i = start; i < end; i += step) {
@@ -22,8 +23,19 @@ const DatePickerComponent = () => {
     ];
 
     const handleCalendar = () => {
-        SetisCalendarOpen(!isCalendarOpen)
+        setIsCalendarOpen(!isCalendarOpen);
     }
+
+    const currentDate = new Date(); // Get current date
+    const maxSelectableDate = addDays(currentDate, 0); // Disable dates from tomorrow
+
+    // Call onSelectDate whenever date changes
+    const handleDateChange = (date: Date | null) => {
+        if (date) {
+            setStartDate(date);
+            onSelectDate(date); // Notify parent component (Card) about the selected date
+        }
+    };
 
     return (
         <div className='flex z-20 justify-center'>
@@ -32,7 +44,7 @@ const DatePickerComponent = () => {
                     <button onClick={handleCalendar} className="w-52 white-bg font-semibold text-dark-grey rounded-xl py-2 border-[0.5px] border-gray-100 shadow-md hover:border-blue-indigo hover:text-blue-indigo">
                         <div className='flex flex-row gap-5 justify-center items-center'>
                             <IoCalendarOutline className='text-lg' />
-                            <p className='pt-[0.8px] pr-1'>2024-07-05</p>
+                            <p className='pt-[0.8px] pr-1'>{selectedDate}</p>
                         </div>
                     </button>}
                 renderCustomHeader={({ date, changeYear, changeMonth, decreaseMonth, increaseMonth, prevMonthButtonDisabled, nextMonthButtonDisabled }) => (
@@ -69,16 +81,10 @@ const DatePickerComponent = () => {
                     </div>
                 )}
                 selected={startDate}
-                onChange={(date: Date | null) => {
-                    if (date) {
-                        setStartDate(date);
-                    }
-
-                }}
-
-
+                onChange={handleDateChange} // Update handleDateChange function
+                maxDate={maxSelectableDate} // Set the minimum selectable date
             />
-        </div >
+        </div>
     );
 };
 

@@ -7,25 +7,30 @@ import { publicImage } from "../data/apiData";
 import { extraData } from "../data/extraData";
 import { sectionTitle } from "../data/sectionTitle";
 
-const Card = () => {
-    const [date, setDate] = useState(new Date());
+type CardProps = {
+    cardRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+    selectedDate: Date;
+};
+
+const Card: React.FC<CardProps> = ({ cardRefs, selectedDate }) => {
     const [apiData, setApiData] = useState<any[]>([]);
     const [allData, setAllData] = useState<any[]>([]);
 
-    const getResult = async (selectedDate: Date) => {
+    // Fetch data based on selected date
+    const getResult = async (date: Date) => {
         try {
-            const formattedDate = selectedDate.toISOString().split("T")[0]; //YYYY-MM-DD
-            axiosPublic.get(`/${API_V1}/result/${formattedDate}`).then((res) => {
-                setApiData(res.data);
-            });
+            const formattedDate = date.toISOString().split("T")[0]; // YYYY-MM-DD
+            const res = await axiosPublic.get(`/${API_V1}/result/${formattedDate}`);
+            setApiData(res.data);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
+
     useEffect(() => {
-        getResult(date);
-    }, [date]);
+        getResult(selectedDate); // Fetch data when selectedDate changes
+    }, [selectedDate]);
 
     useEffect(() => {
         const AllData = apiData
@@ -42,12 +47,19 @@ const Card = () => {
         console.log(AllData);
     }, [apiData]);
 
+    useEffect(() => {
+        // Initialize refs for all cards
+        cardRefs.current = Array(allData.length).fill(null).map(
+            (_, index) => cardRefs.current[index] || null
+        );
+    }, [allData.length]);
+
     return (
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-2 grid-cols-1 ">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-2 grid-cols-1">
             {
                 allData.map((allItem, allDataIndex) => {
                     return (
-                        <div key={allDataIndex} className="card relative rounded-3xl dark:border-4 dark:border-blue-100">
+                        <div key={allDataIndex} id={`card-${allDataIndex}`} ref={ref => cardRefs.current[allDataIndex] = ref} className="card min-w-full overflow-x-hidden relative rounded-3xl dark:border-4 dark:border-blue-100">
                             {/* branch name  */}
                             <div className={`${allItem.bg} dark:bg-black-100  dark:border-b-4 dark:border-blue-100 flex flex-row justify-between items-start p-4 pb-16 rounded-b-[60px] rounded-3xl`}>
                                 <div className="flex flex-grow justify-center">
@@ -166,8 +178,9 @@ const Card = () => {
                         </div >)
                 })
             }
-        </div >
+        </div>
     )
 }
 
-export default Card
+export default Card;
+

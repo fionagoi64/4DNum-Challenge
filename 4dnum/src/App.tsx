@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar'
 import Main from './components/Main'
 import "react-datepicker/dist/react-datepicker.css"
-import { MdLightMode } from "react-icons/md";
-import { AiFillMoon } from "react-icons/ai";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false)
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const handleDateSelect = (date: Date) => {
+    setSelectedDate(date);
+  };
 
   useEffect(() => {
     let savedMode = localStorage.getItem("displayMode")
@@ -21,23 +23,18 @@ function App() {
     setDarkMode(!darkMode)
   }
 
+  const scrollToCard = (ref: HTMLDivElement | null) => {
+    if (ref) {
+      ref.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
-
-      <div className='absolute z-30'>
-        <div className="flex gap-3 items-center ">
-          {darkMode ? <MdLightMode className="text-xl" /> : <AiFillMoon className="text-xl" />}
-          <h1 className="text-sm">{` ${darkMode ? "Light Mode" : "Dark Mode"}`}</h1>
-          <button onClick={toggleDisplayMode}>
-            <div className={`relative w-7 h-4 rounded-full ${darkMode ? "bg-gray-200" : "bg-purple"}`}>
-              <div className={`absolute h-3 w-3 bg-white rounded-full ${darkMode ? "left-0" : "right-0"}`} />
-            </div>
-          </button>
-        </div>
-      </div>
-      <Navbar />
-      <Main />
+      <Navbar scrollToCard={scrollToCard} toggleDisplayMode={toggleDisplayMode} darkMode={darkMode} onSelectDate={handleDateSelect} />
+      <Main selectedDate={selectedDate} />
     </div>
   );
 }

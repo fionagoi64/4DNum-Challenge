@@ -4,12 +4,19 @@ import nav_icon from "../images/webDashboard.svg";
 import { sidebar } from "../data/sidebar";
 import SideMenu from "./SideMenu";
 import { Hamburger, Refresh } from "./Buttons";
-import { ScrollToCard } from "./ScrollToCard";
+import ScrollToCard from "./ScrollToCard";
 import DatePickerComponent from "./DatePickerComponent";
 import { MdOutlineLanguage } from "react-icons/md";
 import Switch from "./Switch";
 
-const Navbar = () => {
+interface NavbarProps {
+  onSelectDate: (date: Date) => void;
+  toggleDisplayMode: () => void;
+  darkMode: boolean;
+  scrollToCard: (ref: HTMLDivElement | null) => void; // Define scrollToCard prop type
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onSelectDate, toggleDisplayMode, darkMode, scrollToCard }) => {
   const [openSideMenu, setSideMenuOpen] = useState(false);
 
 
@@ -21,11 +28,6 @@ const Navbar = () => {
     window.location.reload();
   }
 
-  const scrollToCard = () => {
-
-  }
-
-
   return (
     <div >
       <header className="px-10 fixed w-full top-0 z-10 md-bg md:rounded-none md:shadow-none rounded-b-xl shadow-md">
@@ -33,18 +35,17 @@ const Navbar = () => {
         <nav className="md:flex md:flex-row hidden items-center justify-between pt-2 pb-4">
           <Hamburger onClick={handleOpenSideMenu} />
 
-
           <img src={fourD_logo} alt="" className="rounded-full h-9 xl:hidden" />
 
           <img src={nav_icon} alt="" className="xl:flex xl:ml-44 md:hidden h-10" />
 
-          <ScrollToCard onClick={scrollToCard} />
+          <ScrollToCard scrollToRef={scrollToCard} />
 
-          <DatePickerComponent />
+          <DatePickerComponent onSelectDate={onSelectDate} />
 
           <Refresh onClick={refreshPage} />
 
-          <Switch />
+          <Switch darkMode={darkMode} toggleDisplayMode={toggleDisplayMode} />
 
           <button>
             <MdOutlineLanguage className="text-2xl" />

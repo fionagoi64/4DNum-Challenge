@@ -1,26 +1,25 @@
-import React, { useState } from 'react'
+// Switch.tsx
+import React from 'react';
 import { AiFillMoon } from "react-icons/ai";
 import { MdLightMode } from "react-icons/md";
 
-const Switch = () => {
+interface SwitchProps {
+    darkMode: boolean;
+    toggleDisplayMode: () => void;
+}
 
-    const [isLightOn, setIsLightOn] = useState(true);
-
-    const handleSwitch = () => {
-        setIsLightOn(!isLightOn);
-    };
+const Switch: React.FC<SwitchProps> = ({ darkMode, toggleDisplayMode }) => {
     return (
-        <div className="flex gap-3 items-center ">
-            {isLightOn ? <MdLightMode className="text-xl" /> : <AiFillMoon className="text-xl icon" />}
-            <h1 className="text-sm">{` ${isLightOn ? "Light Mode" : "Dark Mode"}`}</h1>
-            <button onClick={handleSwitch}>
-                <div className={`relative w-7 h-4 rounded-full ${isLightOn ? "bg-gray" : "bg-purple"}`}>
-                    <div className={`absolute h-3 w-3 bg-white rounded-full ${isLightOn ? "left-0" : "right-0"}`} />
+        <div className="flex gap-3 items-center">
+            {darkMode ? <MdLightMode className="text-xl" /> : <AiFillMoon className="text-xl" />}
+            <h1 className="text-sm">{darkMode ? "Light Mode" : "Dark Mode"}</h1>
+            <button onClick={toggleDisplayMode}>
+                <div className={`relative w-7 h-4 rounded-full ${darkMode ? "bg-gray-200" : "bg-purple"}`}>
+                    <div className={`absolute h-3 w-3 bg-white rounded-full ${darkMode ? "left-0" : "right-0"}`} />
                 </div>
             </button>
         </div>
-
-    )
+    );
 }
 
-export default Switch
+export default Switch;
