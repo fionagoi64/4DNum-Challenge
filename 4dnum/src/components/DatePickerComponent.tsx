@@ -41,7 +41,7 @@ const DatePickerComponent = ({ onSelectDate }: { onSelectDate: (date: Date) => v
         <div className='flex z-20 justify-center'>
             <DatePicker
                 customInput={
-                    <button onClick={handleCalendar} className="w-52 white-bg font-semibold text-dark-grey rounded-xl py-2 border-[0.5px] border-gray-100 shadow-md hover:border-blue-indigo hover:text-blue-indigo">
+                    <button onClick={handleCalendar} className="white-bg font-semibold text-dark-grey rounded-xl p-2 border-[0.5px] border-gray-100 shadow-md hover:border-blue-indigo hover:text-blue-indigo">
                         <div className='flex flex-row gap-5 justify-center items-center'>
                             <IoCalendarOutline className='text-lg' />
                             <p className='pt-[0.8px] pr-1'>{selectedDate}</p>

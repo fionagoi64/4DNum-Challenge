@@ -24,6 +24,7 @@ module.exports = {
         200: "#1A81BB", //blue-lucky
         300: "#1D68A2", //blue-perdana
         400: "#1C377B", //blue-indigo
+        500: "#2B3F89",
       },
       red: {
         100: "#EC2024", //red-sports

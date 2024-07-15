@@ -9,7 +9,7 @@ type ScrollToCardProps = {
 
 const ScrollToCard: React.FC<ScrollToCardProps> = ({ scrollToRef }) => {
     return (
-        <div className="white-bg rounded-[18px] shadow-md min-w-[600px]">
+        <div className="white-bg rounded-[18px] shadow-md">
             <ul className="flex gap-3 justify-center items-center p-1">
                 {extraData.map((logos, logoindex) => (
                     <li key={logoindex}>

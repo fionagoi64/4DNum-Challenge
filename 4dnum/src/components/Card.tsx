@@ -55,13 +55,13 @@ const Card: React.FC<CardProps> = ({ cardRefs, selectedDate }) => {
     }, [allData.length]);
 
     return (
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-2 grid-cols-1">
+        <div className="flex flex-wrap justify-center gap-2">
             {
                 allData.map((allItem, allDataIndex) => {
                     return (
-                        <div key={allDataIndex} id={`card-${allDataIndex}`} ref={ref => cardRefs.current[allDataIndex] = ref} className="card min-w-full overflow-x-hidden relative rounded-3xl dark:border-4 dark:border-blue-100">
+                        <div key={allDataIndex} id={`card-${allDataIndex}`} ref={ref => cardRefs.current[allDataIndex] = ref} className={`card 2xl:w-[32%] xl:w-[45%] lg:w-[30%] md:w-[35%] w-full overflow-x-hidden relative rounded-3xl dark:border-4 ${allItem.dark}`}>
                             {/* branch name  */}
-                            <div className={`${allItem.bg} dark:bg-black-100  dark:border-b-4 dark:border-blue-100 flex flex-row justify-between items-start p-4 pb-16 rounded-b-[60px] rounded-3xl`}>
+                            <div className={`${allItem.bg} dark:bg-black-100 -mt-1 -mx-1 dark:border-4 ${allItem.dark} flex flex-row justify-between items-start p-4 pb-16 rounded-b-[60px] rounded-3xl`}>
                                 <div className="flex flex-grow justify-center">
                                     <div className="flex flex-col items-center gap-1">
                                         <div className="logos-bg">
@@ -75,7 +75,7 @@ const Card: React.FC<CardProps> = ({ cardRefs, selectedDate }) => {
                                 </button>
                             </div>
                             {/* date */}
-                            <div className="background absolute top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 rounded-2xl shadow-md py-3 my-2 flex flex-row items-center">
+                            <div className="background dark:border-[0.2px] dark:border-gray-400 absolute top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 rounded-2xl shadow-md py-3 my-2 flex flex-row items-center">
                                 <div className="date">
                                     <h6>Date</h6>
                                     <p> {" "}
@@ -147,7 +147,7 @@ const Card: React.FC<CardProps> = ({ cardRefs, selectedDate }) => {
                                                         </div>
                                                         <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                                                             {nData.map(nItem =>
-                                                            (<div className="relative bg-white border-[0.2px] border-gray-100 dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center">
+                                                            (<div className="relative bg-white dark:border-[0.2px] dark:border-gray-400 dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center">
                                                                 <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">{allItem.fdData[`${nItem}_pos`]}</p>
                                                                 <h1 className="text-xl font-medium py-[1px]">{allItem.fdData[nItem]}</h1>
                                                             </div>)
@@ -162,7 +162,7 @@ const Card: React.FC<CardProps> = ({ cardRefs, selectedDate }) => {
                                                             </div>
                                                             <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                                                                 {othersData.map((othersItem, otherIndex) =>
-                                                                (<div className="relative border-[0.2px] border-gray-100 bg-white dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center">
+                                                                (<div className="relative dark:border-[0.2px] dark:border-gray-400 bg-white dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center">
                                                                     <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">{String.fromCharCode(alpha + otherIndex)}</p>
                                                                     <h1 className="text-xl font-medium py-[1px]">{allItem.fdData[othersItem]}</h1>
                                                                 </div>)
