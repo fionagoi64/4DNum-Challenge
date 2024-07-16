@@ -27,7 +27,6 @@ const Card: React.FC<CardProps> = ({ cardRefs, selectedDate }) => {
         }
     };
 
-
     useEffect(() => {
         getResult(selectedDate); // Fetch data when selectedDate changes
     }, [selectedDate]);

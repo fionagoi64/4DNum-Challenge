@@ -1,25 +1,35 @@
 import React from "react";
+import hamburger from "../assets/images/hamburger.svg";
 import logo from "../assets/images/logo.png";
 import logoText from "../assets/images/logotext.svg";
 import dashboard from "../assets/images/dashboard.svg";
-import refreshLight from "../assets/images/refreshlight.svg";
-import refreshDark from "../assets/images/refreshdrk.svg";
+import refresh from "../assets/images/refresh.svg";
 import { MdLightMode } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 
 const Nav = () => {
   return (
     // web view
-    <header id="header" className="header flex items-center sticky top-0">
-      <div className="relative flex items-center justify-between">
-        <a href="index.html" className="logo flex items-center me-auto xl:me-0">
-          <img src={logo} alt="logo" />
-          <img src={logoText} alt="logo text" />
-        </a>
-        <nav id="navmenu" className="navmenu">
-          <ul>
+    <header
+      id="header"
+      className="fixed flex items-center w-full bg-transparent text-default z-50"
+    >
+      <div className="relative flex items-center w-full gap-[174px]">
+        <img src={hamburger} alt="" className="hidden" />
+
+        <div className="logo flex items-center me-auto xl:me-0">
+          <img
+            src={logo}
+            alt="logo"
+            className="max-h-9 mr-2 ml-5 rounded-full"
+          />
+          <img src={logoText} alt="logo" />
+        </div>
+
+        <nav id="navmenu" className="w-full">
+          <ul className="flex flex-row items-center justify-between bg-navbg py-14px px-5">
             <li>
-              <img src={dashboard} alt="" />
+              <img src={dashboard} alt="" className="h-10 w-10" />
             </li>
             <li>
               <div>
@@ -27,13 +37,13 @@ const Nav = () => {
               </div>
             </li>
             <li>
-              <h1>datepicker</h1>
+              <h1 className="">datepicker</h1>
             </li>
             <li>
-              <img src={refreshLight} alt="" />
+              <img src={refresh} alt="" />
             </li>
             <li>
-              <div>
+              <div className="flex flex-row items-center">
                 <MdLightMode />
                 <p>Light Mode</p>
                 <div className="relative h-3 w-6 bg-black rounded-full">
@@ -42,7 +52,9 @@ const Nav = () => {
               </div>
             </li>
             <li>
-              <GrLanguage />
+              <button>
+                <GrLanguage />
+              </button>
             </li>
           </ul>
         </nav>

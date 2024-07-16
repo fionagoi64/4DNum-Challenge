@@ -1,13 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+/* Global Colors */
+:root {
+  --background-color: 245 245 245;
+  --default-color: 0 0 0;
+  --heading-color: 158 158 158;
+  --accent-color: linear-gradient(118deg rgba(38 78 255 1) 0% rgba(38 78 255 1) 35% rgba(255 0 0 1) 100%);
+  --surface-color: 255 255 255;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Nav Menu Colors */
+:root {
+  --nav-color: 255 255 255;
+  --nav-background-color: 243 243 243;
+  --nav-mobile-background-color: 255 255 255;
+  --nav-sidebar-background-color: 255 255 255;
+  --nav-sidebar-color: 68 68 68;
+  --nav-sidebar-hover-color: 245 245 245;
 }
+
+/* Color Presets - These classes override global colors when applied to any section or element providing reuse of the sam color scheme. */
+
+.light {
+  --background-color: 245 245 245;
+}
+
+.dark {
+  --background-color: 34 34 34;
+  --default-color: 255 255 255;
+  --heading-color: 255 255 255;
+  --surface-color: 0 0 0;
+  --nav-color: 70 70 70;
+  --nav-background-color: 34 34 34;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  @apply bg-background text-default font-roboto select-none
+}
+
+a {
+  @apply text-heading cursor-pointer
+}
+
+button {
+  @apply cursor-pointer
+}
+
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+# Card
+--------------------------------------------------------------*/
