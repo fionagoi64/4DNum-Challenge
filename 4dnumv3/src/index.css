@@ -12,7 +12,6 @@
   --background-color: 245 245 245;
   --default-color: 0 0 0;
   --heading-color: 158 158 158;
-  --accent-color: linear-gradient(118deg rgba(38 78 255 1) 0% rgba(38 78 255 1) 35% rgba(255 0 0 1) 100%);
   --surface-color: 255 255 255;
 }
 
@@ -27,10 +26,6 @@
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element providing reuse of the sam color scheme. */
-
-.light {
-  --background-color: 245 245 245;
-}
 
 .dark {
   --background-color: 34 34 34;
@@ -49,9 +44,9 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-body {
+html,body {
   @apply bg-background text-default font-roboto select-none
-}
+} 
 
 a {
   @apply text-heading cursor-pointer
@@ -60,6 +55,7 @@ a {
 button {
   @apply cursor-pointer
 }
+
 
 
 /*--------------------------------------------------------------
@@ -71,3 +67,19 @@ button {
 /*--------------------------------------------------------------
 # Card
 --------------------------------------------------------------*/
+#card .body{
+  @apply text-default bg-surface rounded-3xl
+}
+
+#card-header .logos-bg {
+  @apply relative bg-navitem h-[70px] w-[70px] rounded-full overflow-hidden
+}
+
+#card-header .logos {
+  @apply block absolute m-auto -top-full -right-full -bottom-full -left-full h-[60px] w-[60px]
+}
+
+/* how to make card's body? */
+#card .date,.draw{
+  @apply flex-1 text-center space-y-3
+}

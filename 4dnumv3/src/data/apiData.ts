@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const BaseURL = "https://dev.backend.4dnum.com/";
 export const API_V1 = "api/v1";
-export const publicImage = "public/images/";
 
 export const axiosPublic = axios.create({
   baseURL: BaseURL,

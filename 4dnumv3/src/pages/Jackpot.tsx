@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card } from "../components/Card";
+import { Card } from "../components/cards/NumberCard";
 import useFetchData from "../hooks/useFetchData";
 
 const Jackpot = () => {
@@ -10,11 +10,7 @@ const Jackpot = () => {
     // setDate(new Date());
   }, []);
 
-  return (
-    <Card allData={allData}>
-      <h1 className="h-[1000px]">This is 4DNum</h1>
-    </Card>
-  );
+  return <div></div>;
 };
 
 export default Jackpot;

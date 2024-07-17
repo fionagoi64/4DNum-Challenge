@@ -1,11 +1,11 @@
 import React from "react";
-import { sidebar } from "../data/sidebar";
+import { sidebar } from "../../data/sidebar";
 import { IoMdClose } from "react-icons/io";
 
 const Sidebar = () => {
   return (
-    <section >
-      <div className="fixed bg-sidebarbg h-screen top-0 w-[300px] rounded-r-[45px] z-30">
+    <section>
+      <div className="fixed bg-sidebarbg h-screen top-0 w-[300px] rounded-r-[45px] z-40">
         <button className="absolute right-0 m-8">
           <IoMdClose className="text-2xl" />
         </button>
