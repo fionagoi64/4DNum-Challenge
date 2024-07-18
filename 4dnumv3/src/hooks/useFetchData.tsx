@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { axiosPublic } from "../data/apiData";
 import { API_V1 } from "../data/apiData";
-import { extraData } from "../data/extraData";
+import { localData } from "../data/localData";
 
 const useFetchData = (initialDate: Date) => {
   const [date, setDate] = useState<Date>(initialDate);
@@ -27,10 +27,10 @@ const useFetchData = (initialDate: Date) => {
   useEffect(() => {
     const AllData = apiData
       .filter((selectedData) =>
-        extraData.some((extraItem) => extraItem.type === selectedData.type)
+        localData.some((extraItem) => extraItem.type === selectedData.type)
       )
       .map((apiItem) => {
-        const all = extraData.find(
+        const all = localData.find(
           (extraItem) => extraItem.type === apiItem.type
         );
         return { ...apiItem, ...all };

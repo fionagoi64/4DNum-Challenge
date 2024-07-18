@@ -27,7 +27,7 @@ const SpecialDraw = () => {
   };
 
   return (
-    <section className="fixed bg-sidebarbg right-0 top-[40%] w-[300px] rounded-l-[45px] z-40">
+    <section className="hidden xl:block fixed bg-sidebarbg right-0 top-[40%] w-[300px] xl:w-[220px] rounded-l-[45px] z-40 ">
       <div className="relative text-center pt-8 pb-3">
         <img
           className="absolute -top-16 left-1/2 -translate-x-1/2 w-[102px] h-auto"

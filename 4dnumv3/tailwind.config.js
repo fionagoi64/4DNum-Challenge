@@ -27,10 +27,12 @@ module.exports = {
         300: "#222222",
       },
       gray: {
-        100: "#F3F3F3", //light gray
-        200: "#CBD5E0", // gray
-        300: "#6C6C6C",
-        400: "#464646", //dark gray
+        100: "#F0F0F0", //light gray
+        200: "#F3F3F3", //light gray
+        300: "#CBD5E0", // gray
+        400: "#AEAEAE",
+        500: "#6C6C6C",
+        600: "#464646", //dark gray
       },
       blue: {
         100: "#0093D8", //blue-sg
@@ -38,12 +40,16 @@ module.exports = {
         300: "#1D68A2", //blue-perdana
         400: "#1C377B", //blue-indigo
         500: "#2B3F89",
+        600: "#264CAA",
       },
       red: {
         100: "#EC2024", //red-sports
         200: "#FA0404", //red-sabah
       },
-      purple: "#492C85", //mode
+      purple: {
+        100: "#99A2CE", //hover mode
+        200: "#492C85", //mode
+      },
       yellow: "#F5C500", //
       green: {
         100: "#007A37", //

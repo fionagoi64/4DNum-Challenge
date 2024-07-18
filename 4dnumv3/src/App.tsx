@@ -4,7 +4,7 @@ import Nav from "./components/menu/Nav";
 import Home from "./pages/Home";
 import Jackpot from "./pages/Jackpot";
 import Sidebar from "./components/menu/Sidebar";
-import SpecialDraw from "./components/menu/SpecialDraw";
+import SpecialDraw from "./components/special/SpecialDraw";
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-export const extraData = [
+export const localData = [
     {
         type: "M",
         name: "Magnum 4D",

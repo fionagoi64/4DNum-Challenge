@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card } from "../components/cards/NumberCard";
+import { NumberContent } from "../components/cards/NumberContent";
 import useFetchData from "../hooks/useFetchData";
 import { sectionTitle } from "../data/sectionTitle";
 
@@ -12,7 +12,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Card allData={allData}>
+    <NumberContent allData={allData}>
       {(all, allIndex) => (
         <div className="mt-12 mb-8 mx-5">
           {sectionTitle.map((titleItem, titleIndex) => {
@@ -134,7 +134,7 @@ const Home = () => {
           })}
         </div>
       )}
-    </Card>
+    </NumberContent>
   );
 };
 

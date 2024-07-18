@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card } from "../components/cards/NumberCard";
+import { NumberContent } from "../components/cards/NumberContent";
 import useFetchData from "../hooks/useFetchData";
 
 const Jackpot = () => {
