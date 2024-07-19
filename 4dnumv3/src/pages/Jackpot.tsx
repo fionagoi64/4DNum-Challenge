@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NumberContent } from "../components/cards/NumberContent";
 import useFetchData from "../hooks/useFetchData";
 
-const Jackpot = () => {
+export const Jackpot = () => {
   const { date, setDate, allData } = useFetchData(new Date());
 
   useEffect(() => {
@@ -12,5 +12,3 @@ const Jackpot = () => {
 
   return <div></div>;
 };
-
-export default Jackpot;

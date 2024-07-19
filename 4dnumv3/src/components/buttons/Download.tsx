@@ -1,7 +1,7 @@
 import React from "react";
 import { FaDownload } from "react-icons/fa";
 
-const Download = () => {
+export const Download = () => {
   return (
     <button>
       <div className="flex flex-row gap-2">
@@ -11,5 +11,3 @@ const Download = () => {
     </button>
   );
 };
-
-export default Download;

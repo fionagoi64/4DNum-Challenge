@@ -2,7 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-const Card = () => {
+export const Card = () => {
   return (
     <>
       <div className="sticky top-0 bg-background z-20 h-20"></div>
@@ -23,5 +23,3 @@ const Card = () => {
     </>
   );
 };
-
-export default Card;

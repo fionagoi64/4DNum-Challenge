@@ -1,7 +1,7 @@
 import React from "react";
 import { MdLightMode } from "react-icons/md";
 
-const Theme = () => {
+export const Theme = () => {
   return (
     <div className="flex flex-row items-center gap-2">
       <MdLightMode className="text-heading text-xl" />
@@ -12,5 +12,3 @@ const Theme = () => {
     </div>
   );
 };
-
-export default Theme;

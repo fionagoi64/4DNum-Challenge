@@ -3,7 +3,7 @@ import { NumberContent } from "../components/cards/NumberContent";
 import useFetchData from "../hooks/useFetchData";
 import { sectionTitle } from "../data/sectionTitle";
 
-const Home = () => {
+export const Home = () => {
   const { date, setDate, allData } = useFetchData(new Date());
 
   useEffect(() => {
@@ -137,5 +137,3 @@ const Home = () => {
     </NumberContent>
   );
 };
-
-export default Home;

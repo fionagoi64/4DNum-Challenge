@@ -1,7 +1,7 @@
 import React from "react";
 import { GrRefresh } from "react-icons/gr";
 
-const Refresh = () => {
+export const Refresh = () => {
   const handleRefresh = () => {
     window.location.reload();
   };
@@ -15,5 +15,3 @@ const Refresh = () => {
     </button>
   );
 };
-
-export default Refresh;

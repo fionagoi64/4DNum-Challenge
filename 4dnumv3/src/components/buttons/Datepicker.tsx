@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { getMonth, getYear, addDays } from "date-fns";
 import { IoCalendarOutline } from "react-icons/io5";
 
-const Datepicker = () => {
+export const Datepicker = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const selectedDate = startDate.toISOString().split("T")[0];
@@ -129,5 +129,3 @@ const Datepicker = () => {
     </div>
   );
 };
-
-export default Datepicker;

@@ -1,15 +1,13 @@
 import React from "react";
 import { sidebar } from "../../data/sidebar";
 import { IoMdClose } from "react-icons/io";
+import { Close } from "../buttons/Close";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <section className="hidden xl:block">
-      <div className="fixed bg-sidebarbg h-screen top-0 w-[300px] xl:w-[220px] rounded-r-[45px] z-40">
-        <button className="absolute right-0 m-8 hidden">
-          <IoMdClose className="text-2xl" />
-        </button>
-
+      <div className="fixed bg-sidebarbg h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40">
+        <Close />
         <div className="mt-20">
           {sidebar.map((sidebarItem, sidebarIndex) => {
             return (
@@ -42,5 +40,3 @@ const Sidebar = () => {
     </section>
   );
 };
-
-export default Sidebar;

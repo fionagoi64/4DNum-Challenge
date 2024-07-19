@@ -1,11 +1,10 @@
 import React from "react";
-import share from "../../assets/images/share.svg";
 import { getImageUrl } from "../../data/imgPath";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Share from "../buttons/Share";
-import Refresh from "../buttons/Refresh";
-import Hamburger from "../buttons/Hamburger";
+import { Share } from "../buttons/Share";
+import { Refresh } from "../buttons/Refresh";
+import { Hamburger } from "../buttons/Hamburger";
 
 interface NumberContentProps {
   children: (all: any, allIndex: number) => React.ReactNode;
@@ -21,12 +20,12 @@ export const NumberContent: React.FC<NumberContentProps> = ({
       <div className="sticky top-0 bg-background z-20 h-20 hidden md:block"></div>
       <section id="card" className="">
         {/* web view */}
-        <div className="md:flex hidden flex-wrap justify-center gap-2 container mx-auto max-w-screen-xl xl:max-w-screen-md">
+        <div className="md:flex hidden flex-wrap justify-center gap-2 container mx-auto max-w-screen-xl xl:max-w-screen-md 2xl:max-w-screen-xl">
           {allData.map((all, allIndex) => (
             <div
               key={allIndex}
               id="card-body"
-              className="body relative rounded-[20px] w-[31%] md:w-[45%] lg:w-[31%] xl:w-[48%] "
+              className="body relative rounded-[20px] w-[31%] md:w-[45%] lg:w-[31%] xl:w-[48%] 2xl:w-[31%]"
             >
               {/* card header */}
               <div
