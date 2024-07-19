@@ -1,6 +1,5 @@
 import React from "react";
 import { sidebar } from "../../data/sidebar";
-import { IoMdClose } from "react-icons/io";
 import { Close } from "../buttons/Close";
 
 export const Sidebar = () => {

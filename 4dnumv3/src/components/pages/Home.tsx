@@ -1,20 +1,55 @@
-import React, { useEffect } from "react";
-import { NumberContent } from "../components/cards/NumberContent";
-import useFetchData from "../hooks/useFetchData";
-import { sectionTitle } from "../data/sectionTitle";
+import React, { useEffect, useState } from "react";
+import { axiosPublic } from "../../data/apiData";
+import { API_V1 } from "../../data/apiData";
+import { NumberContent } from "../cards/NumberContent";
+import { sectionTitle } from "../../data/sectionTitle";
+import { localData } from "../../data/localData";
 
 export const Home = () => {
-  const { date, setDate, allData } = useFetchData(new Date());
+  //#region command
+  const [date, setDate] = useState(new Date());
+  const [apiData, setApiData] = useState<any[]>([]);
+  const [allData, setAllData] = useState<any[]>([]);
+
+  const getResult = async (selectedDate: Date) => {
+    try {
+      const formattedDate = selectedDate.toISOString().split("T")[0]; //YYYY-MM-DD
+      axiosPublic.get(`/${API_V1}/result/${formattedDate}`).then((res) => {
+        setApiData(res.data);
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    // Optionally, you can use setDate to update the date state
-    // setDate(new Date());
-  }, []);
+    getResult(date);
+  }, [date]);
+
+  useEffect(() => {
+    const AllData = apiData
+      .filter((selectedData) =>
+        localData.some((extraItem) => extraItem.type === selectedData.type)
+      ) //filter data w type in extraData
+      .map((apiItem) => {
+        const all = localData.find(
+          (extraItem) => extraItem.type === apiItem.type
+        ); //join apiData & extraData
+        return { ...apiItem, ...all };
+      });
+    setAllData(AllData);
+    console.log(AllData);
+  }, [apiData]);
+
+  const handleDateChange = () => {
+    setDate(date);
+  };
+  // #endregion
 
   return (
     <NumberContent allData={allData}>
-      {(all, allIndex) => (
-        <div className="mt-12 mb-8 mx-5">
+      {(all) => (
+        <div id="card-numbers" className="px-5 pt-12 pb-1">
           {sectionTitle.map((titleItem, titleIndex) => {
             let fdLetter = "";
             let alpha = 0;
@@ -71,7 +106,7 @@ export const Home = () => {
                       <div className={`${all.prize} prize`}>
                         <h1>
                           {titleItem[0]}
-                          <span> Prize</span>
+                          <span>Prize</span>
                         </h1>
                       </div>
                       <div className={`${all.prize} prize`}>
@@ -91,7 +126,7 @@ export const Home = () => {
                       {nData.map((nItem) => (
                         <div
                           key={nItem}
-                          className="relative bg-white dark:border-[0.2px] dark:border-gray-400 dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center"
+                          className="relative bg-white text-black-100 shadow-all rounded-md text-center"
                         >
                           <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">
                             {all.fdData[`${nItem}_pos`]}
@@ -107,7 +142,7 @@ export const Home = () => {
                   isShow && (
                     <div>
                       <div
-                        className={`${all.bg} ${all.others}  text-center rounded-xl py-2`}
+                        className={`${all.bg} ${all.others} text-center rounded-xl py-2`}
                       >
                         {titleItem}
                       </div>
@@ -115,7 +150,7 @@ export const Home = () => {
                         {othersData.map((othersItem, otherIndex) => (
                           <div
                             key={othersItem}
-                            className="relative dark:border-[0.2px] dark:border-gray-400 bg-white dark:bg-black-200 text-black-300 dark:text-white shadow-md rounded-md text-center"
+                            className="relative bg-white text-black-100 shadow-all rounded-md text-center"
                           >
                             <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">
                               {String.fromCharCode(alpha + otherIndex)}
