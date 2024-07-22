@@ -5,11 +5,13 @@ import "swiper/css";
 interface NumberCardProps {
   children: (all: any) => React.ReactNode;
   allData: any[];
+  cardRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
 }
 
 export const NumberCard: React.FC<NumberCardProps> = ({
   children,
   allData,
+  cardRefs,
 }) => {
   return (
     <>
@@ -21,6 +23,7 @@ export const NumberCard: React.FC<NumberCardProps> = ({
             <div
               key={allIndex}
               id="card-body"
+              ref={(ref) => (cardRefs.current[allIndex] = ref)}
               className="body relative rounded-[20px] w-[38%] lg:w-[31%] xl:w-[48%] 2xl:w-[31%]"
             >
               {children(all)}

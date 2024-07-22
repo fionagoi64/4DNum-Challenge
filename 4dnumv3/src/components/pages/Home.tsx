@@ -5,7 +5,11 @@ import { NumberContent } from "../cards/NumberContent";
 import { sectionTitle } from "../../data/sectionTitle";
 import { localData } from "../../data/localData";
 
-export const Home = () => {
+interface HomeProps {
+  handleMenu: () => void;
+}
+
+export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
   //#region command
   const [date, setDate] = useState(new Date());
   const [apiData, setApiData] = useState<any[]>([]);
@@ -47,7 +51,7 @@ export const Home = () => {
   // #endregion
 
   return (
-    <NumberContent allData={allData}>
+    <NumberContent allData={allData} handleMenu={handleMenu}>
       {(all) => (
         <div id="card-numbers" className="px-5 pt-12 pb-1">
           {sectionTitle.map((titleItem, titleIndex) => {
@@ -106,7 +110,7 @@ export const Home = () => {
                       <div className={`${all.prize} prize`}>
                         <h1>
                           {titleItem[0]}
-                          <span>Prize</span>
+                          <span> Prize</span>
                         </h1>
                       </div>
                       <div className={`${all.prize} prize`}>
@@ -131,7 +135,7 @@ export const Home = () => {
                           <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">
                             {all.fdData[`${nItem}_pos`]}
                           </p>
-                          <h1 className="text-xl font-medium py-[1px]">
+                          <h1 className="text-2xl font-medium py-[1px]">
                             {all.fdData[nItem]}
                           </h1>
                         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { getImageUrl } from "../../data/imgPath";
 import { Share } from "../buttons/Share";
 import { Refresh } from "../buttons/Refresh";
@@ -8,14 +8,18 @@ import { NumberCard } from "./NumberCard";
 interface NumberContentProps {
   children: (all: any) => React.ReactNode;
   allData: any[];
+  handleMenu: () => void;
 }
 
 export const NumberContent: React.FC<NumberContentProps> = ({
   children,
   allData,
+  handleMenu,
 }) => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
-    <NumberCard allData={allData}>
+    <NumberCard allData={allData} cardRefs={cardRefs}>
       {(all) => (
         <div>
           {/* card header */}
@@ -24,7 +28,9 @@ export const NumberContent: React.FC<NumberContentProps> = ({
             className="text-white bg-black-100 px-5 pt-20 md:pt-4 pb-14 rounded-b-[45px] rounded-[20px]"
           >
             <div className="flex flex-row items-start">
-              <Hamburger />
+              <div className="md:hidden">
+                <Hamburger handleClick={handleMenu} />
+              </div>
               <div className="flex flex-col justify-center items-center w-full">
                 <div className="logos-bg">
                   <img

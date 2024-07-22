@@ -42,7 +42,7 @@ export const Datepicker = () => {
   const maxSelectableDate = addDays(currentDate, 0); // Disable dates from tomorrow
 
   return (
-    <div className="relative">
+    <div id="date-picker" className="relative">
       <button
         className=" bg-navitem rounded-xl shadow-all"
         onClick={handleClick}
@@ -50,7 +50,6 @@ export const Datepicker = () => {
         <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10">
           <IoCalendarOutline className="text-lg text-gray-400" />
           <p className="text-sm font-semibold md:text-base text-gray-500">
-            {" "}
             {selectedDate}
           </p>
         </div>
@@ -59,7 +58,7 @@ export const Datepicker = () => {
       {isOpen && (
         <div className="absolute top-11">
           <div className="relative">
-            <div className="absolute left-14 z-30 w-3 h-3 border-t-[0.2px] border-l-[0.2px] border-gray-500 bg-gray-100 transform rotate-45"></div>
+            <div className="absolute left-20 z-30 w-3 h-3 border-t-[0.2px] border-l-[0.2px] border-gray-500 bg-gray-100 transform rotate-45"></div>
             <div className="absolute top-[6.5px]">
               <DatePicker
                 inline
