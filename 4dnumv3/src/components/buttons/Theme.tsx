@@ -1,16 +1,38 @@
 import React from "react";
+import { AiFillMoon } from "react-icons/ai";
 import { MdLightMode } from "react-icons/md";
 
-export const Theme = () => {
+interface ThemeProps {
+  darkMode: boolean;
+  handleTheme: () => void;
+}
+
+export const Theme: React.FC<ThemeProps> = ({ darkMode, handleTheme }) => {
   return (
     <div className="flex flex-row items-center justify-center">
       <label className="flex flex-row items-center cursor-pointer gap-2">
-        <MdLightMode className="text-heading text-xl" />
-        <p>Light Mode</p>
-        <div className="relative">
-          <div className="block bg-gray-600 w-7 h-4 rounded-full"></div>
-          <div className="absolute left-[2px] top-[2px] bg-white w-3 h-3 rounded-full transition"></div>
-        </div>
+        {darkMode ? (
+          <AiFillMoon className="text-xl text-white" />
+        ) : (
+          <MdLightMode className="text-xl" />
+        )}
+        <h1 className="text-sm text-wrap text-heading">
+          {darkMode ? "Dark Mode" : "Light Mode"}
+        </h1>
+        <button onClick={handleTheme}>
+          <div className="relative">
+            <div
+              className={`block ${
+                darkMode ? "bg-purple-200" : "bg-gray-600"
+              } w-7 h-4 rounded-full`}
+            ></div>
+            <button
+              className={`absolute ${
+                darkMode ? "right-[2px]" : "left-[2px]"
+              } top-[2px] bg-white w-3 h-3 rounded-full transition`}
+            ></button>
+          </div>
+        </button>
       </label>
     </div>
   );

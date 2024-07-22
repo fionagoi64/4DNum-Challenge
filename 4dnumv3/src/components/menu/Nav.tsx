@@ -12,9 +12,16 @@ import { Sidebar } from "./Sidebar";
 interface NavProps {
   handleMenu: () => void;
   handleScroll: (ref: HTMLDivElement | null) => void;
+  handleTheme: () => void;
+  darkMode: boolean;
 }
 
-export const Nav: React.FC<NavProps> = ({ handleMenu, handleScroll }) => {
+export const Nav: React.FC<NavProps> = ({
+  handleMenu,
+  handleScroll,
+  darkMode,
+  handleTheme,
+}) => {
   return (
     <>
       <header id="header" className="fixed z-30 xl:z-50 w-full">
@@ -33,7 +40,7 @@ export const Nav: React.FC<NavProps> = ({ handleMenu, handleScroll }) => {
               <ScrollToCard handleScroll={handleScroll} />
               <Datepicker />
               <Refresh />
-              <Theme />
+              <Theme darkMode={darkMode} handleTheme={handleTheme} />
               <Language />
             </div>
           </nav>

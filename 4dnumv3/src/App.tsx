@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/menu/Nav";
 import { Home } from "./components/pages/Home";
@@ -8,13 +8,14 @@ import { SpecialDraw } from "./components/menu/SpecialDraw";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
 
   const handleClose = () => {
-    setIsOpen(false); // Close sidebar
+    setIsOpen(false);
   };
 
   const handleScroll = (ref: HTMLDivElement | null) => {
@@ -23,18 +24,37 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    let savedMode = localStorage.getItem("displayMode");
+    if (!savedMode) {
+      const savedMode = "light";
+      setDarkMode(false);
+      localStorage.setItem("displayMode", savedMode);
+    }
+    setDarkMode(savedMode === "dark" ? true : false);
+  }, []);
+
+  const handleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <>
-      <Nav handleMenu={handleOpen} handleScroll={handleScroll} />
+    <div className={`${darkMode ? "dark" : ""}`}>
+      <Nav
+        handleMenu={handleOpen}
+        handleScroll={handleScroll}
+        handleTheme={handleTheme}
+        darkMode={darkMode}
+      />
       <Sidebar handleClose={handleClose} isOpen={isOpen} />
       <SpecialDraw />
       <BrowserRouter>
         <Routes>
           <Route index element={<Home handleMenu={handleOpen} />} />
-          <Route path="jackpot" element={<Jackpot />} />
+          <Route path="jackpot" element={<Jackpot handleMenu={handleOpen} />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

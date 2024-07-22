@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { getImageUrl } from "../../data/imgPath";
-import { Share } from "../buttons/Share";
-import { Refresh } from "../buttons/Refresh";
-import { Hamburger } from "../buttons/Hamburger";
+import { getImageUrl } from "../../../data/imgPath";
+import { Share } from "../../buttons/Share";
+import { Refresh } from "../../buttons/Refresh";
+import { Hamburger } from "../../buttons/Hamburger";
 import { NumberCard } from "./NumberCard";
 
 interface NumberContentProps {

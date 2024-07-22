@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosPublic } from "../../data/apiData";
 import { API_V1 } from "../../data/apiData";
-import { NumberContent } from "../cards/NumberContent";
+import { NumberContent } from "../cards/share/NumberContent";
 import { sectionTitle } from "../../data/sectionTitle";
 import { localData } from "../../data/localData";
 

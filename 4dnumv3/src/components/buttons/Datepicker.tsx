@@ -4,16 +4,24 @@ import "react-datepicker/dist/react-datepicker.css";
 import { getMonth, getYear, addDays } from "date-fns";
 import { IoCalendarOutline } from "react-icons/io5";
 
-export const Datepicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [isOpen, setIsOpen] = useState(false);
-  const selectedDate = startDate.toISOString().split("T")[0];
+export const Datepicker: React.FC = () => {
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const range = (start: number, end: number, step = 1) => {
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      setStartDate(date); // Update selected date
+      setIsOpen(false); // Close date picker
+    }
+  };
+
+  const selectedDate: string = startDate.toISOString().split("T")[0];
+
+  const range = (start: number, end: number, step = 1): number[] => {
     let arr = [];
     for (let i = start; i < end; i += step) {
       arr.push(i);
@@ -21,9 +29,9 @@ export const Datepicker = () => {
     return arr;
   };
 
-  const years = range(1985, getYear(new Date()) + 1, 1);
+  const years: number[] = range(1985, getYear(new Date()) + 1, 1);
 
-  const months = [
+  const months: string[] = [
     "January",
     "February",
     "March",
@@ -38,13 +46,13 @@ export const Datepicker = () => {
     "December",
   ];
 
-  const currentDate = new Date(); // Get current date
-  const maxSelectableDate = addDays(currentDate, 0); // Disable dates from tomorrow
+  const currentDate: Date = new Date(); // Get current date
+  const maxSelectableDate: Date = addDays(currentDate, 0); // Disable dates from tomorrow
 
   return (
     <div id="date-picker" className="relative">
       <button
-        className=" bg-navitem rounded-xl shadow-all"
+        className="bg-navitem rounded-xl shadow-all"
         onClick={handleClick}
       >
         <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10">
@@ -118,7 +126,7 @@ export const Datepicker = () => {
                   </div>
                 )}
                 selected={startDate}
-                // onChange={handleDateChange} // Update handleDateChange function
+                onChange={(date) => handleDateChange(date)} // Update handleDateChange function
                 maxDate={maxSelectableDate} // Set the minimum selectable date
               />
             </div>
