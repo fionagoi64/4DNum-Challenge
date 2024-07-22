@@ -12,7 +12,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ handleClose, isOpen }) => {
     <section className={`relative ${isOpen ? "block" : "hidden"}`}>
       <div className="xl:hidden absolute h-screen w-full bg-black-100 opacity-50 z-40"></div>
       <div
-        className={`fixed bg-sidebarbg h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 transition-all duration-700 
+        className={`fixed bg-navbg h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 transition-all duration-700 
           ${isOpen ? "ml-0" : "-ml-60"}`}
       >
         <button onClick={handleClose}>

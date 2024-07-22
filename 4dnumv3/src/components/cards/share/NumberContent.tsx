@@ -42,7 +42,9 @@ export const NumberContent: React.FC<NumberContentProps> = ({
                 <h1>{all.name}</h1>
               </div>
               <div className="flex flex-col items-center gap-8">
-                <Refresh />
+                <div className="md:hidden">
+                  <Refresh />
+                </div>
                 <Share />
               </div>
             </div>

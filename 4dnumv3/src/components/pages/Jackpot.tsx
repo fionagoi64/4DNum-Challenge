@@ -4,11 +4,12 @@ import { API_V1 } from "../../data/apiData";
 import { NumberContent } from "../cards/share/NumberContent";
 import { getImageUrl } from "../../data/imgPath";
 import { localData } from "../../data/localData";
-import SportsJackpot from "../cards/jackpot/SportsJackpot";
 import SingaporeJackpot from "../cards/jackpot/SingaporeJackpot";
 import SabahJackpot from "../cards/jackpot/SabahJackpot";
+import DamacaiJackpot from "../cards/jackpot/DamacaiJackpot";
+import SportsJackpot from "../cards/jackpot/SportsJackpot";
 import LuckyJackpot from "../cards/jackpot/LuckyJackpot";
-
+import MagnumJackpot from "../cards/jackpot/MagnumJackpot";
 interface HomeProps {
   handleMenu: () => void;
 }
@@ -71,6 +72,12 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu }) => {
               Magnum Life
             </p>
           </div>
+          {all.name === "Magnum 4D" && <MagnumJackpot />}
+          {all.name === "Da Ma Cai 1+3D" && <DamacaiJackpot />}
+          {all.name === "Sports Toto 4D" && <SportsJackpot />}
+          {all.name === "Singapore 4D" && <SingaporeJackpot />}
+          {all.name === "Sabah 88 4D" && <SabahJackpot />}
+          {all.name === "Lucky Hari Hari" && <LuckyJackpot />}
         </div>
       )}
     </NumberContent>

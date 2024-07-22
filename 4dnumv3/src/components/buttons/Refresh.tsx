@@ -9,7 +9,7 @@ export const Refresh = () => {
   return (
     <button
       onClick={handleRefresh}
-      className="rounded-full p-2 md:p-3 bg-white md:bg-blue-600 bg-opacity-80 md:hidden"
+      className="rounded-full p-2 md:p-3 bg-white md:bg-blue-600 bg-opacity-80"
     >
       <GrRefresh className="text-black-100 md:text-white text-base" />
     </button>

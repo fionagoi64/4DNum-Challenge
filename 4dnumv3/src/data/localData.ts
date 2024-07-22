@@ -7,7 +7,7 @@ export const localData = [
     },
     {
         type: "PMP",
-        name: "Da Mai Cai 1+3D",
+        name: "Da Ma Cai 1+3D",
         nav: "damacai2.svg",
         card: "",
     },
