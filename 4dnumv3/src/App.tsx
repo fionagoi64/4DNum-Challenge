@@ -46,7 +46,12 @@ function App() {
         handleTheme={handleTheme}
         darkMode={darkMode}
       />
-      <Sidebar handleClose={handleClose} isOpen={isOpen} />
+      <Sidebar
+        handleClose={handleClose}
+        isShow={`${isOpen ? "block" : "hidden"}`}
+        isTransition={`transition-all duration-700 
+          ${isOpen ? "ml-0" : "-ml-60"}`}
+      />
       <SpecialDraw />
       <BrowserRouter>
         <Routes>

@@ -10,18 +10,27 @@ import { Language } from "../buttons/Language";
 import { Sidebar } from "./Sidebar";
 
 interface NavProps {
-  handleMenu: () => void;
   handleScroll: (ref: HTMLDivElement | null) => void;
   handleTheme: () => void;
   darkMode: boolean;
+  handleMenu: () => void;
 }
 
 export const Nav: React.FC<NavProps> = ({
-  handleMenu,
   handleScroll,
   darkMode,
   handleTheme,
+  handleMenu,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <header id="header" className="fixed z-30 xl:z-50 w-full">
@@ -51,6 +60,8 @@ export const Nav: React.FC<NavProps> = ({
           </nav>
         </div>
       </header>
+
+      <Sidebar handleClose={handleClose} isShow="hidden xl:block" />
     </>
   );
 };
