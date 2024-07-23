@@ -27,17 +27,15 @@ export const SpecialDraw = () => {
   };
 
   return (
-    <section className="hidden xl:block fixed bg-sidebarbg right-0 top-[40%] xl:w-[220px] 2xl:w-[300px] rounded-l-[45px] z-40 ">
+    <section className="hidden xl:block fixed bg-sidebar_background right-0 top-[40%] xl:w-[220px] 2xl:w-[300px] rounded-l-[45px] z-40 ">
       <div className="relative text-center pt-8 pb-3">
         <img
           className="absolute -top-16 left-1/2 -translate-x-1/2 w-[102px] h-auto"
           src={billiards}
           alt=""
         />
-        <div>
-          <h1 className="font-semibold text-[17px] text-dark-grey">
-            Special Draw Date
-          </h1>
+        <div className="text-sidebar_label">
+          <h1 className="font-semibold text-[17px] ">Special Draw Date</h1>
           <p className="font-thin text-[15px]">Upcoming Special Draw Date</p>
           <ul className="my-5">
             {specialDraw.map((specialDrawItem, index) => {
@@ -46,14 +44,14 @@ export const SpecialDraw = () => {
               return (
                 <li key={index} className="font-thin text-sm">
                   <div className="flex flex-row items-center justify-center gap-2">
-                    <div className="bg-black rounded-full h-1 w-1" />
+                    <div className="bg-sidebar_label rounded-full h-1 w-1" />
                     <p>
                       {specialDrawItem} {"("}
                       {day}
                       {")"}
                     </p>
                   </div>
-                  <div className="border-t-2 border-solid border-gray-100 mx-3 my-2" />
+                  <div className="border-t-2 border-solid border-sidebar_border mx-3 my-2" />
                 </li>
               );
             })}

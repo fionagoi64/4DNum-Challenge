@@ -2,61 +2,71 @@ export const localData = [
     {
         type: "M",
         name: "Magnum 4D",
-        nav: "magnum.svg",
-        card: "magnum.svg",
+        navImg: "magnum.svg",
+        cardImg: "magnum.svg",
+        id: "magnum",
     },
     {
         type: "PMP",
         name: "Da Ma Cai 1+3D",
-        nav: "damacai2.svg",
-        card: "",
+        navImg: "damacai2.svg",
+        cardImg: "",
+        id: "damacai"
     },
     {
         type: "ST",
         name: "Sports Toto 4D",
-        nav: "toto.svg",
-        card: "toto.svg",
+        navImg: "toto.svg",
+        cardImg: "toto.svg",
+        id: "sports"
     },
     {
         type: "SG",
         name: "Singapore 4D",
-        nav: "sg.svg",
-        card: "sg.svg",
+        navImg: "sg.svg",
+        cardImg: "sg.svg",
+        id: "singapore"
     },
     {
         type: "STC",
         name: "Sandakan 4D",
-        nav: "sandakan.svg",
-        card: "",
+        navImg: "sandakan.svg",
+        cardImg: "",
+        id: "sandakan"
     },
     {
         type: "EE",
         name: "Sabah 88 4D",
-        nav: "diriwan2.svg",
-        card: "",
+        navImg: "diriwan2.svg",
+        cardImg: "",
+        id: "sabah"
     },
     {
         type: "CS",
         name: "Special CashSweep",
-        nav: "ssc.svg",
-        card: "ssc.svg",
+        navImg: "ssc.svg",
+        cardImg: "ssc.svg",
+        id: "special"
     },
     {
         type: "HT15:30",
         name: "Lucky Hari Hari",
-        nav: "lhh.svg",
-        card: "lhh.svg",
+        navImg: "lhh.svg",
+        cardImg: "lhh.svg",
+        id: "lucky"
     },
     {
         type: "PT15:30",
         name: "Perdana Lottery",
-        nav: "Perdana%20svg.svg",
-        card: "Perdana%20svg.svg",
+        navImg: "Perdana%20svg.svg",
+        cardImg: "Perdana%20svg.svg",
+        id: "perdana"
     },
     {
         type: "GD",
         name: "Grand Dragon 4D",
-        nav: "gd.svg",
-        card: "gd.svg",
+        navImg: "gd.svg",
+        cardImg: "gd.svg",
+        id: "grand"
     },
 ]

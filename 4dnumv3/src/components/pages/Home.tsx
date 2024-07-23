@@ -103,23 +103,23 @@ export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
             }
 
             return (
-              <div key={titleIndex}>
+              <div id={all.id} key={titleIndex}>
                 {titleItem.includes("1st") && nData !== null ? (
                   <div>
                     <div className="grid grid-cols-3 gap-3">
-                      <div className={`${all.prize} prize`}>
+                      <div className="prize">
                         <h1>
                           {titleItem[0]}
                           <span> Prize</span>
                         </h1>
                       </div>
-                      <div className={`${all.prize} prize`}>
+                      <div className="prize">
                         <h1>
                           {titleItem[1]}
                           <span> Prize</span>
                         </h1>
                       </div>
-                      <div className={`${all.prize} prize`}>
+                      <div className="prize">
                         <h1>
                           {titleItem[2]}
                           <span> Prize</span>
@@ -130,7 +130,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
                       {nData.map((nItem) => (
                         <div
                           key={nItem}
-                          className="relative bg-white text-black-100 shadow-all rounded-md text-center"
+                          className="relative bg-card_numbers border border-numbers_border shadow-all rounded-md text-center"
                         >
                           <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">
                             {all.fdData[`${nItem}_pos`]}
@@ -146,15 +146,29 @@ export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
                   isShow && (
                     <div>
                       <div
-                        className={`${all.bg} ${all.others} text-center rounded-xl py-2`}
+                        className={`title-color text-center rounded-xl py-2`}
                       >
-                        {titleItem}
+                        {titleItem.includes("4D Jackpot 1 Prize") ? (
+                          <div className="flex items-center">
+                            <h1 className="flex-1 text-center text-white">
+                              {titleItem[0]}
+                            </h1>
+                            <div className="border-l border-solid border-gray-500 h-4 "></div>
+                            <h1 className="flex-1 text-center text-white">
+                              {titleItem[1]}
+                            </h1>
+                          </div>
+                        ) : (
+                          <h1 className="text-white font-semibold">
+                            {titleItem}
+                          </h1>
+                        )}
                       </div>
                       <div className={`grid ${cols} gap-2 mt-2 mb-5`}>
                         {othersData.map((othersItem, otherIndex) => (
                           <div
                             key={othersItem}
-                            className="relative bg-white text-black-100 shadow-all rounded-md text-center"
+                            className="relative bg-card_numbers border border-numbers_border shadow-all rounded-md text-center"
                           >
                             <p className="absolute text-[8px] font-medium text-red-100 px-[3px]">
                               {String.fromCharCode(alpha + otherIndex)}

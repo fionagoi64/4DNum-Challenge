@@ -24,22 +24,22 @@ export const NumberContent: React.FC<NumberContentProps> = ({
         <div>
           {/* card header */}
           <div
-            id="card-header"
-            className="text-white bg-black-100 px-5 pt-20 md:pt-4 pb-14 rounded-b-[45px] rounded-[20px]"
+            id={all.id}
+            className="background-color border-4 md:-mt-1 md:-mx-1 px-5 pt-20 md:pt-4 pb-14 rounded-b-[45px] rounded-[20px]"
           >
             <div className="flex flex-row items-start">
               <div className="md:hidden">
                 <Hamburger handleClick={handleMenu} />
               </div>
-              <div className="flex flex-col justify-center items-center w-full">
+              <div className="flex flex-col justify-center items-center gap-1 w-full">
                 <div className="logos-bg">
                   <img
                     className="logos"
-                    src={getImageUrl(all.card)}
+                    src={getImageUrl(all.cardImg)}
                     alt={all.name}
                   />
                 </div>
-                <h1>{all.name}</h1>
+                <h1 className="text-white text-lg font-bold">{all.name}</h1>
               </div>
               <div className="flex flex-col items-center gap-8">
                 <div className="md:hidden">
@@ -52,7 +52,7 @@ export const NumberContent: React.FC<NumberContentProps> = ({
           {/* card date & draw no. */}
           <div
             id="card-date"
-            className="absolute top-48 md:top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 bg-surface rounded-2xl shadow-all"
+            className="absolute bg-card_date border  border-numbers_border top-48 md:top-32 w-[calc(100%-2.5rem)] left-1/2 -translate-x-1/2 rounded-2xl shadow-all"
           >
             <div className="flex flex-row rounded-2xl py-3 items-center">
               <div className="date">

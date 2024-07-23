@@ -4,7 +4,7 @@ import { MdShare } from "react-icons/md";
 export const Share = () => {
   return (
     <button>
-      <MdShare className="text-bold text-xl" />
+      <MdShare className="font-bold text-xl text-white" />
     </button>
   );
 };

@@ -27,7 +27,7 @@ export const Nav: React.FC<NavProps> = ({
         <div className="flex flex-row items-center xl:gap-[99px] 2xl:gap-[178px] w-full">
           <Logo className={"hidden xl:flex ml-5"} />
           {/* web view */}
-          <nav className="bg-navbg hidden md:block px-3 xl:px-5 2xl:px-10 w-full">
+          <nav className="bg-nav_background hidden md:block px-3 xl:px-5 2xl:px-10 w-full">
             <div className="flex flex-row items-center justify-between py-3">
               <img
                 src={dashboard}

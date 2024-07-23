@@ -52,14 +52,12 @@ export const Datepicker: React.FC = () => {
   return (
     <div id="date-picker" className="relative">
       <button
-        className="bg-navitem rounded-xl shadow-all"
+        className="bg-nav_item rounded-xl shadow-all border border-picker_border hover:border-picker_hover hover:transition hover:duration-300 "
         onClick={handleClick}
       >
-        <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10">
-          <IoCalendarOutline className="text-lg text-gray-400" />
-          <p className="text-sm font-semibold md:text-base text-gray-500">
-            {selectedDate}
-          </p>
+        <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10 text-picker_text hover:text-picker_hover hover:transition hover:duration-300 font-semibold">
+          <IoCalendarOutline className="text-lg" />
+          {selectedDate}
         </div>
       </button>
 

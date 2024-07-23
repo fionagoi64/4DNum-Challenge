@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+/* Global Colors */
+:root {
+  --background-color: 245 245 245; /*#F5F5F5*/
+  --main-text-color: 0 0 0;
+}
+
+/* Nav Menu Colors */
+:root {
+  --nav-background-color: 243 243 243; /*#F3F3F3*/
+  --nav-item-color: 255 255 255; /*#FFFFFF*/
+
+  --sidebar-background-color: 255 255 255;
+  --sidebar-label-color: 0 0 0;
+  --sidebar-list-item-color: 158 158 158; /*#9E9E9E*/
+  --sidebar-border-color: 238 242 246; /*#EEF2F6*/
+}
+
+/* Date Picker Colors */
+:root {
+  --picker-border-color: 243 243 243; /*#F3F3F3*/
+  --picker-text-color: 108 108 108; /*#6C6C6C*/
+  --picker-hover-color: 38 76 170; /*#264CAA*/
+}
+
+.dark {
+  --background-color: 34 34 34; /*#222222*/
+  --main-text-color: 255 255 255;
+
+  --nav-background-color: 34 34 34; /*#222222*/
+  --nav-item-color: 70 70 70; /*#464646*/
+  --sidebar-background-color: 70 70 70;
+  --sidebar-label-color: 255 255 255;
+  --sidebar-list-item-color: 234 234 234;
+  --sidebar-border-color: 81 81 81; /*#515151*/
+
+  --picker-border-color: 34 34 34; /*#222222*/
+  --picker-text-color: 130 130 130; /*#828282*/
+  --picker-hover-color: 255 255 255; /*#FFFFFF*/
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+html,
+body {
+  @apply bg-background font-roboto select-none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  @apply text-main;
+}
+
+a {
+  @apply cursor-pointer;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+/*--------------------------------------------------------------
+# Date Picker
+--------------------------------------------------------------*/
+#date-picker select {
+  @apply bg-gray-100;
+}
+
+#date-picker select {
+  @apply bg-gray-100;
+}

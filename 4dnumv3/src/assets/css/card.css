@@ -1,0 +1,404 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --card-background-color: 255 255 255;
+  --card-logo-background-color: 255 255 255;
+  --card-date-background-color: 255 255 255;
+  --card-numbers-background-color: 255 255 255;
+  --numbers-border-background-color: 255 255 255;
+}
+
+/* Magnum Card Colors */
+:root {
+  --magnum-background-color: 0 0 0; /* #000000 */
+  --magnum-prize-color: 245 197 48; /* #F5C530 */
+  --magnum-title-color: 0 0 0; /* #000000 */
+  --magnum-border-color: 255 255 255; /* #FFFFFF */
+  --magnum-header-border-color: 0 0 0; /* #000000 */
+}
+
+/* Damacai Card Colors */
+:root {
+  --damacai-background-color: 29 55 123; /* #1D377B */
+  --damacai-prize-color: 236 32 36; /* #EC2024 */
+  --damacai-title-color: 29 55 123; /* #1D377B */
+  --damacai-border-color: 255 255 255; /* #FFFFFF */
+  --damacai-header-border-color: 29 55 123; /* #1D377B */
+}
+
+/* Sports Card Colors */
+:root {
+  --sports-background-color: 236 32 36; /* #EC2024 */
+  --sports-prize-color: 0 0 0; /* #000000 */
+  --sports-title-color: 236 32 36; /* #EC2024 */
+  --sports-border-color: 255 255 255; /* #FFFFFF */
+  --sports-header-border-color: 236 32 36; /* #EC2024 */
+}
+
+/* Singapore Card Colors */
+:root {
+  --singapore-background-color: 0 147 216; /* #0093D8*/
+  --singapore-prize-color: 29 55 123; /* #1D377B */
+  --singapore-title-color: 0 147 216; /* #0093D8 */
+  --singapore-border-color: 255 255 255; /* #FFFFFF */
+  --singapore-header-border-color: 0 147 216; /* #0093D8 */
+}
+
+/* Sandakan Card Colors */
+:root {
+  --sandakan-background-color: 245 197 48; /* #F5C530 */
+  --sandakan-prize-color: 1 122 55; /* #017A37 */
+  --sandakan-title-color: 245 197 48; /* #F5C530 */
+  --sandakan-border-color: 255 255 255; /* #FFFFFF */
+  --sandakan-header-border-color: 245 197 48; /* #F5C530 */
+}
+
+/* Sabah Card Colors */
+:root {
+  --sabah-background-color: 250 5 4; /* #FA0504 */
+  --sabah-prize-color: 30 104 162; /* #1E68A2 */
+  --sabah-title-color: 250 5 4; /* #FA0504 */
+  --sabah-border-color: 255 255 255; /* #FFFFFF */
+  --sabah-header-border-color: 250 5 4; /* #FA0504 */
+}
+
+/* Special Card Colors */
+:root {
+  --special-background-color: 15 162 39; /* #0FA227 */
+  --special-prize-color: 236 32 36; /* #EC2024 */
+  --special-title-color: 15 162 39; /* #0FA227 */
+  --special-border-color: 255 255 255; /* #FFFFFF */
+  --special-header-border-color: 15 162 39; /* #0FA227 */
+}
+
+/* Lucky Card Colors */
+:root {
+  --lucky-background-color: 26 129 187; /* #1A81BB */
+  --lucky-prize-color: 29 55 123; /* #1D377B*/
+  --lucky-title-color: 26 129 187; /* #1A81BB */
+  --lucky-border-color: 255 255 255; /* #FFFFFF */
+  --lucky-header-border-color: 26 129 187; /* #1A81BB */
+}
+
+/* Perdana Card Colors */
+:root {
+  --perdana-background-color: 30 104 162; /* #1E68A2 */
+  --perdana-prize-color: 236 32 36; /* #EC2024 */
+  --perdana-title-color: 30 104 162; /* #1E68A2 */
+  --perdana-border-color: 255 255 255; /* #FFFFFF */
+  --perdana-header-border-color: 30 104 162; /* #1E68A2 */
+}
+
+/* Gd Dragon Card Colors */
+:root {
+  --grand-background-color: 29 55 123; /* #1E68A2 */
+  --grand-prize-color: 236 32 36; /* #EC2024 */
+  --grand-title-color: 28 55 123; /* #1E68A2 */
+  --grand-border-color: 255 255 255; /* #FFFFFF */
+  --grand-header-border-color: 28 55 123; /* #1E68A2 */
+}
+
+.dark {
+  --card-background-color: 34 34 34;
+  --card-logo-background-color: 70 70 70;
+  --card-date-background-color: 7 7 7; /*#070707*/
+  --card-numbers-background-color: 28 28 28; /*#1C1C1C*/
+  --numbers-border-background-color: 70 70 70;
+
+  /* magnum*/
+  --magnum-background-color: 0 0 0; /* #222222 */
+  --magnum-title-color: 70 70 70; /* #464646 */
+  --magnum-border-color: 245 197 48; /* #F5C530 */
+  --magnum-header-border-color: 245 197 48; /* #F5C530 */
+
+  /* damacai */
+  --damacai-background-color: 0 0 0; /* #222222 */
+  --damacai-border-color: 42 92 214; /* #2A5CD6 */
+  --damacai-title-color: 42 92 214; /* #2A5CD6 */
+  --damacai-header-border-color: 42 92 214; /* #2A5CD6 */
+
+  --sports-background-color: 0 0 0; /* #222222 */
+  --sports-prize-color: 70 70 70; /* #464646*/
+  --sports-border-color: 236 32 36; /* #EC2024 */
+
+  --singapore-background-color: 0 0 0; /* #222222 */
+  --singapore-border-color: 0 147 216; /* #0093D8 */
+
+  --sandakan-background-color: 0 0 0; /* #222222 */
+  --sandakan-border-color: 245 197 48; /* #F5C530 */
+
+  --sabah-background-color: 0 0 0; /* #222222 */
+  --sabah-border-color: 250 5 4; /* #FA0504 */
+
+  --special-background-color: 0 0 0; /* #222222 */
+  --special-border-color: 15 162 39; /* #0FA227 */
+
+  --lucky-background-color: 0 0 0; /* #222222 */
+  --lucky-border-color: 26 129 187; /* #1A81BB */
+
+  --perdana-background-color: 0 0 0; /* #222222 */
+  --perdana-border-color: 30 104 162; /* #1E68A2 */
+
+  --grand-background-color: 0 0 0; /* #222222 */
+  --grand-border-color: 42 92 214; /* #1E68A2 */
+}
+
+/*--------------------------------------------------------------
+# General 
+--------------------------------------------------------------*/
+
+.logos-bg {
+  @apply relative bg-card_logo h-[70px] w-[70px] rounded-full overflow-hidden;
+}
+
+.logos {
+  @apply block absolute m-auto -top-full -right-full -bottom-full -left-full h-[60px] w-[60px];
+}
+
+#card-date .date,
+.draw {
+  @apply flex-1 text-center space-y-3;
+}
+
+/*--------------------------------------------------------------
+# Prize
+--------------------------------------------------------------*/
+#card-numbers .prize {
+  @apply text-center p-2 mb-3 rounded-xl font-bold text-lg;
+}
+
+#card-numbers .prize span {
+  @apply font-thin;
+}
+
+/*--------------------------------------------------------------
+# Magnum 
+--------------------------------------------------------------*/
+#card .magnum {
+  @apply border-magnum_border;
+}
+
+#magnum.background-color {
+  @apply bg-magnum_background border-magnum_header;
+}
+
+#magnum .prize {
+  @apply bg-magnum_prize;
+}
+
+#magnum .prize h1 {
+  @apply text-black;
+}
+
+#magnum .title-color {
+  @apply bg-magnum_title;
+}
+
+/*--------------------------------------------------------------
+# Damacai 
+--------------------------------------------------------------*/
+#card .damacai {
+  @apply border-damacai_border;
+}
+
+#damacai.background-color {
+  @apply bg-damacai_background border-damacai_header;
+}
+
+#damacai .prize {
+  @apply bg-damacai_prize;
+}
+
+#damacai .prize h1 {
+  @apply text-white;
+}
+
+#damacai .title-color {
+  @apply bg-damacai_title;
+}
+
+/*--------------------------------------------------------------
+# Sports 
+--------------------------------------------------------------*/
+#card .sports {
+  @apply border-sports_border;
+}
+
+#sports.background-color {
+  @apply bg-sports_background border-sports_header;
+}
+
+#sports .prize {
+  @apply bg-sports_prize;
+}
+
+#sports .prize h1 {
+  @apply text-white;
+}
+
+#sports .title-color {
+  @apply bg-sports_title;
+}
+
+/*--------------------------------------------------------------
+# Sinagpore 
+--------------------------------------------------------------*/
+#card .singapore {
+  @apply border-singapore_border;
+}
+
+#singapore.background-color {
+  @apply bg-singapore_background border-singapore_header;
+}
+
+#singapore .prize {
+  @apply bg-singapore_prize;
+}
+
+#singapore .prize h1 {
+  @apply text-white;
+}
+
+#singapore .title-color {
+  @apply bg-singapore_title;
+}
+
+/*--------------------------------------------------------------
+# Sandakan 
+--------------------------------------------------------------*/
+#card .sandakan {
+  @apply border-sandakan_border;
+}
+
+#sandakan.background-color {
+  @apply bg-sandakan_background border-sandakan_header;
+}
+
+#sandakan .prize {
+  @apply bg-sandakan_prize;
+}
+
+#sandakan .prize h1 {
+  @apply text-white;
+}
+
+#sandakan .title-color {
+  @apply bg-sandakan_title;
+}
+
+/*--------------------------------------------------------------
+# Sabah 
+--------------------------------------------------------------*/
+#card .sabah {
+  @apply border-sabah_border;
+}
+
+#sabah.background-color {
+  @apply bg-sabah_background border-sabah_header;
+}
+
+#sabah .prize {
+  @apply bg-sabah_prize;
+}
+
+#sabah .prize h1 {
+  @apply text-white;
+}
+
+#sabah .title-color {
+  @apply bg-sabah_title;
+}
+
+/*--------------------------------------------------------------
+# Special 
+--------------------------------------------------------------*/
+#card .special {
+  @apply border-special_border;
+}
+
+#special.background-color {
+  @apply bg-special_background border-special_header;
+}
+
+#special .prize {
+  @apply bg-special_prize;
+}
+
+#special .prize h1 {
+  @apply text-white;
+}
+
+#special .title-color {
+  @apply bg-special_title;
+}
+
+/*--------------------------------------------------------------
+# Lucky 
+--------------------------------------------------------------*/
+#card .lucky {
+  @apply border-lucky_border;
+}
+
+#lucky.background-color {
+  @apply bg-lucky_background border-lucky_header;
+}
+
+#lucky .prize {
+  @apply bg-lucky_prize;
+}
+
+#lucky .prize h1 {
+  @apply text-white;
+}
+
+#lucky .title-color {
+  @apply bg-lucky_title;
+}
+
+/*--------------------------------------------------------------
+# Perdana 
+--------------------------------------------------------------*/
+#card .perdana {
+  @apply border-perdana_border;
+}
+
+#perdana.background-color {
+  @apply bg-perdana_background border-perdana_header;
+}
+
+#perdana .prize {
+  @apply bg-perdana_prize;
+}
+
+#perdana .prize h1 {
+  @apply text-white;
+}
+
+#perdana .title-color {
+  @apply bg-perdana_title;
+}
+
+/*--------------------------------------------------------------
+# Grand 
+--------------------------------------------------------------*/
+#card .grand {
+  @apply border-grand_border;
+}
+
+#grand.background-color {
+  @apply bg-grand_background border-grand_header;
+}
+
+#grand .prize {
+  @apply bg-grand_prize;
+}
+
+#grand .prize h1 {
+  @apply text-white;
+}
+
+#grand .title-color {
+  @apply bg-grand_title;
+}

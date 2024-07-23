@@ -17,7 +17,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <section className={`relative ${isShow}`}>
       <div className="xl:hidden absolute h-screen w-full bg-black-100 opacity-50 z-40"></div>
       <div
-        className={`fixed bg-sidebarbg h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 ${isTransition}`}
+        className={`fixed bg-sidebar_background h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 ${isTransition}`}
       >
         <button onClick={handleClose}>
           <Close />
@@ -25,7 +25,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="mt-20">
           {sidebar.map((sidebarItem, sidebarIndex) => (
             <div key={sidebarIndex} className="p-5">
-              <h1 className="font-semibold text-xs mb-2">
+              <h1 className="font-semibold text-xs mb-2 text-sidebar_label">
                 {sidebarItem.label}
               </h1>
               {sidebarItem.list_items.map((listItem, listItemIndex) => (
@@ -33,7 +33,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <li className="py-2">
                     <a
                       href={`${listItem.url}`}
-                      className="flex flex-row gap-3 items-center"
+                      className="flex flex-row gap-3 items-center text-sidebar_list_item"
                     >
                       <img className="h-5" src={listItem.icon} alt="" />
                       <p className="font-medium text-xs">{listItem.label}</p>

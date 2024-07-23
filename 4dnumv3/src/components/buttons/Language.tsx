@@ -4,7 +4,7 @@ import { GrLanguage } from "react-icons/gr";
 export const Language = () => {
   return (
     <button>
-      <GrLanguage className="text-xl" />
+      <GrLanguage className="text-xl text-main" />
     </button>
   );
 };
