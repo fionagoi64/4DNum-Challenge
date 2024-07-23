@@ -7,9 +7,12 @@ import { Sidebar } from "./components/menu/Sidebar";
 import { SpecialDraw } from "./components/menu/SpecialDraw";
 
 function App() {
+  //#region variables
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  //#endregion
 
+  //#region command
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -37,6 +40,7 @@ function App() {
   const handleTheme = () => {
     setDarkMode(!darkMode);
   };
+  //#endregion
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
@@ -46,6 +50,9 @@ function App() {
         handleTheme={handleTheme}
         darkMode={darkMode}
       />
+      {/* web view */}
+      <Sidebar handleClose={handleClose} isShow="hidden xl:block" />
+      {/* mobile view */}
       <Sidebar
         handleClose={handleClose}
         isShow={`${isOpen ? "block" : "hidden"}`}

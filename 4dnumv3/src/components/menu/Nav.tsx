@@ -7,7 +7,6 @@ import { Theme } from "../buttons/Theme";
 import { Refresh } from "../buttons/Refresh";
 import { ScrollToCard } from "../buttons/ScrollToCard";
 import { Language } from "../buttons/Language";
-import { Sidebar } from "./Sidebar";
 
 interface NavProps {
   handleScroll: (ref: HTMLDivElement | null) => void;
@@ -22,15 +21,6 @@ export const Nav: React.FC<NavProps> = ({
   handleTheme,
   handleMenu,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
   return (
     <>
       <header id="header" className="fixed z-30 xl:z-50 w-full">
@@ -60,8 +50,6 @@ export const Nav: React.FC<NavProps> = ({
           </nav>
         </div>
       </header>
-
-      <Sidebar handleClose={handleClose} isShow="hidden xl:block" />
     </>
   );
 };
