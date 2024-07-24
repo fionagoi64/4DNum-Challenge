@@ -11,6 +11,12 @@
 :root {
   --background-color: 245 245 245; /*#F5F5F5*/
   --main-text-color: 0 0 0;
+  --logo-color: linear-gradient(
+    118deg,
+    rgba(38, 78, 255, 1) 0%,
+    rgba(38, 78, 255, 1) 35%,
+    rgba(255, 0, 0, 1) 100%
+  );
 }
 
 /* Nav Menu Colors */
@@ -34,6 +40,7 @@
 .dark {
   --background-color: 34 34 34; /*#222222*/
   --main-text-color: 255 255 255;
+  --logo-color: rgb(255, 255, 255);
 
   --nav-background-color: 34 34 34; /*#222222*/
   --nav-item-color: 70 70 70; /*#464646*/
@@ -52,7 +59,9 @@
 --------------------------------------------------------------*/
 html,
 body {
-  @apply bg-background font-roboto select-none;
+  background-color: var(--background-color);
+  font-family: "Roboto", sans-serif;
+  user-select: none;
 }
 
 h1,
@@ -65,21 +74,26 @@ p {
   @apply text-main;
 }
 
-a {
-  @apply cursor-pointer;
+a,
+button {
+  cursor: pointer;
 }
 
-button {
-  @apply cursor-pointer;
+/*--------------------------------------------------------------
+# Date Picker
+--------------------------------------------------------------*/
+#logo h1.logo-text {
+  background: var(--logo-color);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 /*--------------------------------------------------------------
 # Date Picker
 --------------------------------------------------------------*/
 #date-picker select {
-  @apply bg-gray-100;
-}
-
-#date-picker select {
-  @apply bg-gray-100;
+  background-color: rgb(240, 240, 240);
 }

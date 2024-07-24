@@ -44,7 +44,7 @@ export const SpecialDraw = () => {
               return (
                 <li key={index} className="font-thin text-sm">
                   <div className="flex flex-row items-center justify-center gap-2">
-                    <div className="bg-sidebar_label rounded-full h-1 w-1" />
+                    <div className="bg-sidebar_list_item rounded-full h-[3px] w-[3px]" />
                     <p>
                       {specialDrawItem} {"("}
                       {day}

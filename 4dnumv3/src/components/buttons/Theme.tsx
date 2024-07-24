@@ -13,7 +13,7 @@ export const Theme: React.FC<ThemeProps> = ({ darkMode, handleTheme }) => {
       {darkMode ? (
         <AiFillMoon className="text-xl text-white" />
       ) : (
-        <MdLightMode className="text-xl text-[#9E9E9E]" />
+        <MdLightMode className="text-xl text-[#9e9e9e]" />
       )}
       <h1 className="text-sm text-wrap">
         {darkMode ? (
