@@ -7,17 +7,17 @@ import { localData } from "../../data/localData";
 
 interface HomeProps {
   handleMenu: () => void;
+  selectedDate: Date;
 }
 
-export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
+export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
   //#region command
-  const [date, setDate] = useState(new Date());
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
-  const getResult = async (selectedDate: Date) => {
+  const getResult = async (date: Date) => {
     try {
-      const formattedDate = selectedDate.toISOString().split("T")[0]; //YYYY-MM-DD
+      const formattedDate = date.toISOString().split("T")[0]; //YYYY-MM-DD
       axiosPublic.get(`/${API_V1}/result/${formattedDate}`).then((res) => {
         setApiData(res.data);
       });
@@ -27,8 +27,8 @@ export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
   };
 
   useEffect(() => {
-    getResult(date);
-  }, [date]);
+    getResult(selectedDate);
+  }, [selectedDate]);
 
   useEffect(() => {
     const AllData = apiData
@@ -44,10 +44,6 @@ export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
     setAllData(AllData);
     console.log(AllData);
   }, [apiData]);
-
-  const handleDateChange = () => {
-    setDate(date);
-  };
   // #endregion
 
   return (
@@ -96,6 +92,15 @@ export const Home: React.FC<HomeProps> = ({ handleMenu }) => {
                   all.fdData[data] !== 0 &&
                   all.fdData[data] !== "----"
               );
+
+              const formatCurrency = (amount: number) => {
+                return (amount / 100).toLocaleString("ms-MY", {
+                  style: "currency",
+                  currency: "MYR",
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                });
+              };
             }
 
             if (fdLetter === "jp") {

@@ -305,7 +305,7 @@
 # Special 
 --------------------------------------------------------------*/
 #card .special {
-  background-color: var(--special-background-color);
+  background-color: var(--special-border-color);
 }
 
 #special.background-color {
@@ -345,7 +345,7 @@
 # Perdana 
 --------------------------------------------------------------*/
 #card .perdana {
-  background-color: var(--perdana-background-color);
+  background-color: var(--perdana-border-color);
 }
 
 #perdana.background-color {

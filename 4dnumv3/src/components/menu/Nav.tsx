@@ -9,6 +9,7 @@ import { ScrollToCard } from "../buttons/ScrollToCard";
 import { Language } from "../buttons/Language";
 
 interface NavProps {
+  onSelectDate: (date: Date) => void;
   handleScroll: (ref: HTMLDivElement | null) => void;
   handleTheme: () => void;
   darkMode: boolean;
@@ -20,6 +21,7 @@ export const Nav: React.FC<NavProps> = ({
   darkMode,
   handleTheme,
   handleMenu,
+  onSelectDate,
 }) => {
   return (
     <>
@@ -37,7 +39,7 @@ export const Nav: React.FC<NavProps> = ({
               <Hamburger handleClick={handleMenu} />
               <Logo className={"xl:hidden"} />
               <ScrollToCard handleScroll={handleScroll} />
-              <Datepicker />
+              <Datepicker onSelectDate={onSelectDate} />
               <Refresh />
               <Theme darkMode={darkMode} handleTheme={handleTheme} />
               <Language />

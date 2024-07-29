@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { getMonth, getYear, addDays } from "date-fns";
+import { getMonth, getYear, addDays } from "date-fns"; // Import addDays
 import { IoCalendarOutline } from "react-icons/io5";
 
-export const Datepicker: React.FC = () => {
-  const [startDate, setStartDate] = useState<Date>(new Date());
+export const Datepicker = ({
+  onSelectDate,
+}: {
+  onSelectDate: (date: Date) => void;
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const selectedDate = startDate.toISOString().split("T")[0];
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleDateChange = (date: Date | null) => {
-    if (date) {
-      setStartDate(date); // Update selected date
-      setIsOpen(false); // Close date picker
-    }
-  };
-
-  const selectedDate: string = startDate.toISOString().split("T")[0];
-
-  const range = (start: number, end: number, step = 1): number[] => {
+  const range = (start: number, end: number, step = 1) => {
     let arr = [];
     for (let i = start; i < end; i += step) {
       arr.push(i);
@@ -29,9 +20,8 @@ export const Datepicker: React.FC = () => {
     return arr;
   };
 
-  const years: number[] = range(1985, getYear(new Date()) + 1, 1);
-
-  const months: string[] = [
+  const years = range(1985, getYear(new Date()) + 1, 1);
+  const months = [
     "January",
     "February",
     "March",
@@ -46,8 +36,20 @@ export const Datepicker: React.FC = () => {
     "December",
   ];
 
-  const currentDate: Date = new Date(); // Get current date
-  const maxSelectableDate: Date = addDays(currentDate, 0); // Disable dates from tomorrow
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const currentDate = new Date(); // Get current date
+  const maxSelectableDate = addDays(currentDate, 0); // Disable dates from tomorrow
+
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      setStartDate(date);
+      onSelectDate(date);
+      setIsOpen(false);
+    }
+  };
 
   return (
     <div id="date-picker" className="relative">
@@ -60,7 +62,6 @@ export const Datepicker: React.FC = () => {
           {selectedDate}
         </div>
       </button>
-
       {isOpen && (
         <div className="absolute top-11">
           <div className="relative">
