@@ -29,7 +29,6 @@ function App() {
 
   const handleScroll = (ref: HTMLDivElement | null) => {
     if (ref) {
-      // ref.scrollIntoView({ behavior: "smooth", block: "nearest" });
       var headerOffset = 80;
       var elementPosition = ref.getBoundingClientRect().top;
       var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -58,24 +57,33 @@ function App() {
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
-      <Nav
-        handleMenu={handleOpen}
-        handleScroll={handleScroll}
-        handleTheme={handleTheme}
-        darkMode={darkMode}
-        onSelectDate={handleDateSelect}
-      />
-      {/* web view */}
-      <Sidebar handleClose={handleClose} isShow="hidden xl:block" />
-      {/* mobile view */}
-      <Sidebar
-        handleClose={handleClose}
-        isShow={`${isOpen ? "block" : "hidden"}`}
-        isTransition={`transition-all duration-700 
-          ${isOpen ? "ml-0" : "-ml-60"}`}
-      />
-      <SpecialDraw />
       <BrowserRouter>
+        <Nav
+          handleMenu={handleOpen}
+          handleScroll={handleScroll}
+          handleTheme={handleTheme}
+          darkMode={darkMode}
+          onSelectDate={handleDateSelect}
+        />
+        {/* web view */}
+        <Sidebar
+          handleMenu={handleOpen}
+          handleClose={handleClose}
+          isShow="hidden xl:block"
+          handleTheme={handleTheme}
+          darkMode={darkMode}
+        />
+        {/* mobile view */}
+        <Sidebar
+          handleMenu={handleOpen}
+          handleClose={handleClose}
+          isShow={`${isOpen ? "block" : "hidden"}`}
+          isTransition={`
+            ${isOpen ? "ml-0" : "-ml-60"}`}
+          handleTheme={handleTheme}
+          darkMode={darkMode}
+        />
+        <SpecialDraw />
         <Routes>
           <Route
             index

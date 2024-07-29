@@ -19,12 +19,12 @@ export const Theme: React.FC<ThemeProps> = ({ darkMode, handleTheme }) => {
         {darkMode ? (
           <h1>
             Dark
-            <br /> Mode
+            <br className="inline-block md:hidden" /> Mode
           </h1>
         ) : (
           <h1>
             Light
-            <br /> Mode
+            <br className="inline-block md:hidden" /> Mode
           </h1>
         )}
       </h1>

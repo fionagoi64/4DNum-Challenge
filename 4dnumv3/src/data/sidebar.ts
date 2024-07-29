@@ -1,15 +1,5 @@
 // active images
 import dashboard from "../assets/images/dashboard.svg";
-// import jackpot from "../assets/images/jackpot.svg";
-import specaildate from "../images/APK.png";
-import dddd from "../images/APK.png";
-import spin from "../images/APK.png";
-import hotnum from "../images/APK.png";
-import luckybook from "../images/APK.png";
-
-import apk from "../assets/images/apk.png";
-import app from "../assets/images/appstore.svg";
-
 
 export const sidebar = [
     {
@@ -58,17 +48,5 @@ export const sidebar = [
             },
         ],
     },
-    {
-        label: "Install App",
-        list_items: [
-            {
-                icon: app,
-                label: "",
-                url: "https://apps.apple.com/my/app/4dnum/id1631952501",
-            },
-            {
-                icon: apk,
-            },
-        ],
-    },
+
 ];

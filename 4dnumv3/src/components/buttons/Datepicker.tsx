@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { getMonth, getYear, addDays } from "date-fns"; // Import addDays
 import { IoCalendarOutline } from "react-icons/io5";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
 export const Datepicker = ({
   onSelectDate,
@@ -90,7 +92,7 @@ export const Datepicker = ({
                       onClick={decreaseMonth}
                       disabled={prevMonthButtonDisabled}
                     >
-                      {"<"}
+                      <IoIosArrowBack />
                     </button>
                     <select
                       value={getYear(date)}
@@ -120,7 +122,7 @@ export const Datepicker = ({
                       onClick={increaseMonth}
                       disabled={nextMonthButtonDisabled}
                     >
-                      {">"}
+                      <IoIosArrowForward />
                     </button>
                   </div>
                 )}

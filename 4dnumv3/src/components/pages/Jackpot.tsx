@@ -49,10 +49,6 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu }) => {
     setAllData(AllData);
     console.log(AllData);
   }, [apiData]);
-
-  const handleDateChange = () => {
-    setDate(date);
-  };
   // #endregion
 
   return (
@@ -60,11 +56,11 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu }) => {
       {(all) => (
         <div id="card-numbers" className="px-5 pt-12 pb-1 space-y-3">
           {/* inner header*/}
-          <div className="bg-black-100 rounded-t-[50px] rounded-b-xl">
-            <div className="logos-bg !h-[50px] !w-[50px]">
+          <div className="bg-black rounded-t-[50px] rounded-b-xl">
+            <div className="logos-bg !h-[50px] !w-[50px] mx-auto -top-5">
               <img
-                className="logos !h-[40px] !w-[40px]"
-                src={getImageUrl(all.card)}
+                className="logos !h-[40px] !w-[40px] "
+                src={all.cardImg}
                 alt={all.name}
               />
             </div>
