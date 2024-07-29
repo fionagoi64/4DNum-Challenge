@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { getImageUrl } from "../../../data/imgPath";
 import { Share } from "../../buttons/Share";
 import { Refresh } from "../../buttons/Refresh";
 import { Hamburger } from "../../buttons/Hamburger";
@@ -33,11 +32,7 @@ export const NumberContent: React.FC<NumberContentProps> = ({
               </div>
               <div className="flex flex-col justify-center items-center gap-1 w-full">
                 <div className="logos-bg">
-                  <img
-                    className="logos"
-                    src={getImageUrl(all.cardImg)}
-                    alt={all.name}
-                  />
+                  <img className="logos" src={all.cardImg} alt={all.name} />
                 </div>
                 <h1 className="text-white text-lg font-bold">{all.name}</h1>
               </div>
