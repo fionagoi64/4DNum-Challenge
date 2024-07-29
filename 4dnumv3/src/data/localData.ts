@@ -1,85 +1,77 @@
-
-import magnum from "../assets/images/branches/magnum.svg"
+import { getImageUrl } from "./imgPath"
 import damacai from "../assets/images/branches/damacai.svg"
-import sports from "../assets/images/branches/sports.svg"
-import singapore from "../assets/images/branches/singapore.svg"
 import sandakan from "../assets/images/branches/sandakan.svg"
 import sabah from "../assets/images/branches/sabah.svg"
-import special from "../assets/images/branches/special.svg"
-import lucky from "../assets/images/branches/lucky.svg"
-import perdana from "../assets/images/branches/perdana.svg"
-import grand from "../assets/images/branches/grand.svg"
 
 export const localData = [
     {
         type: "M",
         name: "Magnum 4D",
-        navImg: "magnum.svg",
-        cardImg: magnum,
+        navImg: getImageUrl("magnum.svg"),
+        cardImg: getImageUrl("magnum.svg"),
         id: "magnum",
     },
     {
         type: "PMP",
         name: "Da Ma Cai 1+3D",
-        navImg: "damacai2.svg",
+        navImg: getImageUrl("damacai2.svg"),
         cardImg: damacai,
         id: "damacai"
     },
     {
         type: "ST",
         name: "Sports Toto 4D",
-        navImg: "toto.svg",
-        cardImg: sports,
+        navImg: getImageUrl("toto.svg"),
+        cardImg: getImageUrl("toto.svg"),
         id: "sports"
     },
     {
         type: "SG",
         name: "Singapore 4D",
-        navImg: "sg.svg",
-        cardImg: singapore,
+        navImg: getImageUrl("sg.svg"),
+        cardImg: getImageUrl("sg.svg"),
         id: "singapore"
     },
     {
         type: "STC",
         name: "Sandakan 4D",
-        navImg: "sandakan.svg",
+        navImg: getImageUrl("sandakan.svg"),
         cardImg: sandakan,
         id: "sandakan"
     },
     {
         type: "EE",
         name: "Sabah 88 4D",
-        navImg: "diriwan2.svg",
+        navImg: getImageUrl("diriwan2.svg"),
         cardImg: sabah,
         id: "sabah"
     },
     {
         type: "CS",
         name: "Special CashSweep",
-        navImg: "ssc.svg",
-        cardImg: special,
+        navImg: getImageUrl("ssc.svg"),
+        cardImg: getImageUrl("ssc.svg"),
         id: "special"
     },
     {
         type: "HT15:30",
         name: "Lucky Hari Hari",
-        navImg: "lhh.svg",
-        cardImg: lucky,
+        navImg: getImageUrl("lhh.svg"),
+        cardImg: getImageUrl("lhh.svg"),
         id: "lucky"
     },
     {
         type: "PT15:30",
         name: "Perdana Lottery",
-        navImg: "Perdana%20svg.svg",
-        cardImg: perdana,
+        navImg: getImageUrl("Perdana%20svg.svg"),
+        cardImg: getImageUrl("Perdana%20svg.svg"),
         id: "perdana"
     },
     {
         type: "GD",
         name: "Grand Dragon 4D",
-        navImg: "gd.svg",
-        cardImg: grand,
-
+        navImg: getImageUrl("gd.svg"),
+        cardImg: getImageUrl("gd.svg"),
         id: "grand"
     },
 ]

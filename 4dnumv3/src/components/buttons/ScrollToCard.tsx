@@ -24,7 +24,7 @@ export const ScrollToCard: React.FC<ScrollToCardProps> = ({ handleScroll }) => {
               >
                 <img
                   className="h-8 w-8 md:h-7 md:w-7 lg:h-8 lg:w-8"
-                  src={getImageUrl(logos.navImg)}
+                  src={logos.navImg}
                   alt=""
                 />
               </button>
