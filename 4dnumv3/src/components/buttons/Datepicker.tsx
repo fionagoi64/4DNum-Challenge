@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
-import { getMonth, getYear, addDays } from "date-fns"; // Import addDays
+import { getMonth, getYear, addDays, isSameMonth, isSameYear } from "date-fns";
 import { IoCalendarOutline } from "react-icons/io5";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export const Datepicker = ({
   onSelectDate,
@@ -12,7 +11,10 @@ export const Datepicker = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [startDate, setStartDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const selectedDate = startDate.toISOString().split("T")[0];
+
+  const datePickerRef = useRef<HTMLDivElement | null>(null);
 
   const range = (start: number, end: number, step = 1) => {
     let arr = [];
@@ -42,8 +44,7 @@ export const Datepicker = ({
     setIsOpen(!isOpen);
   };
 
-  const currentDate = new Date(); // Get current date
-  const maxSelectableDate = addDays(currentDate, 0); // Disable dates from tomorrow
+  const maxSelectableDate = addDays(new Date(), 0);
 
   const handleDateChange = (date: Date | null) => {
     if (date) {
@@ -53,10 +54,36 @@ export const Datepicker = ({
     }
   };
 
+  const handleMonthChange = (date: Date) => {
+    setCurrentDate(date);
+  };
+
+  // Function to filter dates based on the displayed month and year
+  const filterDates = (date: Date) => {
+    return isSameMonth(date, currentDate) && isSameYear(date, currentDate);
+  };
+
+  // Effect for detecting clicks outside the date picker
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        datePickerRef.current &&
+        !datePickerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div id="date-picker" className="relative">
+    <div id="date-picker" className="relative" ref={datePickerRef}>
       <button
-        className="bg-nav_item rounded-xl shadow-all border border-picker_border hover:border-picker_hover hover:transition hover:duration-300 "
+        className="bg-nav_item rounded-xl shadow-all border border-picker_border hover:border-picker_hover hover:transition hover:duration-300"
         onClick={handleClick}
       >
         <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10 text-picker_text hover:text-picker_hover hover:transition hover:duration-300 font-semibold">
@@ -89,16 +116,24 @@ export const Datepicker = ({
                     }}
                   >
                     <button
-                      onClick={decreaseMonth}
+                      onClick={() => {
+                        decreaseMonth();
+                        const newDate = new Date(date);
+                        newDate.setMonth(date.getMonth() - 1);
+                        handleMonthChange(newDate);
+                      }}
                       disabled={prevMonthButtonDisabled}
                     >
                       <IoIosArrowBack />
                     </button>
                     <select
                       value={getYear(date)}
-                      onChange={({ target: { value } }) =>
-                        changeYear(Number(value))
-                      }
+                      onChange={({ target: { value } }) => {
+                        const newDate = new Date(date);
+                        changeYear(Number(value));
+                        newDate.setFullYear(Number(value));
+                        handleMonthChange(newDate);
+                      }}
                     >
                       {years.map((option) => (
                         <option key={option} value={option}>
@@ -108,9 +143,12 @@ export const Datepicker = ({
                     </select>
                     <select
                       value={months[getMonth(date)]}
-                      onChange={({ target: { value } }) =>
-                        changeMonth(months.indexOf(value))
-                      }
+                      onChange={({ target: { value } }) => {
+                        const newDate = new Date(date);
+                        changeMonth(months.indexOf(value));
+                        newDate.setMonth(months.indexOf(value));
+                        handleMonthChange(newDate);
+                      }}
                     >
                       {months.map((option, index) => (
                         <option key={index} value={option}>
@@ -119,7 +157,12 @@ export const Datepicker = ({
                       ))}
                     </select>
                     <button
-                      onClick={increaseMonth}
+                      onClick={() => {
+                        increaseMonth();
+                        const newDate = new Date(date);
+                        newDate.setMonth(date.getMonth() + 1);
+                        handleMonthChange(newDate);
+                      }}
                       disabled={nextMonthButtonDisabled}
                     >
                       <IoIosArrowForward />
@@ -127,8 +170,10 @@ export const Datepicker = ({
                   </div>
                 )}
                 selected={startDate}
-                onChange={(date) => handleDateChange(date)} // Update handleDateChange function
-                maxDate={maxSelectableDate} // Set the minimum selectable date
+                onChange={(date) => handleDateChange(date)}
+                maxDate={maxSelectableDate}
+                filterDate={filterDates}
+                disabledKeyboardNavigation
               />
             </div>
           </div>
