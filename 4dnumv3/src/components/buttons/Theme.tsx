@@ -9,24 +9,26 @@ interface ThemeProps {
 
 export const Theme: React.FC<ThemeProps> = ({ darkMode, handleTheme }) => {
   return (
-    <div className="flex flex-row items-center gap-2">
-      {darkMode ? (
-        <AiFillMoon className="text-xl text-white-200" />
-      ) : (
-        <MdLightMode className="text-xl text-gray-300" />
-      )}
+    <div className="flex flex-row items-center gap-2 justify-between md:justify-center">
+      <div className="flex items-center gap-2">
+        {darkMode ? (
+          <AiFillMoon className="text-xl text-white-200" />
+        ) : (
+          <MdLightMode className="text-xl text-gray-300" />
+        )}
 
-      {darkMode ? (
-        <h1 className="text-sm text-wrap text-white-200">
-          Dark
-          <br className="hidden md:block" /> Mode
-        </h1>
-      ) : (
-        <h1 className="text-sm text-wrap text-gray-300 md:!text-black-300">
-          Light
-          <br className="hidden md:block" /> Mode
-        </h1>
-      )}
+        {darkMode ? (
+          <h1 className="text-sm text-wrap text-white-200">
+            Dark
+            <br className="hidden md:block" /> Mode
+          </h1>
+        ) : (
+          <h1 className="text-sm text-wrap text-gray-300 md:!text-black-300">
+            Light
+            <br className="hidden md:block" /> Mode
+          </h1>
+        )}
+      </div>
 
       <button onClick={handleTheme}>
         <div className="relative">

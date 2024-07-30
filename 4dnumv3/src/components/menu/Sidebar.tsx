@@ -56,10 +56,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
           ))}
           <div className="md:hidden">
-            <h1 className="font-semibold text-sm mt-6 dark:text-white-200">
+            <h1 className="font-semibold text-sm mt-6 mb-3 dark:text-white-200">
               Setting
             </h1>
-            <ul>
+            <ul className="space-y-3">
               <li>
                 <Theme darkMode={darkMode} handleTheme={handleTheme} />
               </li>
