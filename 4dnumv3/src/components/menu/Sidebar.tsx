@@ -25,17 +25,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   return (
     <section className={`relative ${isShow}`}>
-      <div className="xl:hidden absolute h-screen w-full bg-black opacity-50 z-40"></div>
+      <div className="xl:hidden absolute h-screen w-full bg-black-100 opacity-50 z-40"></div>
       <div
-        className={`fixed bg-sidebar_background h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 ${isTransition}`}
+        className={`fixed bg-white-100 dark:bg-gray-800 h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 ${isTransition}`}
       >
         <button onClick={handleClose} className="absolute top-5 right-5">
           <Close />
         </button>
-        <div className="mt-20 p-5">
+        <div className="mt-12 p-5">
           {sidebar.map((sidebarItem, sidebarIndex) => (
             <div key={sidebarIndex}>
-              <h1 className="font-semibold text-sm mb-2 text-sidebar_label">
+              <h1 className="font-semibold text-sm xl:text-xs mt-8 dark:text-white-100">
                 {sidebarItem.label}
               </h1>
               {sidebarItem.list_items.map((listItem, listItemIndex) => (
@@ -43,10 +43,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <li className="py-3">
                     <NavLink
                       to={listItem.url}
-                      className="flex flex-row gap-3 items-center"
+                      className="flex gap-3 items-center xl:text-xs"
                     >
                       <img className="h-6" src={listItem.icon} alt="" />
-                      <p className="font-medium text-sm text-sidebar_list_item">
+                      <p className="font-medium text-sm xl:text-xs text-gray-300 dark:text-white-200">
                         {listItem.label}
                       </p>
                     </NavLink>
@@ -55,19 +55,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
               ))}
             </div>
           ))}
-          <div className="xl:hidden">
-            <h1 className="font-semibold text-sm my-2 text-sidebar_label">
+          <div className="md:hidden">
+            <h1 className="font-semibold text-sm mt-6 dark:text-white-200">
               Setting
             </h1>
             <ul>
               <li>
                 <Theme darkMode={darkMode} handleTheme={handleTheme} />
               </li>
-              <li className="flex">
+              <li className="flex items-center">
                 <Language />
                 <select
                   id="language"
-                  className="focus:outline-none bg-sidebar_background text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="focus:outline-none bg-white-100 text-gray-300 dark:bg-gray-600 dark:text-white-200 text-sm w-full p-2.5 "
                 >
                   <option value="bm">Malay</option>
                   <option selected value="en">
@@ -79,11 +79,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </ul>
           </div>
           <div>
-            <h1 className="font-semibold text-sm my-2 text-sidebar_label">
+            <h1 className="font-semibold text-sm mt-6 dark:text-white-200 xl:text-xs">
               Install App
             </h1>
-            <div className="flex items-center gap-5 pl-5 xl:pl-0">
-              <img src={app} alt="" className="h-8 xl:h-6" />
+            <div className="flex items-center gap-5 pl-5 xl:pl-0 mt-2 ">
+              <img src={app} alt="" className="h-8 " />
               <img src={apk} alt="" className="h-12 xl:h-10" />
             </div>
           </div>

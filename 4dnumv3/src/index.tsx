@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./assets/css/index.css";
-import "./assets/css/card.css";
+import "./index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(

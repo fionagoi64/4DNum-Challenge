@@ -83,10 +83,12 @@ export const Datepicker = ({
   return (
     <div id="date-picker" className="relative" ref={datePickerRef}>
       <button
-        className="bg-nav_item rounded-xl shadow-all border border-picker_border hover:border-picker_hover hover:transition hover:duration-300"
+        className="bg-white-100 rounded-xl shadow-all border border-transparent 
+        text-gray-400 hover:text-purple-300  hover:border-purple-300 hover:transition hover:duration-300 
+        dark:bg-gray-600 dark:text-gray-100 dark:hover:text-white-100 dark:hover:border-white-100"
         onClick={handleClick}
       >
-        <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10 text-picker_text hover:text-picker_hover hover:transition hover:duration-300 font-semibold">
+        <div className="flex flex-row gap-2 items-center justify-center p-2 md:px-5 xl:px-10 font-semibold">
           <IoCalendarOutline className="text-lg" />
           {selectedDate}
         </div>
@@ -94,7 +96,7 @@ export const Datepicker = ({
       {isOpen && (
         <div className="absolute top-11">
           <div className="relative">
-            <div className="absolute left-20 z-30 w-3 h-3 border-t-[0.2px] border-l-[0.2px] border-gray-500 bg-gray-100 transform rotate-45"></div>
+            <div className="absolute left-20 z-30 w-3 h-3 border-t-[0.2px] border-l-[0.2px] border-gray-300 bg-white-400 transform rotate-45"></div>
             <div className="absolute top-[6.5px]">
               <DatePicker
                 inline
@@ -127,6 +129,7 @@ export const Datepicker = ({
                       <IoIosArrowBack />
                     </button>
                     <select
+                      className="bg-white-300"
                       value={getYear(date)}
                       onChange={({ target: { value } }) => {
                         const newDate = new Date(date);
@@ -142,6 +145,7 @@ export const Datepicker = ({
                       ))}
                     </select>
                     <select
+                      className="bg-white-300"
                       value={months[getMonth(date)]}
                       onChange={({ target: { value } }) => {
                         const newDate = new Date(date);

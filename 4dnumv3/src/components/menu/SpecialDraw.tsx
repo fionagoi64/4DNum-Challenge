@@ -27,31 +27,35 @@ export const SpecialDraw = () => {
   };
 
   return (
-    <section className="hidden xl:block fixed bg-sidebar_background right-0 top-[40%] xl:w-[220px] 2xl:w-[300px] rounded-l-[45px] z-40 ">
+    <section className="hidden xl:block fixed bg-white-100 dark:bg-gray-800 right-0 top-[40%] xl:w-[220px] 2xl:w-[300px] rounded-l-[45px] z-40 ">
       <div className="relative text-center pt-8 pb-3">
         <img
           className="absolute -top-16 left-1/2 -translate-x-1/2 w-[102px] h-auto"
           src={billiards}
           alt=""
         />
-        <div className="text-sidebar_label">
-          <h1 className="font-semibold text-[17px] ">Special Draw Date</h1>
-          <p className="font-thin text-[15px]">Upcoming Special Draw Date</p>
+        <div className="">
+          <h1 className="font-semibold text-[17px] text-gray-700 dark:text-white-100">
+            Special Draw Date
+          </h1>
+          <p className="font-thin text-[15px] text-gray-700 dark:text-white-100">
+            Upcoming Special Draw Date
+          </p>
           <ul className="my-5">
             {specialDraw.map((specialDrawItem, index) => {
               const day = getDay(specialDrawItem);
 
               return (
-                <li key={index} className="font-thin text-sm">
-                  <div className="flex flex-row items-center justify-center gap-2">
-                    <div className="bg-sidebar_list_item rounded-full h-[3px] w-[3px]" />
-                    <p>
+                <li key={index} className="font-thin text-sm ">
+                  <div className="flex flex-row items-center justify-center gap-2 ">
+                    <div className="bg-gray-400 dark:bg-white-100 rounded-full h-[3px] w-[3px]" />
+                    <p className="text-gray-700 dark:text-white-100">
                       {specialDrawItem} {"("}
                       {day}
                       {")"}
                     </p>
                   </div>
-                  <div className="border-t-2 border-solid border-sidebar_border mx-3 my-2" />
+                  <div className="border-t-2 border-solid mx-3 my-2 border-white-400 dark:border-gray-400" />
                 </li>
               );
             })}

@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+*,
+body {
+  @apply select-none font-roboto;
+}
+
+html,
+body {
+  @apply bg-white-400 dark:bg-black-500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  @apply text-black-100 dark:text-white-100;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+/*--------------------------------------------------------------
+# Logo
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Card
+--------------------------------------------------------------*/
+.logos-bg {
+  @apply relative bg-white-100 dark:bg-gray-400 h-[70px] w-[70px] rounded-full overflow-hidden;
+}
+
+.logos {
+  @apply block absolute m-auto -top-full -right-full -bottom-full -left-full h-[60px] w-[60px];
+}
+
+#card-date .date,
+.draw {
+  @apply flex-1 text-center space-y-3;
+}
+
+/*--------------------------------------------------------------
+# Prize
+--------------------------------------------------------------*/

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosPublic } from "../../data/apiData";
 import { API_V1 } from "../../data/apiData";
-import { NumberContent } from "../cards/share/NumberContent";
+import { CardContent } from "../cards/share/CardContent";
 import { getImageUrl } from "../../data/imgPath";
 import { localData } from "../../data/localData";
 import SingaporeJackpot from "../cards/jackpot/SingaporeJackpot";
@@ -52,7 +52,7 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu }) => {
   // #endregion
 
   return (
-    <NumberContent allData={allData} handleMenu={handleMenu}>
+    <CardContent allData={allData} handleMenu={handleMenu}>
       {(all) => (
         <div id="card-numbers" className="px-5 pt-12 pb-1 space-y-3">
           {/* inner header*/}
@@ -76,6 +76,6 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu }) => {
           {all.id === "lucky" && <LuckyJackpot />}
         </div>
       )}
-    </NumberContent>
+    </CardContent>
   );
 };

@@ -11,34 +11,34 @@ export const Theme: React.FC<ThemeProps> = ({ darkMode, handleTheme }) => {
   return (
     <div className="flex flex-row items-center gap-2">
       {darkMode ? (
-        <AiFillMoon className="text-xl text-white" />
+        <AiFillMoon className="text-xl text-white-200" />
       ) : (
-        <MdLightMode className="text-xl text-[#9e9e9e]" />
+        <MdLightMode className="text-xl text-gray-300" />
       )}
-      <h1 className="text-sm text-wrap">
-        {darkMode ? (
-          <h1>
-            Dark
-            <br className="inline-block md:hidden" /> Mode
-          </h1>
-        ) : (
-          <h1>
-            Light
-            <br className="inline-block md:hidden" /> Mode
-          </h1>
-        )}
-      </h1>
+
+      {darkMode ? (
+        <h1 className="text-sm text-wrap text-white-200">
+          Dark
+          <br className="hidden md:block" /> Mode
+        </h1>
+      ) : (
+        <h1 className="text-sm text-wrap text-gray-300 md:!text-black-300">
+          Light
+          <br className="hidden md:block" /> Mode
+        </h1>
+      )}
+
       <button onClick={handleTheme}>
         <div className="relative">
           <div
             className={`block ${
-              darkMode ? "bg-purple-200" : "bg-[#CBD5E0]"
+              darkMode ? "bg-purple-400" : "bg-gray-200"
             } w-7 h-4 rounded-full`}
           ></div>
           <button
             className={`absolute ${
               darkMode ? "right-[2px]" : "left-[2px]"
-            } top-[2px] bg-white w-3 h-3 rounded-full transition`}
+            } top-[2px] bg-white-100 w-3 h-3 rounded-full transition`}
           ></button>
         </div>
       </button>

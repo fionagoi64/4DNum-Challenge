@@ -9,9 +9,9 @@ export const Hamburger: React.FC<HamburgerProps> = ({ handleClick }) => {
   return (
     <button
       onClick={handleClick}
-      className="xl:hidden rounded-full p-2 bg-white md:bg-[#F3F3F3] opacity-80"
+      className="xl:hidden rounded-full p-2 bg-white-100 md:bg-white-500 opacity-80"
     >
-      <RxHamburgerMenu className="text-black text-lg" />
+      <RxHamburgerMenu className="text-black-100 text-lg" />
     </button>
   );
 };
