@@ -1,44 +1,30 @@
 import { useState, useEffect } from "react";
-import { axiosPublic } from "../const/apiData";
-import { API_V1 } from "../const/apiData";
-import { localData } from "../data/localData";
+import axios from "axios";
 
-const useFetchData = (initialDate: Date) => {
-  const [date, setDate] = useState<Date>(initialDate);
+const useFetchResults = (date: Date, apiEndpoint: string) => {
   const [apiData, setApiData] = useState<any[]>([]);
-  const [allData, setAllData] = useState<any[]>([]);
-
-  const getResult = async (selectedDate: Date) => {
-    try {
-      const formattedDate = selectedDate.toISOString().split("T")[0]; //YYYY-MM-DD
-      const response = await axiosPublic.get(
-        `/${API_V1}/result/${formattedDate}`
-      );
-      setApiData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getResult(date);
-  }, [date]);
+    const fetchResults = async () => {
+      try {
+        setLoading(true);
+        const formattedDate = date.toISOString().split("T")[0]; // YYYY-MM-DD
+        const res = await axios.get(`/${apiEndpoint}/result/${formattedDate}`);
+        setApiData(res.data);
+      } catch (err) {
+        setError("Error fetching data");
+        console.error("Error fetching data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  useEffect(() => {
-    const AllData = apiData
-      .filter((selectedData) =>
-        localData.some((extraItem) => extraItem.type === selectedData.type)
-      )
-      .map((apiItem) => {
-        const all = localData.find(
-          (extraItem) => extraItem.type === apiItem.type
-        );
-        return { ...apiItem, ...all };
-      });
-    setAllData(AllData);
-  }, [apiData]);
+    fetchResults();
+  }, [date, apiEndpoint]);
 
-  return { date, setDate, allData };
+  return { apiData, loading, error };
 };
 
-export default useFetchData;
+export default useFetchResults;

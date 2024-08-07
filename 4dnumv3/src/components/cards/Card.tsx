@@ -11,7 +11,7 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ children, allData, cardRefs }) => {
   return (
     <>
-      <div className="bg-white-400 dark:bg-black-500 md:py-20">
+      <div className="bg-white-400 dark:bg-black-100 md:py-20">
         <section id="card">
           {/* web view */}
           <div className="md:flex hidden flex-wrap justify-center gap-2 container mx-auto xl:max-w-screen-md 2xl:max-w-screen-xl">

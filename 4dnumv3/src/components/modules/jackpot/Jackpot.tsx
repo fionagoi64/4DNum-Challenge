@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { axiosPublic } from "../../../const/apiData";
-import { API_V1 } from "../../../const/apiData";
 import { CardContent } from "../../cards/CardContent";
 import { localData } from "../../../data/localData";
-import SingaporeJackpot from "./SingaporeJackpot";
-import SabahJackpot from "./SabahJackpot";
-import { DamacaiJackpot } from "./DamacaiJackpot";
-import SportsJackpot from "./SportsJackpot";
-import LuckyJackpot from "./LuckyJackpot";
-import MagnumJackpot from "./MagnumJackpot";
+import SingaporeJackpot from "../../jackpot/SingaporeJackpot";
+import SabahJackpot from "../../jackpot/SabahJackpot";
+import { DamacaiJackpot } from "../../jackpot/DamacaiJackpot";
+import { SportsJackpot } from "../../jackpot/SportsJackpot";
+import LuckyJackpot from "../../jackpot/LuckyJackpot";
+import { MagnumJackpot } from "../../jackpot/MagnumJackpot";
+import { API_V1, axiosPublic } from "../../../const/apiData";
+
 interface HomeProps {
   handleMenu: () => void;
   selectedDate: Date;
@@ -33,30 +33,36 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
   }, [selectedDate]);
 
   useEffect(() => {
-    const AllData = apiData
+    const joinData = apiData
       .filter((selectedData) =>
-        localData.some((localItem) => localItem.jpType === selectedData.type)
+        localData.some(
+          (localItem) =>
+            localItem.type === selectedData.type &&
+            localItem.type !== "CS" &&
+            localItem.type !== "STC" &&
+            localItem.type !== "PT15:30"
+        )
       ) // filter data where type is in localData
       .map((apiItem) => {
         const all = localData.find(
-          (extraItem) => extraItem.jpType === apiItem.type
+          (extraItem) => extraItem.type === apiItem.type
         ); // join apiData & localData
         return { ...apiItem, ...all };
       });
-    setAllData(AllData);
-    console.log(AllData);
+    setAllData(joinData);
+    console.log(joinData);
   }, [apiData]);
 
   return (
     <CardContent allData={allData} handleMenu={handleMenu}>
       {(all) => (
         <div id="card-numbers" className="px-3 pt-16 pb-1">
-          {all.jpType === "MJPGOLD" && <MagnumJackpot />}
-          {all.jpType === "PMPJP1" && <DamacaiJackpot />}
-          {all.jpType === "STJP6/55" && <SportsJackpot />}
-          {all.jpType === "SGJP6/45" && <SingaporeJackpot />}
-          {all.jpType === "EEJP6/45" && <SabahJackpot />}
-          {all.jpType === "HT15:30" && <LuckyJackpot />}
+          {all.type === "M" && <MagnumJackpot selectedDate={selectedDate} />}
+          {all.type === "PMP" && <DamacaiJackpot selectedDate={selectedDate} />}
+          {all.type === "ST" && <SportsJackpot selectedDate={selectedDate} />}
+          {all.type === "SG" && <SingaporeJackpot />}
+          {all.type === "EE" && <SabahJackpot />}
+          {all.type === "HT15:30" && <LuckyJackpot />}
         </div>
       )}
     </CardContent>

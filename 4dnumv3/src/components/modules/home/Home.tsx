@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { axiosPublic } from "../../../const/apiData";
-import { API_V1 } from "../../../const/apiData";
 import { CardContent } from "../../cards/CardContent";
 import { sectionTitle } from "../../../data/sectionTitle";
 import { localData } from "../../../data/localData";
 import { formatCurrency } from "../../../const/formatCurreny";
+import { API_V1, axiosPublic } from "../../../const/apiData";
 
 interface HomeProps {
   handleMenu: () => void;

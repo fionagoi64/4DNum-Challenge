@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { axiosPublic } from "../../const/apiData";
-import { API_V1 } from "../../const/apiData";
 import billiards from "../../assets/images/billiards.png";
+import { API_V1, axiosPublic } from "../../const/apiData";
 
 export const SpecialDraw = () => {
   const [specialDraw, setSpecialDraw] = useState<any[]>([]);

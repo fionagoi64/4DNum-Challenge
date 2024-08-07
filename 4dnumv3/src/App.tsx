@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/menu/Nav";
-import { Home } from "./components/pages/home/Home";
-import { Jackpot } from "./components/pages/jackpot/Jackpot";
+import { Home } from "./components/modules/home/Home";
+import { Jackpot } from "./components/modules/jackpot/Jackpot";
 import { Sidebar } from "./components/menu/Sidebar";
 import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
