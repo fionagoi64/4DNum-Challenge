@@ -40,7 +40,6 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
         return { ...apiItem, ...all };
       });
     setAllData(AllData);
-    console.log(AllData);
   }, [apiData]);
 
   return (

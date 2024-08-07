@@ -82,9 +82,27 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
                 Special
               </div>
               <div className="grid grid-cols-3 my-3">
-                <div className="shadow-all rounded-md text-center font-medium">
-                  16
-                </div>
+                {Object.keys(damacaiJackpot.fdData)
+                  .filter((nData) => nData.startsWith("n"))
+                  .slice(0, 3)
+                  .map((numbers, numberIndex) => {
+                    const bonus = damacaiJackpot.fdData[numbers];
+                    const place = numberIndex + 1;
+
+                    return (
+                      <div
+                        key={numberIndex}
+                        className="flex flex-row gap-2 text-center my-2"
+                      >
+                        <div className="bg-red-100 text-white w-[30%] rounded-lg p-2 font-bold text-white-100">
+                          {place}ST
+                        </div>
+                        <div className="bg-white w-[70%] font-bold p-2 shadow-all rounded-lg">
+                          {bonus}
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>

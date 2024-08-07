@@ -44,7 +44,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
   }, [apiData]);
 
   return (
@@ -68,7 +67,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                   <div className="bg-yellow-100 text-black-100 text-center font-bold p-2 rounded-lg">
                     Winning Numbers
                   </div>
-                  <div className="grid grid-cols-8 my-2">
+                  <div className="grid grid-cols-8 my-2 gap-2">
                     {Object.keys(magnumJackpot.fdData)
                       .filter((nData) => nData.startsWith("n"))
                       .slice(0, 8)
@@ -90,7 +89,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                   <div className="bg-black-100 dark:bg-gray-600 text-center text-white-100 font-bold p-2 rounded-lg">
                     Bonus Numbers
                   </div>
-                  <div className="grid grid-cols-2 my-2">
+                  <div className="grid grid-cols-2 my-2 gap-2">
                     {Object.keys(magnumJackpot.fdData)
                       .filter((nData) => nData.startsWith("n"))
                       .slice(8, 10)
@@ -137,7 +136,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                   <div className="bg-yellow-100 text-black-100 text-center font-bold p-2 rounded-lg">
                     Jackpot 2
                   </div>
-                  <div className="grid grid-cols-8 my-2">
+                  <div className="grid grid-cols-8 my-2 gap-2">
                     {Object.keys(magnumJackpot.fdData)
                       .filter((nData) => nData.startsWith("n"))
                       .slice(0, 3)
@@ -167,7 +166,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                       </h1>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 my-2">
+                  <div className="grid grid-cols-2 my-2 gap-2">
                     <div className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium">
                       {magnumJackpot.fdData.jp1}
                     </div>

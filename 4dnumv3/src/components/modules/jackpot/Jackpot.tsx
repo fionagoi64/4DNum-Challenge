@@ -38,9 +38,7 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
         localData.some(
           (localItem) =>
             localItem.type === selectedData.type &&
-            localItem.type !== "CS" &&
-            localItem.type !== "STC" &&
-            localItem.type !== "PT15:30"
+            !["CS", "STC", "PT15:30"].includes(localItem.type)
         )
       ) // filter data where type is in localData
       .map((apiItem) => {
@@ -50,7 +48,6 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
   }, [apiData]);
 
   return (
