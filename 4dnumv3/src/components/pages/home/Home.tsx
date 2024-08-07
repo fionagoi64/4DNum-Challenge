@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { axiosPublic } from "../../data/apiData";
-import { API_V1 } from "../../data/apiData";
-import { CardContent } from "../cards/share/CardContent";
-import { sectionTitle } from "../../data/sectionTitle";
-import { localData } from "../../data/localData";
+import { axiosPublic } from "../../../const/apiData";
+import { API_V1 } from "../../../const/apiData";
+import { CardContent } from "../../cards/CardContent";
+import { sectionTitle } from "../../../data/sectionTitle";
+import { localData } from "../../../data/localData";
+import { formatCurrency } from "../../../const/formatCurreny";
 
 interface HomeProps {
   handleMenu: () => void;
@@ -42,16 +43,6 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
     setAllData(AllData);
     console.log(AllData);
   }, [apiData]);
-
-  // Function to format currency
-  const formatCurrency = (amount: number) => {
-    return (amount / 100).toLocaleString("ms-MY", {
-      style: "currency",
-      currency: "MYR",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-  };
 
   return (
     <CardContent allData={allData} handleMenu={handleMenu}>

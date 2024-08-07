@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import { Share } from "../../buttons/Share";
-import { Refresh } from "../../buttons/Refresh";
-import { Hamburger } from "../../buttons/Hamburger";
+import { Share } from "../buttons/Share";
+import { Refresh } from "../buttons/Refresh";
+import { Hamburger } from "../buttons/Hamburger";
 import { Card } from "./Card";
 
 interface CardContentProps {

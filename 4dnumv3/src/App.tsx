@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/menu/Nav";
-import { Home } from "./components/pages/Home";
-import { Jackpot } from "./components/pages/Jackpot";
+import { Home } from "./components/pages/home/Home";
+import { Jackpot } from "./components/pages/jackpot/Jackpot";
 import { Sidebar } from "./components/menu/Sidebar";
 import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
@@ -91,7 +91,12 @@ function App() {
               <Home handleMenu={handleOpen} selectedDate={selectedDate} />
             }
           />
-          <Route path="jackpot" element={<Jackpot handleMenu={handleOpen} />} />
+          <Route
+            path="jackpot"
+            element={
+              <Jackpot handleMenu={handleOpen} selectedDate={selectedDate} />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

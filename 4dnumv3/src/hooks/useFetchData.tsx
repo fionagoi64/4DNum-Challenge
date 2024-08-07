@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { axiosPublic } from "../data/apiData";
-import { API_V1 } from "../data/apiData";
+import { axiosPublic } from "../const/apiData";
+import { API_V1 } from "../const/apiData";
 import { localData } from "../data/localData";
 
 const useFetchData = (initialDate: Date) => {

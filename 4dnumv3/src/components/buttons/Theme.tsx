@@ -37,11 +37,11 @@ export const Theme: React.FC<ThemeProps> = ({ darkMode, handleTheme }) => {
               darkMode ? "bg-purple-400" : "bg-gray-200"
             } w-7 h-4 rounded-full`}
           ></div>
-          <button
+          <div
             className={`absolute ${
               darkMode ? "right-[2px]" : "left-[2px]"
             } top-[2px] bg-white-100 w-3 h-3 rounded-full transition`}
-          ></button>
+          ></div>
         </div>
       </button>
     </div>

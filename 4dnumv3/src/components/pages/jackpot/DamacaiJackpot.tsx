@@ -1,6 +1,6 @@
 import React from "react";
 
-const DamacaiJackpot = () => {
+export const DamacaiJackpot = () => {
   return (
     <>
       <div className="flex flex-row gap-2 text-center">
@@ -22,5 +22,3 @@ const DamacaiJackpot = () => {
     </>
   );
 };
-
-export default DamacaiJackpot;

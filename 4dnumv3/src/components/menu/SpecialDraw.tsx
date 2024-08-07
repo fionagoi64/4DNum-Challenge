@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { axiosPublic } from "../../data/apiData";
-import { API_V1 } from "../../data/apiData";
+import { axiosPublic } from "../../const/apiData";
+import { API_V1 } from "../../const/apiData";
 import billiards from "../../assets/images/billiards.png";
 
 export const SpecialDraw = () => {

@@ -65,7 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </li>
               <li className="flex items-center">
                 <Language />
-                <select
+                {/* <select
                   id="language"
                   className="focus:outline-none bg-white-100 text-gray-300 dark:bg-gray-600 dark:text-white-200 text-sm w-full p-2.5 "
                 >
@@ -74,7 +74,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     English
                   </option>
                   <option value="cn">中文</option>
-                </select>
+                </select> */}
               </li>
             </ul>
           </div>

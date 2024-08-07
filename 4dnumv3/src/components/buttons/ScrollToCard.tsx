@@ -1,5 +1,5 @@
 import React from "react";
-import { getImageUrl } from "../../data/imgPath";
+import { getImageUrl } from "../../const/imgPath";
 import { localData } from "../../data/localData";
 
 type ScrollToCardProps = {

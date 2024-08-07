@@ -31,7 +31,7 @@ export const Card: React.FC<CardProps> = ({ children, allData, cardRefs }) => {
                   key={allIndex}
                   id={`card-${allIndex}`}
                   ref={(ref) => (cardRefs.current[allIndex] = ref)}
-                  className={`bg-white-100 dark:bg-black-100 border-4 border-transparent dark: relative rounded-[20px] lg:w-[31%] xl:w-[48%] 2xl:w-[31%]
+                  className={`bg-white-100 dark:bg-black-100 border-4 border-transparent dark: relative rounded-[20px] w-[48%] lg:w-[31%] xl:w-[48%] 2xl:w-[31%]
                     ${magnum && "dark:border-yellow-100"}
                     ${damacai && "dark:border-purple-200"}
                     ${sports && "dark:border-red-100"}
