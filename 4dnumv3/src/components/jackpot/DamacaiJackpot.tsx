@@ -81,25 +81,38 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
               <div className="bg-blue-300 text-white text-center font-bold p-2 rounded-lg text-white-100">
                 Special
               </div>
-              <div className="grid grid-cols-3 my-3">
+              <div className="grid grid-cols-3 my-3 gap-2">
                 {Object.keys(damacaiJackpot.fdData)
-                  .filter((nData) => nData.startsWith("n"))
-                  .slice(0, 3)
-                  .map((numbers, numberIndex) => {
-                    const bonus = damacaiJackpot.fdData[numbers];
-                    const place = numberIndex + 1;
-
+                  .filter((nData) => nData.startsWith("s"))
+                  .map((numbers, numbersIndex) => {
+                    const winner = damacaiJackpot.fdData[numbers];
                     return (
                       <div
-                        key={numberIndex}
-                        className="flex flex-row gap-2 text-center my-2"
+                        key={numbersIndex}
+                        className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
                       >
-                        <div className="bg-red-100 text-white w-[30%] rounded-lg p-2 font-bold text-white-100">
-                          {place}ST
-                        </div>
-                        <div className="bg-white w-[70%] font-bold p-2 shadow-all rounded-lg">
-                          {bonus}
-                        </div>
+                        {winner}
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+
+            <div>
+              <div className="bg-blue-300 text-white text-center font-bold p-2 rounded-lg text-white-100">
+                Consolation
+              </div>
+              <div className="grid grid-cols-3 my-3 gap-2">
+                {Object.keys(damacaiJackpot.fdData)
+                  .filter((nData) => nData.startsWith("c"))
+                  .map((numbers, numbersIndex) => {
+                    const winner = damacaiJackpot.fdData[numbers];
+                    return (
+                      <div
+                        key={numbersIndex}
+                        className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                      >
+                        {winner}
                       </div>
                     );
                   })}
