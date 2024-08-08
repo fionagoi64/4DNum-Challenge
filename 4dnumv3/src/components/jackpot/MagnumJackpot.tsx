@@ -63,7 +63,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
             <JackpotContentHeader
               backgroundColor="!bg-black-100 dark:!bg-black-500"
               logoImage={magnum}
-              logoName={magnumJackpot.name}
+              logoName="magnum"
               title={magnumJackpot.name}
             />
 
@@ -129,7 +129,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         .map((key) => {
                           const winner = magnumJackpot.fdData[key];
                           const splitArray = Array.from(winner);
-                          console.log(splitArray);
                           return (
                             <>
                               {splitArray.map((item, index) => (
@@ -170,7 +169,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                       .map((key) => {
                         const winner = magnumJackpot.fdData[key];
                         const splitArray = Array.from(winner);
-                        console.log(splitArray);
                         return (
                           <>
                             {splitArray.map((item, index) => (
@@ -203,7 +201,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                       .map((key) => {
                         const winner = magnumJackpot.fdData[key];
                         const splitArray = Array.from(winner);
-                        console.log("winner:" + winner);
                         return (
                           <>
                             {splitArray.map((item, index) => (

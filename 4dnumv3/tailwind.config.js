@@ -24,6 +24,7 @@ module.exports = {
           600: "#464646", //dark prize
           700: "#444444", //dark border
           800: "#3A3A3A",
+          900: "#EAEAEA",
         },
         blue: {
           100: "#0093D8", //singapore

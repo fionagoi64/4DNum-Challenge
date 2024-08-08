@@ -53,7 +53,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
             <JackpotContentHeader
               backgroundColor="!bg-blue-300"
               logoImage={damacai}
-              logoName={damacaiJackpot.name}
+              logoName="damacai"
               title={damacaiJackpot.name}
             />
             {Object.keys(damacaiJackpot.fdData)

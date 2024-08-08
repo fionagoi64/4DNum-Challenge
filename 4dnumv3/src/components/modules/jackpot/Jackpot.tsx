@@ -57,9 +57,13 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
           {all.type === "M" && <MagnumJackpot selectedDate={selectedDate} />}
           {all.type === "PMP" && <DamacaiJackpot selectedDate={selectedDate} />}
           {all.type === "ST" && <SportsJackpot selectedDate={selectedDate} />}
-          {all.type === "SG" && <SingaporeJackpot />}
-          {all.type === "EE" && <SabahJackpot />}
-          {all.type === "HT15:30" && <LuckyJackpot />}
+          {all.type === "SG" && (
+            <SingaporeJackpot selectedDate={selectedDate} />
+          )}
+          {all.type === "EE" && <SabahJackpot selectedDate={selectedDate} />}
+          {all.type === "HT15:30" && (
+            <LuckyJackpot selectedDate={selectedDate} />
+          )}
         </div>
       )}
     </CardContent>
