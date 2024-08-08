@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import magnum from "../../assets/images/branches/magnum-border.svg";
 import { JackpotContentHeader } from "./JackpotContentHeader";
 import { API_V1, axiosPublic } from "../../const/apiData";
-
 interface MagnumJackpotProps {
   selectedDate: Date;
 }
@@ -51,6 +50,13 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
       {allData.map((magnumJackpot, magnumIndex) => {
         const isMagnumLife = magnumJackpot.type === "MJPLIFE";
         const isGoldenJackpot = magnumJackpot.type === "MJPGOLD";
+
+        const n1Data = magnumJackpot.fdData.n1;
+        const n2Data = magnumJackpot.fdData.n2;
+        const n3Data = magnumJackpot.fdData.n3;
+        const n1 = Array.from(n1Data);
+        const n2 = Array.from(n1Data);
+        const n3 = Array.from(n1Data);
 
         return (
           <div key={magnumIndex}>
@@ -115,42 +121,113 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                   <div className="bg-yellow-100 text-black-100 text-center font-bold p-2 rounded-lg">
                     Jackpot 1
                   </div>
-                  <div className="grid grid-cols-8 my-2">
-                    {Object.keys(magnumJackpot.fdData)
-                      .filter((nData) => nData.startsWith("n"))
-                      .slice(0, 3)
-                      .map((numbers, numbersIndex) => {
-                        const winner = magnumJackpot.fdData[numbers];
+                  <div>
+                    <div className="grid grid-cols-9 my-2 gap-2">
+                      {Object.keys(magnumJackpot.fdData)
+                        .filter((key) => key.startsWith("n"))
+                        .slice(0, 3)
+                        .map((key) => {
+                          const winner = magnumJackpot.fdData[key];
+                          const splitArray = Array.from(winner);
+                          console.log(splitArray);
+                          return (
+                            <>
+                              {splitArray.map((item, index) => (
+                                <div
+                                  key={index}
+                                  className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                                >
+                                  {item as React.ReactNode}
+                                </div>
+                              ))}
+                            </>
+                          );
+                        })}
+
+                      <p className="text-center">+</p>
+
+                      {n1.map((numbers, numbersIndex) => {
                         return (
                           <div
                             key={numbersIndex}
                             className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
                           >
-                            {winner}
+                            {numbers as React.ReactNode}
                           </div>
                         );
                       })}
+                    </div>
                   </div>
                 </div>
                 <div>
                   <div className="bg-yellow-100 text-black-100 text-center font-bold p-2 rounded-lg">
                     Jackpot 2
                   </div>
-                  <div className="grid grid-cols-8 my-2 gap-2">
+                  <div className="grid grid-cols-9 my-2 gap-2">
                     {Object.keys(magnumJackpot.fdData)
-                      .filter((nData) => nData.startsWith("n"))
+                      .filter((key) => key.startsWith("n"))
                       .slice(0, 3)
-                      .map((numbers, numbersIndex) => {
-                        const winner = magnumJackpot.fdData[numbers];
+                      .map((key) => {
+                        const winner = magnumJackpot.fdData[key];
+                        const splitArray = Array.from(winner);
+                        console.log(splitArray);
                         return (
-                          <div
-                            key={numbersIndex}
-                            className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                          >
-                            {winner}
-                          </div>
+                          <>
+                            {splitArray.map((item, index) => (
+                              <div
+                                key={index}
+                                className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                              >
+                                {item as React.ReactNode}
+                              </div>
+                            ))}
+                          </>
                         );
                       })}
+                    <p className="text-center">+</p>
+                    {n1.map((numbers, numbersIndex) => {
+                      return (
+                        <div
+                          key={numbersIndex}
+                          className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                        >
+                          {numbers as React.ReactNode}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="grid grid-cols-9 my-2 gap-2">
+                    {Object.keys(magnumJackpot.fdData)
+                      .filter((key) => key.startsWith("n"))
+                      .slice(0, 3)
+                      .map((key) => {
+                        const winner = magnumJackpot.fdData[key];
+                        const splitArray = Array.from(winner);
+                        console.log("winner:" + winner);
+                        return (
+                          <>
+                            {splitArray.map((item, index) => (
+                              <div
+                                key={index}
+                                className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                              >
+                                {item as React.ReactNode}
+                              </div>
+                            ))}
+                          </>
+                        );
+                      })}
+                    <p className="text-center">+</p>
+                    {n1.map((numbers, numbersIndex) => {
+                      return (
+                        <div
+                          key={numbersIndex}
+                          className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                        >
+                          {numbers as React.ReactNode}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 

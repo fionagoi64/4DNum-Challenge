@@ -85,6 +85,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                 (ndata, index) =>
                   ndata.startsWith("n") && !ndata.endsWith("_pos") && index < 5
               );
+
               let othersData = fd.filter(
                 (others) =>
                   others.startsWith(fdLetter) && !others.startsWith("count")
@@ -101,6 +102,12 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                 );
               }
 
+              if (fdLetter === "s") {
+                othersData = othersData.filter((data) => data.startsWith("s"));
+                othersData.splice(10, 0, " ");
+                othersData.splice(15, 0, " ");
+              }
+
               if (fdLetter === "jp") {
                 isShow = othersData.length > 0;
               }
@@ -112,7 +119,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                       <div className="grid grid-cols-3 gap-3">
                         <div
                           className={`text-center p-2 mb-3 rounded-xl font-bold text-lg 
-                            ${magnum && "bg-black-100 dark:bg-yellow-100"}
+                            ${magnum && "bg-yellow-100"}
                             ${damacai && "bg-red-100"}
                             ${sports && "bg-black-100 dark:bg-gray-600"}
                             ${singapore && "bg-blue-300"}
@@ -124,7 +131,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                         >
                           <h1
                             className={`text-white-100 ${
-                              magnum && "dark:text-black-100"
+                              magnum && "!text-black-100"
                             }`}
                           >
                             {titleItem[0]}
@@ -133,7 +140,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                         </div>
                         <div
                           className={`text-center p-2 mb-3 rounded-xl font-bold text-lg  
-                          ${magnum && "bg-black-100 dark:bg-yellow-100"}
+                          ${magnum && "bg-yellow-100"}
                             ${damacai && "bg-red-100"}
                             ${sports && "bg-black-100 dark:bg-gray-600"}
                             ${singapore && "bg-blue-300"}
@@ -145,7 +152,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                         >
                           <h1
                             className={`text-white-100 
-                              ${magnum && "dark:text-black-100"}`}
+                              ${magnum && "!text-black-100"}`}
                           >
                             {titleItem[1]}
                             <span className="font-thin"> Prize</span>
@@ -153,7 +160,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                         </div>
                         <div
                           className={`text-center p-2 mb-3 rounded-xl font-bold text-lg 
-                          ${magnum && "bg-black-100 dark:bg-yellow-100"}
+                          ${magnum && "bg-yellow-100"}
                             ${damacai && "bg-red-100"}
                             ${sports && "bg-black-100 dark:bg-gray-600"}
                             ${singapore && "bg-blue-300"}
@@ -165,7 +172,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                         >
                           <h1
                             className={`text-white-100 ${
-                              magnum && "dark:text-black-100"
+                              magnum && "!text-black-100"
                             }`}
                           >
                             {titleItem[2]}
@@ -194,7 +201,7 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                       <div>
                         <div
                           className={`
-                            ${magnum && "bg-yellow-100 dark:bg-gray-600"} 
+                            ${magnum && "bg-black-100 dark:bg-gray-600"} 
                             ${damacai && "bg-blue-300 dark:bg-purple-200"}
                             ${sports && "bg-red-100"}
                             ${singapore && "bg-blue-100"}
@@ -206,22 +213,18 @@ export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
                             text-center rounded-xl py-2`}
                         >
                           {titleItem.includes("4D Jackpot 1 Prize") ? (
-                            <div className="flex items-center">
-                              <h1 className="flex-1 text-center text-white">
+                            <div className="flex items-center ">
+                              <h1 className="flex-1 text-center text-white-100">
                                 {titleItem[0]}
                               </h1>
                               <div className="border-l border-solid border-gray-500 h-4 "></div>
-                              <h1 className="flex-1 text-center text-white">
+                              <h1 className="flex-1 text-center text-white-100">
                                 {titleItem[1]}
                               </h1>
                             </div>
                           ) : (
                             <h1
-                              className={`text-white font-semibold text-white-100 
-                                ${
-                                  magnum &&
-                                  "!text-black-100 dark:!text-white-100"
-                                }
+                              className={`font-semibold text-white-100 
                                 ${
                                   sandakan &&
                                   "!text-green-100 dark:!text-white-100"

@@ -46,7 +46,7 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
+    // console.log(joinData);
   }, [apiData]);
   return (
     <>

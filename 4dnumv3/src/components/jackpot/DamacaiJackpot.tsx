@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import damacai from "../../assets/images/branches/damacai.svg";
 import { JackpotContentHeader } from "./JackpotContentHeader";
 import { API_V1, axiosPublic } from "../../const/apiData";
+import { getPlace } from "../../const/getPlace";
 
 interface DamacaiJackpotProps {
   selectedDate: Date;
@@ -41,7 +42,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
+    // console.log(joinData);
   }, [apiData]);
 
   return (
@@ -61,14 +62,16 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
               .map((numbers, numberIndex) => {
                 const bonus = damacaiJackpot.fdData[numbers];
                 const place = numberIndex + 1;
+                const placeName = getPlace(place);
 
                 return (
                   <div
                     key={numberIndex}
                     className="flex flex-row gap-2 text-center my-2"
                   >
-                    <div className="bg-red-100 text-white w-[30%] rounded-lg p-2 font-bold text-white-100">
-                      {place}ST
+                    <div className="bg-red-100 text-white uppercase w-[30%] rounded-lg p-2 font-bold text-white-100">
+                      {place}
+                      {placeName}
                     </div>
                     <div className="bg-white w-[70%] font-bold p-2 shadow-all rounded-lg">
                       {bonus}
@@ -86,6 +89,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
                   .filter((nData) => nData.startsWith("s"))
                   .map((numbers, numbersIndex) => {
                     const winner = damacaiJackpot.fdData[numbers];
+
                     return (
                       <div
                         key={numbersIndex}
