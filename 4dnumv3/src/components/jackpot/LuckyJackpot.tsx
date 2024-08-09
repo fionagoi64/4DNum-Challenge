@@ -45,38 +45,37 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
     <>
       {allData.map((luckyJackpot, luckyJackpotIndex) => {
         const n1Data = luckyJackpot.fdData.n1;
-        const n2Data = luckyJackpot.fdData.n2;
-        const n3Data = luckyJackpot.fdData.n3;
-        const n4Data = luckyJackpot.fdData.n4;
-        const n5Data = luckyJackpot.fdData.n5;
-        const n6Data = luckyJackpot.fdData.n6;
-        const n7Data = luckyJackpot.fdData.n7;
-        const n8Data = luckyJackpot.fdData.n8;
-        const n9Data = luckyJackpot.fdData.n9;
-
         const n1 = Array.from(n1Data);
 
+        const n2Data = luckyJackpot.fdData.n2;
         const n2 = Array.from(n2Data);
         n2.splice(5, 0, " ");
 
+        const n3Data = luckyJackpot.fdData.n3;
         const n3 = Array.from(n3Data);
         n3.splice(1, 0, " ");
 
+        const n4Data = luckyJackpot.fdData.n4;
         const n4 = Array.from(n4Data);
         n4.splice(5, 0, "", "");
 
+        const n5Data = luckyJackpot.fdData.n5;
         const n5 = Array.from(n5Data);
         n5.splice(0, 0, "", "");
 
+        const n6Data = luckyJackpot.fdData.n6;
         const n6 = Array.from(n6Data);
         n6.splice(4, 0, "", "", "");
 
+        const n7Data = luckyJackpot.fdData.n7;
         const n7 = Array.from(n7Data);
         n7.splice(0, 0, "", "", "");
 
+        const n8Data = luckyJackpot.fdData.n8;
         const n8 = Array.from(n8Data);
         n8.splice(2, 0, "", "", "", "");
 
+        const n9Data = luckyJackpot.fdData.n9;
         const n9 = Array.from(n9Data);
         n9.splice(0, 0, "", "", "", "");
 
@@ -109,27 +108,13 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
             <div className="flex justify-center items-center gap-2">
               <div className="grid grid-cols-6 my-3 gap-1 w-full">
                 {n2.map((numbers, numbersIndex) => {
-                  const emptyField = n2.includes("");
                   return (
-                    <>
-                      {emptyField ? (
-                        <div
-                          key={numbersIndex}
-                          className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                        >
-                          {numbers as React.ReactNode}
-                        </div>
-                      ) : (
-                        <>
-                          <div
-                            key={numbersIndex}
-                            className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                          >
-                            {numbers as React.ReactNode}
-                          </div>
-                        </>
-                      )}
-                    </>
+                    <div
+                      key={numbersIndex}
+                      className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                    >
+                      {numbers as React.ReactNode}
+                    </div>
                   );
                 })}
               </div>

@@ -34,30 +34,21 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
   }, [selectedDate]);
 
   useEffect(() => {
-    const apiDataMap = apiData.reduce((acc: Record<string, any>, item: any) => {
-      acc[item.type] = item;
-      return acc;
-    }, {});
+    const joinData = apiData
+      .filter((selectedData) =>
+        localData.some(
+          (localItem) =>
+            localItem.type === selectedData.type &&
+            !["CS", "STC", "PT15:30"].includes(localItem.type)
+        )
+      ) // filter data where the type is needed
 
-    const joinData = localData.map((localItem: any) => {
-      const jpTypeArray = Array.isArray(localItem.jpType)
-        ? localItem.jpType
-        : [localItem.jpType];
-
-      const apiItem = apiDataMap[localItem.type] || { fdData: {} };
-
-      const jpTypeWithData = jpTypeArray.map((jpTypeItem: any) => ({
-        ...jpTypeItem,
-        fdData: apiItem.fdData, 
-      }));
-
-      return {
-        ...localItem,
-        fdData: apiItem.fdData,
-        jpType: jpTypeWithData,
-      };
-    });
-
+      .map((apiItem) => {
+        const all = localData.find(
+          (extraItem) => extraItem.type === apiItem.type
+        ); // join apiData & localData that have same type
+        return { ...apiItem, ...all };
+      });
     setAllData(joinData);
     console.log(joinData);
   }, [apiData]);
