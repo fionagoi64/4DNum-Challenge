@@ -40,7 +40,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
+    // console.log(joinData);
   }, [apiData]);
 
   return (

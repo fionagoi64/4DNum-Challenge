@@ -17,7 +17,6 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
       const formattedDate = date.toISOString().split("T")[0]; // YYYY-MM-DD
       const res = await axiosPublic.get(`/${API_V1}/result/${formattedDate}`);
       setApiData(res.data);
-      console.log(res);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -39,7 +38,7 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
+    // console.log(joinData);
   }, [apiData]);
 
   return (

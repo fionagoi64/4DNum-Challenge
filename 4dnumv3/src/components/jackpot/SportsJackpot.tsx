@@ -8,7 +8,7 @@ interface SportsJackpotProps {
   selectedDate: Date;
 }
 
-const localDamacai = [
+const localSports = [
   { type: "STJP1" },
   { type: "STJP6/58", name: "Supreme Jackpot 6/58" },
   { type: "STJP6/55", name: "Power Jackpot 6/55" },
@@ -38,10 +38,10 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
   useEffect(() => {
     const joinData = apiData
       .filter((selectedData) =>
-        localDamacai.some((localItem) => localItem.type === selectedData.type)
+        localSports.some((localItem) => localItem.type === selectedData.type)
       ) // filter data where type is in localData
       .map((apiItem) => {
-        const all = localDamacai.find(
+        const all = localSports.find(
           (localItem) => localItem.type === apiItem.type
         ); // join apiData & localData
         return { ...apiItem, ...all };

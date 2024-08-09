@@ -46,7 +46,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
   }, [apiData]);
 
   return (
-    <>
+    <div className="mt-7">
       {allData.map((damacaiJackpot, damacaiIndex) => {
         return (
           <div key={damacaiIndex}>
@@ -125,6 +125,6 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
