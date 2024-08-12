@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import sabah from "../../../assets/images/branches/sabah.svg";
 import { JackpotContentHeader } from "../JackpotContentHeader";
 import { API_V1, axiosPublic } from "../../../const/apiData";
+import { JackpotAmount } from "../JackpotAmount";
+import { NumberBox } from "../NumberBox";
+import { NumbersHeader } from "../NumbersHeader";
 interface SabahJackpotProps {
   selectedDate: Date;
 }
@@ -53,9 +56,8 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
               title={sabahJackpot.name}
             />
             <div>
-              <div className="bg-blue-400 text-white-100 text-center font-bold p-2 rounded-lg">
-                Winning Numbers
-              </div>
+              <NumbersHeader isBlue400Bg={true} title="Winning Numbers" />
+
               <div className="grid grid-cols-8 my-2 gap-2">
                 {Object.keys(sabahJackpot.fdData)
                   .filter((nData) => nData.startsWith("n"))
@@ -72,26 +74,19 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
                     );
                   })}
                 <p className="text-center">+</p>
-                <div className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium">
-                  {sabahJackpot.fdData.n7}
-                </div>
+
+                <NumberBox number={sabahJackpot.fdData.n7} />
               </div>
-              <div className="flex my-2 gap-2">
-                <div className="text-center  w-2/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                  Jackpot 1
-                </div>
-                <div className="text-center w-3/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                  {sabahJackpot.fdData.jp1}
-                </div>
-              </div>
-              <div className="flex my-2 gap-2">
-                <div className="text-center  w-2/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                  Jackpot 2
-                </div>
-                <div className="text-center w-3/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                  {sabahJackpot.fdData.jp2}
-                </div>
-              </div>
+
+              <JackpotAmount
+                title="Jackpot 1"
+                amount={sabahJackpot.fdData.jp1}
+              />
+
+              <JackpotAmount
+                title="Jackpot 2"
+                amount={sabahJackpot.fdData.jp2}
+              />
             </div>
           </div>
         );

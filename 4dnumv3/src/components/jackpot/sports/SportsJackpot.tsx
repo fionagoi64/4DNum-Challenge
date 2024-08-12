@@ -3,7 +3,8 @@ import sports from "../../../assets/images/branches/sports.svg";
 import { API_V1, axiosPublic } from "../../../const/apiData";
 import { getPlace } from "../../../const/getPlace";
 import { JackpotContentHeader } from "../JackpotContentHeader";
-
+import { JackpotAmount } from "../JackpotAmount";
+import { NumbersHeader } from "../NumbersHeader";
 interface SportsJackpotProps {
   selectedDate: Date;
 }
@@ -92,14 +93,10 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                           );
                         })}
                     </div>
-                    <div className="flex my-2 gap-2">
-                      <div className="text-center  w-2/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                        Jackpot 1
-                      </div>
-                      <div className="text-center w-3/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                        {sportsJackpot.fdData.jp1}
-                      </div>
-                    </div>
+                    <JackpotAmount
+                      title="Jackpot 1"
+                      amount={sportsJackpot.fdData.jp1}
+                    />
                   </>
                 )}
                 {isSTJP55 && (
@@ -123,14 +120,10 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                           );
                         })}
                     </div>
-                    <div className="flex my-2 gap-2">
-                      <div className="text-center  w-2/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                        Jackpot 1
-                      </div>
-                      <div className="text-center w-3/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                        {sportsJackpot.fdData.jp1}
-                      </div>
-                    </div>
+                    <JackpotAmount
+                      title="Jackpot 1"
+                      amount={sportsJackpot.fdData.jp1}
+                    />
                   </>
                 )}
               </div>
@@ -268,9 +261,7 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
               </div>
               {isSTJP50 && (
                 <>
-                  <div className="bg-black-100 dark:bg-gray-600 text-center text-white-100 font-bold p-2 rounded-lg">
-                    {sportsJackpot.name}
-                  </div>
+                  <NumbersHeader isBlackBg={true} title={sportsJackpot.name} />
                   <div className="grid grid-cols-6 my-2 gap-2">
                     {Object.keys(sportsJackpot.fdData)
                       .filter((nData) => nData.startsWith("n"))
@@ -287,22 +278,16 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                         );
                       })}
                   </div>
-                  <div className="flex my-2 gap-2">
-                    <div className="text-center  w-2/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                      Jackpot 1
-                    </div>
-                    <div className="text-center w-3/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                      {sportsJackpot.fdData.jp1}
-                    </div>
-                  </div>
-                  <div className="flex my-2 gap-2">
-                    <div className="text-center w-2/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                      Jackpot 2
-                    </div>
-                    <div className="text-center w-3/4 bg-gray-900 rounded-md text-xs font-medium py-0.5">
-                      {sportsJackpot.fdData.jp2}
-                    </div>
-                  </div>
+
+                  <JackpotAmount
+                    title="Jackpot 1"
+                    amount={sportsJackpot.fdData.jp1}
+                  />
+
+                  <JackpotAmount
+                    title="Jackpot 2"
+                    amount={sportsJackpot.fdData.jp2}
+                  />
                 </>
               )}
             </div>

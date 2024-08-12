@@ -4,7 +4,7 @@ import { API_V1, axiosPublic } from "../../../const/apiData";
 import { getPlace } from "../../../const/getPlace";
 import { sectionTitle } from "../../../data/sectionTitle";
 import { JackpotContentHeader } from "../JackpotContentHeader";
-import NumberBox from "../NumberBox";
+import { NumberBox } from "../NumberBox";
 import { NumbersHeader } from "../NumbersHeader";
 
 interface DamacaiJackpotProps {

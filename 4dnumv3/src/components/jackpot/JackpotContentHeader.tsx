@@ -46,12 +46,13 @@ export const JackpotContentHeader: React.FC<JackpotContentHeaderProps> = ({
                 <p className="font-thin text-[10px] dark:text-white-100 ">
                   Date
                 </p>
-                <p className="text-sm dark:text-white-100 font-bold uppercase px-10">
-                  {dd} ({day})
+                <p className="text-sm dark:text-white-100 font-bold uppercase">
+                  {dd}
+                  <br /> ({day})
                 </p>
               </div>
               <div className="border-l-[0.2px] border-gray-300 h-8" />
-              <div className="draw ">
+              <div className="draw self-start">
                 <p className="font-thin text-[10px] dark:text-white-100">
                   Draw No.
                 </p>

@@ -5,7 +5,7 @@ import { Sidebar } from "./components/menu/Sidebar";
 import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
 import { Jackpot } from "./modules/jackpot/Jackpot";
-import { Home } from "./modules/home/Home";
+import { FourD } from "./components/modules/four-d/FourD";
 
 function App() {
   //#region variables
@@ -88,7 +88,7 @@ function App() {
           <Route
             index
             element={
-              <Home handleMenu={handleOpen} selectedDate={selectedDate} />
+              <FourD handleMenu={handleOpen} selectedDate={selectedDate} />
             }
           />
           <Route

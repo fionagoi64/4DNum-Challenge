@@ -3,7 +3,7 @@ import magnum from "../../../assets/images/branches/magnum-border.svg";
 import { JackpotContentHeader } from "../JackpotContentHeader";
 import { API_V1, axiosPublic } from "../../../const/apiData";
 import { NumbersHeader } from "../NumbersHeader";
-import NumberBox from "../NumberBox";
+import { NumberBox } from "../NumberBox";
 interface MagnumJackpotProps {
   selectedDate: Date;
 }
@@ -124,6 +124,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         })}
 
                       <p className="text-center">+</p>
+                      
 
                       {n1.map((numbers, numbersIndex) => {
                         return (
