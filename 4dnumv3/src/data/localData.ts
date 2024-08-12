@@ -17,6 +17,7 @@ export const localData = [
         type: "PMP",
         jpType: { type: "PMPJP1", name: "3+3D Bonus" },
         navImg: getImageUrl("damacai2.svg"),
+        name: "Da Ma Cai 1+3D",
         cardImg: damacai,
     },
     {

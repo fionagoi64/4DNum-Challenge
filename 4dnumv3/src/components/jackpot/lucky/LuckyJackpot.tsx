@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import lucky from "../../assets/images/branches/lucky.svg";
-import { JackpotContentHeader } from "./JackpotContentHeader";
-import { API_V1, axiosPublic } from "../../const/apiData";
+import lucky from "../../../assets/images/branches/lucky.svg";
+import { API_V1, axiosPublic } from "../../../const/apiData";
+import { JackpotContentHeader } from "../JackpotContentHeader";
+import { NumbersHeader } from "../NumbersHeader";
 interface LuckyJackpotProps {
   selectedDate: Date;
 }
@@ -82,14 +83,12 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
         return (
           <div key={luckyJackpotIndex}>
             <JackpotContentHeader
-              backgroundColor="!bg-blue-300"
+              backgroundColor="!bg-blue-200"
               logoImage={lucky}
               logoName="damacai"
               title={luckyJackpot.name}
             />
-            <div className="bg-blue-300 text-white-100 text-center font-bold p-2 rounded-lg">
-              1ST
-            </div>
+            <NumbersHeader isBlue300Bg={true} title="1ST" />
             <div className="grid grid-cols-6 my-3 gap-2">
               {n1.map((numbers, numbersIndex) => {
                 return (
@@ -102,9 +101,7 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
                 );
               })}
             </div>
-            <div className="bg-blue-200 text-white-100 text-center font-bold p-2 rounded-lg">
-              2ND
-            </div>
+            <NumbersHeader isBlue200Bg={true} title="2ND" />
             <div className="flex justify-center items-center gap-2">
               <div className="grid grid-cols-6 my-3 gap-1 w-full">
                 {n2.map((numbers, numbersIndex) => {
@@ -132,9 +129,7 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
                 })}
               </div>
             </div>
-            <div className="bg-blue-200 text-white-100 text-center font-bold p-2 rounded-lg">
-              3RD
-            </div>
+            <NumbersHeader isBlue200Bg={true} title="3RD" />
             <div className="flex justify-center items-center gap-2">
               <div className="grid grid-cols-6 my-3 gap-1 w-full">
                 {n4.map((numbers, numbersIndex) => {
@@ -162,9 +157,7 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
                 })}
               </div>
             </div>
-            <div className="bg-blue-200 text-white-100 text-center font-bold p-2 rounded-lg">
-              4TH
-            </div>
+            <NumbersHeader isBlue200Bg={true} title="4TH" />
             <div className="flex justify-center items-center gap-2">
               <div className="grid grid-cols-6 my-3 gap-1 w-full">
                 {n6.map((numbers, numbersIndex) => {
@@ -192,9 +185,7 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
                 })}
               </div>
             </div>
-            <div className="bg-blue-200 text-white-100 text-center font-bold p-2 rounded-lg">
-              5TH
-            </div>
+            <NumbersHeader isBlue200Bg={true} title="5TH" />
             <div className="flex justify-center items-center gap-2">
               <div className="grid grid-cols-6 my-3 gap-1 w-full">
                 {n8.map((numbers, numbersIndex) => {
@@ -228,5 +219,3 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
     </>
   );
 };
-
-export default LuckyJackpot;

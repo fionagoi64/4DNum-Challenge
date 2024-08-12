@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import singapore from "../../assets/images/branches/singapore.svg";
-import { JackpotContentHeader } from "./JackpotContentHeader";
-import { API_V1, axiosPublic } from "../../const/apiData";
+import singapore from "../../../assets/images/branches/singapore.svg";
+import { API_V1, axiosPublic } from "../../../const/apiData";
+import { JackpotContentHeader } from "../JackpotContentHeader";
 interface SingaporeJackpotProps {
   selectedDate: Date;
 }
 
-const localSingapore = [{ type: "SGJP6/45", name: "Winning Numbers" }];
+const localSingapore = [{ type: "SGJP6/45", name: "Singapore Toto" }];
 
 export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
   selectedDate,
@@ -40,7 +40,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    // console.log(joinData);
+    console.log(joinData);
   }, [apiData]);
 
   return (
@@ -48,8 +48,18 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
       {allData.map((singaporeJackpot, singaporeIndex) => {
         return (
           <div key={singaporeIndex}>
-            <div className="bg-blue-300 text-white-100 text-center font-bold p-2 rounded-lg">
-              {singaporeJackpot.name}
+            <JackpotContentHeader
+              backgroundColor="!bg-blue-100"
+              logoImage={singapore}
+              logoName="damacai"
+              title={singaporeJackpot.name}
+              isSingapore={true}
+              dd={singaporeJackpot.fdData.dd}
+              day={singaporeJackpot.fdData.day}
+              dn={singaporeJackpot.fdData.dn}
+            />
+            <div className="bg-blue-300 text-white-100 text-center font-bold p-2 rounded-lg mt-8">
+              Winning Numbers
             </div>
             <div className="grid grid-cols-8 my-2 gap-2">
               {Object.keys(singaporeJackpot.fdData)
@@ -179,5 +189,3 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
     </div>
   );
 };
-
-export default SingaporeJackpot;

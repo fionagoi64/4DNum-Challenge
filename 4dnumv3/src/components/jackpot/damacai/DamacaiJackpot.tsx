@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import damacai from "../../assets/images/branches/damacai.svg";
-import { JackpotContentHeader } from "./JackpotContentHeader";
-import { API_V1, axiosPublic } from "../../const/apiData";
-import { getPlace } from "../../const/getPlace";
+import damacai from "../../../assets/images/branches/damacai.svg";
+import { API_V1, axiosPublic } from "../../../const/apiData";
+import { getPlace } from "../../../const/getPlace";
+import { sectionTitle } from "../../../data/sectionTitle";
+import { JackpotContentHeader } from "../JackpotContentHeader";
+import NumberBox from "../NumberBox";
+import { NumbersHeader } from "../NumbersHeader";
 
 interface DamacaiJackpotProps {
   selectedDate: Date;
@@ -46,7 +49,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
   }, [apiData]);
 
   return (
-    <div className="mt-7">
+    <div>
       {allData.map((damacaiJackpot, damacaiIndex) => {
         return (
           <div key={damacaiIndex}>
@@ -80,48 +83,55 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
                 );
               })}
 
-            <div>
-              <div className="bg-blue-300 text-white text-center font-bold p-2 rounded-lg text-white-100">
-                Special
-              </div>
-              <div className="grid grid-cols-3 my-3 gap-2">
-                {Object.keys(damacaiJackpot.fdData)
-                  .filter((nData) => nData.startsWith("s"))
-                  .map((numbers, numbersIndex) => {
-                    const winner = damacaiJackpot.fdData[numbers];
+            {sectionTitle.map((titleItem, titleIndex) => {
+              const isSpecial = titleItem.includes("Special");
+              const isConsolation = titleItem.includes("Consolation");
 
-                    return (
-                      <div
-                        key={numbersIndex}
-                        className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                      >
-                        {winner}
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
+              const fd = Object.keys(damacaiJackpot.fdData);
+              const sData = fd.filter((sData) => sData.startsWith("s"));
+              sData.splice(9, 0, " ");
+              sData.splice(11, 0, " ");
 
-            <div>
-              <div className="bg-blue-300 text-white text-center font-bold p-2 rounded-lg text-white-100">
-                Consolation
-              </div>
-              <div className="grid grid-cols-3 my-3 gap-2">
-                {Object.keys(damacaiJackpot.fdData)
-                  .filter((nData) => nData.startsWith("c"))
-                  .map((numbers, numbersIndex) => {
-                    const winner = damacaiJackpot.fdData[numbers];
-                    return (
-                      <div
-                        key={numbersIndex}
-                        className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                      >
-                        {winner}
+              const cData = fd.filter((cData) => cData.startsWith("c"));
+              cData.splice(9, 0, " ");
+              cData.splice(11, 0, " ");
+
+              return (
+                <div key={titleIndex}>
+                  {isSpecial && (
+                    <div>
+                      <NumbersHeader isBlue300Bg={true} title="Special" />
+                      <div className="grid grid-cols-3 my-3 gap-2">
+                        {sData.map((sItems, sIndex) => {
+                          return (
+                            <NumberBox
+                              key={sIndex}
+                              number={damacaiJackpot.fdData[sItems]}
+                            />
+                          );
+                        })}
                       </div>
-                    );
-                  })}
-              </div>
-            </div>
+                    </div>
+                  )}
+
+                  {isConsolation && (
+                    <div>
+                      <NumbersHeader isBlue300Bg={true} title="Consolation" />
+                      <div className="grid grid-cols-3 my-3 gap-2">
+                        {cData.map((cItems, cIndex) => {
+                          return (
+                            <NumberBox
+                              key={cIndex}
+                              number={damacaiJackpot.fdData[cItems]}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         );
       })}

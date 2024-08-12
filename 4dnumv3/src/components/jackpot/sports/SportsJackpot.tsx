@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import sports from "../../assets/images/branches/sports.svg";
-import { JackpotContentHeader } from "./JackpotContentHeader";
-import { API_V1, axiosPublic } from "../../const/apiData";
-import { getPlace } from "../../const/getPlace";
+import sports from "../../../assets/images/branches/sports.svg";
+import { API_V1, axiosPublic } from "../../../const/apiData";
+import { getPlace } from "../../../const/getPlace";
+import { JackpotContentHeader } from "../JackpotContentHeader";
 
 interface SportsJackpotProps {
   selectedDate: Date;

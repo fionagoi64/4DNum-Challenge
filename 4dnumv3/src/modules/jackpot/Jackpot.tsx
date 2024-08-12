@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { CardContent } from "../../cards/CardContent";
-import { localData } from "../../../data/localData";
-import { MagnumJackpot } from "../../jackpot/magnum/MagnumJackpot";
-import { API_V1, axiosPublic } from "../../../const/apiData";
-import { DamacaiJackpot } from "../../jackpot/damacai/DamacaiJackpot";
-import { SingaporeJackpot } from "../../jackpot/singapore/SingaporeJackpot";
-import { SabahJackpot } from "../../jackpot/sabah/SabahJackpot";
-import { LuckyJackpot } from "../../jackpot/lucky/LuckyJackpot";
-import { SportsJackpot } from "../../jackpot/sports/SportsJackpot";
+import { localData } from "../../data/localData";
+import { API_V1, axiosPublic } from "../../const/apiData";
+import { LuckyJackpot } from "../../components/jackpot/lucky/LuckyJackpot";
+import { DamacaiJackpot } from "../../components/jackpot/damacai/DamacaiJackpot";
+import { MagnumJackpot } from "../../components/jackpot/magnum/MagnumJackpot";
+import { SportsJackpot } from "../../components/jackpot/sports/SportsJackpot";
+import { SabahJackpot } from "../../components/jackpot/sabah/SabahJackpot";
+import { SingaporeJackpot } from "../../components/jackpot/singapore/SingaporeJackpot";
+import { CardContent } from "../../components/cards/CardContent";
 
 interface HomeProps {
   handleMenu: () => void;

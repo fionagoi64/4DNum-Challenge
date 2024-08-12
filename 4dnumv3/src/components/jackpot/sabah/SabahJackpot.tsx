@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import sabah from "../../assets/images/branches/sabah.svg";
-import { JackpotContentHeader } from "./JackpotContentHeader";
-import { API_V1, axiosPublic } from "../../const/apiData";
+import sabah from "../../../assets/images/branches/sabah.svg";
+import { JackpotContentHeader } from "../JackpotContentHeader";
+import { API_V1, axiosPublic } from "../../../const/apiData";
 interface SabahJackpotProps {
   selectedDate: Date;
 }
@@ -99,5 +99,3 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
     </>
   );
 };
-
-export default SabahJackpot;
