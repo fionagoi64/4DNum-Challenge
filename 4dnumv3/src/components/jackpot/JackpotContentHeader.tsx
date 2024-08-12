@@ -33,14 +33,14 @@ export const JackpotContentHeader: React.FC<JackpotContentHeaderProps> = ({
       </div>
       <p
         className={`text-white-100 pt-4  
-          ${isSingapore && "!pt-6 pb-24"} text-lg font-bold`}
+          ${isSingapore && "!pt-6 pb-28"} text-lg font-bold`}
       >
         {title}
       </p>
 
       {isSingapore && (
         <div id="card-date">
-          <div className="bg-white-100 absolute w-full bottom-0 shadow-all rounded-xl">
+          <div className="absolute bg-white-100 dark:bg-black-200  border border-transparent dark:border-gray-700  w-full bottom-0 shadow-all rounded-xl">
             <div className="flex flex-row rounded-2xl py-3 items-center">
               <div className="date self-start">
                 <p className="font-thin text-[10px] dark:text-white-100 ">

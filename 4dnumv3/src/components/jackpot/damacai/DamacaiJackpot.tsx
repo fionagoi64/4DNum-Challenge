@@ -72,11 +72,11 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
                     key={numberIndex}
                     className="flex flex-row gap-2 text-center my-2"
                   >
-                    <div className="bg-red-100 text-white uppercase w-[30%] rounded-lg p-2 font-bold text-white-100">
+                    <div className="bg-red-100 text-white uppercase w-1/3 rounded-lg p-2 font-bold text-white-100">
                       {place}
                       {placeName}
                     </div>
-                    <div className="bg-white w-[70%] font-bold p-2 shadow-all rounded-lg">
+                    <div className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 w-2/3 font-bold p-2 shadow-all rounded-lg">
                       {bonus}
                     </div>
                   </div>

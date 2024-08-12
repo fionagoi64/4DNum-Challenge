@@ -1,6 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/pagination";
+
+import { Pagination } from "swiper/modules";
 
 interface CardProps {
   children: (all: any) => React.ReactNode;
@@ -9,6 +12,13 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ children, allData, cardRefs }) => {
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index: number, className: string) {
+      return '<span class="' + className + '">' + (index + 1) + "</span>";
+    },
+  };
+
   return (
     <>
       <div className="bg-white-400 dark:bg-black-100 md:py-20">
@@ -50,10 +60,10 @@ export const Card: React.FC<CardProps> = ({ children, allData, cardRefs }) => {
 
           {/* mobile view */}
           <div className="md:hidden">
-            <Swiper>
+            <Swiper pagination={pagination} modules={[Pagination]}>
               {allData.map((all, allIndex) => (
                 <SwiperSlide key={allIndex}>
-                  <div id="card-body" className="body h-screen relative">
+                  <div id="card-body" className="body h-full relative">
                     {children(all)}
                   </div>
                 </SwiperSlide>

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import singapore from "../../../assets/images/branches/singapore.svg";
 import { API_V1, axiosPublic } from "../../../const/apiData";
 import { JackpotContentHeader } from "../JackpotContentHeader";
+import { NumberBox } from "../NumberBox";
+import { NumbersHeader } from "../NumbersHeader";
+
 interface SingaporeJackpotProps {
   selectedDate: Date;
 }
@@ -58,29 +61,23 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
               day={singaporeJackpot.fdData.day}
               dn={singaporeJackpot.fdData.dn}
             />
-            <div className="bg-blue-300 text-white-100 text-center font-bold p-2 rounded-lg mt-8">
-              Winning Numbers
-            </div>
+
+            <NumbersHeader isBlue300Bg={true} title="Winning Numbers" />
+
             <div className="grid grid-cols-8 my-2 gap-2">
               {Object.keys(singaporeJackpot.fdData)
                 .filter((nData) => nData.startsWith("n"))
                 .slice(0, 6)
                 .map((numbers, numbersIndex) => {
                   const winner = singaporeJackpot.fdData[numbers];
-                  return (
-                    <div
-                      key={numbersIndex}
-                      className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                    >
-                      {winner}
-                    </div>
-                  );
+                  return <NumberBox number={winner} />;
                 })}
+
               <p className="text-center">+</p>
-              <div className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium">
-                {singaporeJackpot.fdData.n7}
-              </div>
+
+              <NumberBox number={singaporeJackpot.fdData.n7} />
             </div>
+
             <div className="flex flex-row gap-2 text-center my-2">
               <div className="w-[25%] bg-blue-100 text-white-100 rounded-xl p-2">
                 Prize Group

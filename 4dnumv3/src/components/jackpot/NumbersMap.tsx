@@ -27,7 +27,7 @@ export const NumbersMap: React.FC<NumbersMapProps> = ({
                   key={index}
                   className={`border dark:text-white-100 border-transparent dark:border-gray-700 rounded-md text-center font-medium ${
                     isHighlighted
-                      ? "bg-gray-900"
+                      ? "bg-gray-900 dark:bg-gray-700"
                       : "bg-white-100 dark:bg-black-400 shadow-all"
                   }`}
                 >
@@ -43,10 +43,10 @@ export const NumbersMap: React.FC<NumbersMapProps> = ({
               return (
                 <div
                   key={index}
-                  className={`border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium ${
+                  className={`border dark:text-white-100 border-transparent dark:border-gray-700 rounded-md text-center font-medium ${
                     isHighlighted
-                      ? "bg-gray-900"
-                      : "bg-white-100 dark:bg-black-400 "
+                      ? "bg-gray-900 dark:bg-gray-700"
+                      : "bg-white-100 dark:bg-black-400 shadow-all"
                   }`}
                 >
                   {numbers}

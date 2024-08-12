@@ -22,7 +22,7 @@ module.exports = {
           400: "#6D6D6D", //picker text
           500: "#767676", //special draw
           600: "#464646", //dark prize
-          700: "#444444", //dark border
+          700: "#4C4C4C", //dark border
           800: "#3A3A3A",
           900: "#EAEAEA",
         },
