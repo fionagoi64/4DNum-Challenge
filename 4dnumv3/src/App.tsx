@@ -5,7 +5,7 @@ import { Sidebar } from "./components/menu/Sidebar";
 import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
 import { Jackpot } from "./modules/jackpot/Jackpot";
-import { FourD } from "./components/modules/four-d/FourD";
+import { FourD } from "./modules/four-d/FourD";
 
 function App() {
   //#region variables

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { sectionTitle } from "../../data/sectionTitle";
 import { localData } from "../../data/localData";
 import { formatCurrency } from "../../const/formatCurreny";
 import { API_V1, axiosPublic } from "../../const/apiData";
+import { sectionTitle } from "../../data/sectionTitle";
 import { CardContent } from "../../components/cards/CardContent";
 
-interface HomeProps {
+interface FourDProps {
   handleMenu: () => void;
   selectedDate: Date;
 }
 
-export const Home: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
+export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
