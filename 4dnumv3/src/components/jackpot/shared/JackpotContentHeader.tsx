@@ -1,4 +1,5 @@
 import React from "react";
+import { IoIosInformationCircle } from "react-icons/io";
 
 interface JackpotContentHeaderProps {
   logoImage: string;
@@ -9,6 +10,8 @@ interface JackpotContentHeaderProps {
   dd?: string;
   day?: string;
   dn?: string;
+  showButton?: boolean;
+  handleClick?: () => void;
 }
 
 export const JackpotContentHeader: React.FC<JackpotContentHeaderProps> = ({
@@ -20,6 +23,8 @@ export const JackpotContentHeader: React.FC<JackpotContentHeaderProps> = ({
   dd,
   day,
   dn,
+  showButton,
+  handleClick,
 }) => {
   return (
     <div
@@ -31,6 +36,14 @@ export const JackpotContentHeader: React.FC<JackpotContentHeaderProps> = ({
           <img src={logoImage} alt={logoName} className="logos !h-12 !w-12" />
         </div>
       </div>
+      {showButton && (
+        <button className="absolute -top-8 right-0">
+          <IoIosInformationCircle
+            onClick={handleClick}
+            className="text-2xl mb-3"
+          />
+        </button>
+      )}
       <p
         className={`text-white-100 pt-4  
           ${isSingapore && "!pt-6 pb-28"} text-lg font-bold`}

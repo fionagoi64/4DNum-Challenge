@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import sabah from "../../../assets/images/branches/sabah.svg";
-import { JackpotContentHeader } from "../JackpotContentHeader";
+import { JackpotContentHeader } from "../shared/JackpotContentHeader";
 import { API_V1, axiosPublic } from "../../../const/apiData";
-import { JackpotAmount } from "../JackpotAmount";
-import { NumberBox } from "../NumberBox";
-import { NumbersHeader } from "../NumbersHeader";
+import { JackpotAmount } from "../shared/JackpotAmount";
+import { NumberBox } from "../shared/NumberBox";
+import { NumbersHeader } from "../shared/NumbersHeader";
 interface SabahJackpotProps {
   selectedDate: Date;
 }

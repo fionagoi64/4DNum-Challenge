@@ -3,6 +3,7 @@ import { Share } from "../buttons/Share";
 import { Refresh } from "../buttons/Refresh";
 import { Hamburger } from "../buttons/Hamburger";
 import { Card } from "./Card";
+import { ArrowLeft } from "../buttons/ArrowLeft";
 
 interface CardContentProps {
   children: (all: any) => React.ReactNode;
@@ -16,6 +17,8 @@ export const CardContent: React.FC<CardContentProps> = ({
   handleMenu,
 }) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleClick = () => {};
 
   return (
     <Card allData={allData} cardRefs={cardRefs}>
@@ -37,19 +40,20 @@ export const CardContent: React.FC<CardContentProps> = ({
               id={all.id}
               className={`dark:bg-black-500 border-4 border-transparent md:-mt-1 md:-mx-1 px-5 pt-20 md:pt-4 pb-14 rounded-b-[45px] rounded-[20px]
                 ${magnum && "bg-black-500 dark:border-yellow-100"}
-                    ${damacai && "bg-blue-300 dark:border-purple-200"}
-                    ${sports && "bg-red-100 dark:border-red-100"}
-                    ${singapore && "bg-blue-100 dark:border-blue-100"}
-                    ${sandakan && "bg-yellow-100 dark:border-yellow-100"}
-                    ${sabah && "bg-red-200 dark:border-red-200"}
-                    ${special && "bg-green-200 dark:border-green-200"}
-                    ${lucky && "bg-blue-200 dark:border-blue-200"}
-                    ${perdana && "bg-blue-400 dark:border-blue-400"}`}
+                ${damacai && "bg-blue-300 dark:border-purple-200"}
+                ${sports && "bg-red-100 dark:border-red-100"}
+                ${singapore && "bg-blue-100 dark:border-blue-100"}
+                ${sandakan && "bg-yellow-100 dark:border-yellow-100"}
+                ${sabah && "bg-red-200 dark:border-red-200"}
+                ${special && "bg-green-200 dark:border-green-200"}
+                ${lucky && "bg-blue-200 dark:border-blue-200"}
+                ${perdana && "bg-blue-400 dark:border-blue-400"}`}
             >
               <div className="flex flex-row items-start">
                 <div className="md:hidden">
                   <Hamburger handleClick={handleMenu} />
                 </div>
+                {magnum && <ArrowLeft handleClick={handleClick} />}
                 <div className="flex flex-col justify-center items-center gap-1 w-full">
                   <div className="logos-bg">
                     <img className="logos" src={all.cardImg} alt={all.name} />

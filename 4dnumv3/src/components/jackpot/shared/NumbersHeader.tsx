@@ -1,6 +1,7 @@
 import React from "react";
 interface NumbersHeaderProps {
   title: string;
+  className?: string;
   isBlackBg?: boolean;
   isYellowBg?: boolean;
   isRedBg?: boolean;
@@ -15,6 +16,7 @@ interface NumbersHeaderProps {
 export const NumbersHeader: React.FC<NumbersHeaderProps> = ({
   isDualTitle,
   title,
+  className,
   secondTitle,
   isBlackBg,
   isYellowBg,
@@ -33,13 +35,14 @@ export const NumbersHeader: React.FC<NumbersHeaderProps> = ({
           ${isBlue200Bg && "bg-blue-200"}
         ${isBlue300Bg && "bg-blue-300"}
         ${isGreenBg && "bg-green-100"}
-        ${isBlue400Bg && "bg-blue-400"}`}
+        ${isBlue400Bg && "bg-blue-400"}
+        ${className}`}
     >
       {isDualTitle ? (
-        <div className="flex items-center">
-          <h1 className="flex-1 text-center text-white-100">{title}</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-center text-white-100">{title}</h1>
           <div className="border-l border-solid border-gray-500 h-4 "></div>
-          <h1 className="flex-1 text-center text-white-100">{secondTitle}</h1>
+          <h1 className="text-center text-white-100">{secondTitle}</h1>
         </div>
       ) : (
         <>{title}</>

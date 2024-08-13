@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import sports from "../../../assets/images/branches/sports.svg";
 import { API_V1, axiosPublic } from "../../../const/apiData";
 import { getPlace } from "../../../const/getPlace";
-import { JackpotContentHeader } from "../JackpotContentHeader";
-import { JackpotAmount } from "../JackpotAmount";
-import { NumbersHeader } from "../NumbersHeader";
+import { JackpotContentHeader } from "../shared/JackpotContentHeader";
+import { JackpotAmount } from "../shared/JackpotAmount";
+import { NumbersHeader } from "../shared/NumbersHeader";
+import { NumberBox } from "../shared/NumberBox";
+import { Toto6DNumbers } from "./toto-six-d/Toto6DNumbers";
 interface SportsJackpotProps {
   selectedDate: Date;
 }
@@ -154,17 +156,16 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                       const placeName = getPlace(place);
 
                       return (
-                        <div
-                          key={numbersIndex}
-                          className="flex flex-row gap-2 text-center "
-                        >
-                          <div className="bg-black-100 text-white uppercase w-2/4 rounded-lg p-2 font-bold text-white-100">
-                            {place}
-                            {placeName}
-                          </div>
-                          <div className="bg-white w-3/4 font-bold p-2 shadow-all rounded-lg">
-                            {winner}
-                          </div>
+                        <div key={numbersIndex} className="flex flex-row gap-2">
+                          <NumbersHeader
+                            className="w-3/4 uppercase"
+                            isBlackBg={true}
+                            title={`${place}${placeName}`}
+                          />
+                          <NumberBox
+                            className="!font-bold !rounded-lg p-2 "
+                            number={winner}
+                          />
                         </div>
                       );
                     })}
@@ -192,70 +193,41 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
               <div className="mb-2">
                 {isSTJP1 && (
                   <div className="space-y-2">
-                    <div className="flex flex-row gap-2 text-center">
-                      <div className="bg-black-100 text-white uppercase w-1/3 rounded-lg font-bold text-white-100 py-0.5">
-                        1ST
-                      </div>
-                      <div className="bg-white w-2/3 font-bold shadow-all rounded-lg py-0.5">
-                        {sportsJackpot.fdData.n7}
-                      </div>
+                    <div className="flex flex-row gap-2 text-center my-2">
+                      <NumbersHeader
+                        className="w-1/2 uppercase !p-0.5"
+                        isBlackBg={true}
+                        title="1ST"
+                      />
+                      <NumberBox
+                        className="!font-bold !rounded-lg p-0.5 "
+                        number={sportsJackpot.fdData.n7}
+                      />
                     </div>
-                    <div className="flex flex-row gap-2 text-center ">
-                      <div className="bg-black-100 text-white uppercase w-1/3 rounded-lg font-bold text-white-100 py-0.5">
-                        2nd
-                      </div>
-                      <div className="flex gap-2 w-2/3">
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-left px-5 py-0.5">
-                          {sportsJackpot.fdData.n8}
-                        </div>
-                        <p>or</p>
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-right px-5 py-0.5">
-                          {sportsJackpot.fdData.n9}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-row gap-2 text-center ">
-                      <div className="bg-black-100 text-white uppercase w-1/3 rounded-lg font-bold text-white-100 py-0.5">
-                        3rd
-                      </div>
-                      <div className="flex gap-2 w-2/3">
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-left px-5 py-0.5">
-                          {sportsJackpot.fdData.n10}
-                        </div>
-                        <p>or</p>
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-right px-5 py-0.5">
-                          {sportsJackpot.fdData.n11}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-row gap-2 text-center ">
-                      <div className="bg-black-100 text-white uppercase w-1/3 rounded-lg font-bold text-white-100">
-                        4th
-                      </div>
-                      <div className="flex gap-2 w-2/3">
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-left px-5 py-0.5">
-                          {sportsJackpot.fdData.n12}
-                        </div>
-                        <p>or</p>
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-right px-5 py-0.5">
-                          {sportsJackpot.fdData.n13}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-row gap-2 text-center ">
-                      <div className="bg-black-100 text-white uppercase w-1/3 rounded-lg font-bold text-white-100 py-0.5">
-                        5th
-                      </div>
-                      <div className="flex gap-2 w-2/3">
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-left px-5 py-0.5">
-                          {sportsJackpot.fdData.n14}
-                        </div>
-                        <p>or</p>
-                        <div className="bg-white font-bold shadow-all rounded-lg w-full text-right px-5 py-0.5">
-                          {sportsJackpot.fdData.n15}
-                        </div>
-                      </div>
-                    </div>
+
+                    <Toto6DNumbers
+                      title="2ND"
+                      jackpotNumber={sportsJackpot.fdData.n7}
+                      jackpotSecondNumber={sportsJackpot.fdData.n8}
+                    />
+
+                    <Toto6DNumbers
+                      title="3RD"
+                      jackpotNumber={sportsJackpot.fdData.n9}
+                      jackpotSecondNumber={sportsJackpot.fdData.n10}
+                    />
+
+                    <Toto6DNumbers
+                      title="4TH"
+                      jackpotNumber={sportsJackpot.fdData.n11}
+                      jackpotSecondNumber={sportsJackpot.fdData.n12}
+                    />
+
+                    <Toto6DNumbers
+                      title="5TH"
+                      jackpotNumber={sportsJackpot.fdData.n13}
+                      jackpotSecondNumber={sportsJackpot.fdData.n14}
+                    />
                   </div>
                 )}
               </div>

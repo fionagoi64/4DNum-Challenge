@@ -31,6 +31,7 @@ module.exports = {
           200: "#1A81BB", //lucky
           300: "#1D377B", //damacai
           400: "#1E68A2", //perdana
+          500: "#EDF2F7",
         },
         yellow: {
           100: "#F5C530", //sandakan

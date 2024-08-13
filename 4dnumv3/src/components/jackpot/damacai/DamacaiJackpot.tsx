@@ -3,9 +3,9 @@ import damacai from "../../../assets/images/branches/damacai.svg";
 import { API_V1, axiosPublic } from "../../../const/apiData";
 import { getPlace } from "../../../const/getPlace";
 import { sectionTitle } from "../../../data/sectionTitle";
-import { JackpotContentHeader } from "../JackpotContentHeader";
-import { NumberBox } from "../NumberBox";
-import { NumbersHeader } from "../NumbersHeader";
+import { JackpotContentHeader } from "../shared/JackpotContentHeader";
+import { NumberBox } from "../shared/NumberBox";
+import { NumbersHeader } from "../shared/NumbersHeader";
 
 interface DamacaiJackpotProps {
   selectedDate: Date;
@@ -72,13 +72,15 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
                     key={numberIndex}
                     className="flex flex-row gap-2 text-center my-2"
                   >
-                    <div className="bg-red-100 text-white uppercase w-1/3 rounded-lg p-2 font-bold text-white-100">
-                      {place}
-                      {placeName}
-                    </div>
-                    <div className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 w-2/3 font-bold p-2 shadow-all rounded-lg">
-                      {bonus}
-                    </div>
+                    <NumbersHeader
+                      className="w-1/3 uppercase"
+                      isRedBg={true}
+                      title={`${place}${placeName}`}
+                    />
+                    <NumberBox
+                      className="!font-bold !rounded-lg p-2 "
+                      number={bonus}
+                    />
                   </div>
                 );
               })}

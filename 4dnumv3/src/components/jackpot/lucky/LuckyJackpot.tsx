@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import lucky from "../../../assets/images/branches/lucky.svg";
 import { API_V1, axiosPublic } from "../../../const/apiData";
-import { JackpotContentHeader } from "../JackpotContentHeader";
-import { NumbersHeader } from "../NumbersHeader";
-import { NumbersMap } from "../NumbersMap";
+import { JackpotContentHeader } from "../shared/JackpotContentHeader";
+import { NumbersHeader } from "../shared/NumbersHeader";
+import { NumbersMap } from "../shared/NumbersMap";
+import { LuckyNumbersMap } from "./LuckyNumbersMap";
 
 interface LuckyJackpotProps {
   selectedDate: Date;
@@ -52,42 +53,34 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
 
         const n2Data = luckyJackpot.fdData.n2;
         const n2 = Array.from(n2Data);
-        const shadedN2 = [5];
         n2.splice(5, 0, " ");
 
         const n3Data = luckyJackpot.fdData.n3;
         const n3 = Array.from(n3Data);
-        const shadedN3 = [0];
         n3.splice(0, 0, " ");
 
         const n4Data = luckyJackpot.fdData.n4;
         const n4 = Array.from(n4Data);
-        const shadedN4 = [4, 5];
         n4.splice(5, 0, "", "");
 
         const n5Data = luckyJackpot.fdData.n5;
         const n5 = Array.from(n5Data);
-        const shadedN5 = [0, 1];
         n5.splice(0, 0, "", "");
 
         const n6Data = luckyJackpot.fdData.n6;
         const n6 = Array.from(n6Data);
-        const shadedN6 = [3, 4, 5];
         n6.splice(4, 0, "", "", "");
 
         const n7Data = luckyJackpot.fdData.n7;
         const n7 = Array.from(n7Data);
-        const shadedN7 = [0, 1, 2];
         n7.splice(0, 0, "", "", "");
 
         const n8Data = luckyJackpot.fdData.n8;
         const n8 = Array.from(n8Data);
-        const shadedN8 = [2, 3, 4, 5];
         n8.splice(2, 0, "", "", "", "");
 
         const n9Data = luckyJackpot.fdData.n9;
         const n9 = Array.from(n9Data);
-        const shadedN9 = [0, 1, 2, 3];
         n9.splice(0, 0, "", "", "", "");
 
         return (
@@ -99,42 +92,40 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
               title={luckyJackpot.name}
             />
             <NumbersHeader isBlue300Bg={true} title="1ST" />
-            <NumbersMap jackpotData={n1} />
+            <div className="grid grid-cols-6 my-3 gap-2">
+              <NumbersMap jackpotData={n1} />
+            </div>
 
             <NumbersHeader isBlue200Bg={true} title="2ND" />
-            <NumbersMap
-              isFlex={true}
+            <LuckyNumbersMap
               jackpotData={n2}
-              shadedData={shadedN2}
+              shadedData={[5]}
               jackpotSecondData={n3}
-              shadedSecondData={shadedN3}
+              shadedSecondData={[0]}
             />
 
             <NumbersHeader isBlue200Bg={true} title="3RD" />
-            <NumbersMap
-              isFlex={true}
+            <LuckyNumbersMap
               jackpotData={n4}
-              shadedData={shadedN4}
+              shadedData={[4, 5]}
               jackpotSecondData={n5}
-              shadedSecondData={shadedN5}
+              shadedSecondData={[0, 1]}
             />
 
             <NumbersHeader isBlue200Bg={true} title="4TH" />
-            <NumbersMap
-              isFlex={true}
+            <LuckyNumbersMap
               jackpotData={n6}
-              shadedData={shadedN6}
+              shadedData={[3, 4, 5]}
               jackpotSecondData={n7}
-              shadedSecondData={shadedN7}
+              shadedSecondData={[0, 1, 2]}
             />
 
             <NumbersHeader isBlue200Bg={true} title="5TH" />
-            <NumbersMap
-              isFlex={true}
+            <LuckyNumbersMap
               jackpotData={n8}
-              shadedData={shadedN8}
+              shadedData={[2, 3, 4, 5]}
               jackpotSecondData={n9}
-              shadedSecondData={shadedN9}
+              shadedSecondData={[0, 1, 2, 3]}
             />
           </div>
         );

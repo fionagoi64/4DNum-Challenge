@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import singapore from "../../../assets/images/branches/singapore.svg";
 import { API_V1, axiosPublic } from "../../../const/apiData";
-import { JackpotContentHeader } from "../JackpotContentHeader";
-import { NumberBox } from "../NumberBox";
-import { NumbersHeader } from "../NumbersHeader";
+import { JackpotContentHeader } from "../shared/JackpotContentHeader";
+import { NumberBox } from "../shared/NumberBox";
+import { NumbersHeader } from "../shared/NumbersHeader";
 
 interface SingaporeJackpotProps {
   selectedDate: Date;
