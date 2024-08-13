@@ -17,6 +17,7 @@ interface HomeProps {
 export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
+  const [isShow, setIsShow] = useState(false);
 
   const getResult = async (date: Date) => {
     try {
@@ -53,11 +54,26 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
     console.log(joinData);
   }, [apiData]);
 
+  const handleGoldenNumber = () => {
+    setIsShow(!isShow);
+  };
+
   return (
-    <CardContent allData={allData} handleMenu={handleMenu}>
+    <CardContent
+      allData={allData}
+      handleMenu={handleMenu}
+      handleClick={handleGoldenNumber}
+      isArrowButton={isShow}
+    >
       {(all) => (
         <div id="card-numbers" className="px-3 pt-16 pb-1">
-          {all.type === "M" && <MagnumJackpot selectedDate={selectedDate} />}
+          {all.type === "M" && (
+            <MagnumJackpot
+              selectedDate={selectedDate}
+              isShow={isShow}
+              handleClick={handleGoldenNumber}
+            />
+          )}
           {all.type === "PMP" && <DamacaiJackpot selectedDate={selectedDate} />}
           {all.type === "ST" && <SportsJackpot selectedDate={selectedDate} />}
           {all.type === "SG" && (

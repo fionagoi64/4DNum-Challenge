@@ -8,6 +8,8 @@ import { NumbersMap } from "../shared/NumbersMap";
 
 interface MagnumJackpotProps {
   selectedDate: Date;
+  isShow: boolean;
+  handleClick: () => void;
 }
 
 const localMagnum = [
@@ -17,10 +19,11 @@ const localMagnum = [
 
 export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
   selectedDate,
+  isShow,
+  handleClick,
 }) => {
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
-  const [isShow, setIsShow] = useState(false);
 
   const getResult = async (date: Date) => {
     try {
@@ -49,10 +52,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
       });
     setAllData(joinData);
   }, [apiData]);
-
-  const showGoldenNumber = () => {
-    setIsShow(!isShow);
-  };
 
   return (
     <div className="space-y-14">
@@ -197,6 +196,8 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         logoImage={magnum}
                         logoName="magnum"
                         title={magnumJackpot.name}
+                        showButton={true}
+                        handleClick={handleClick}
                       />
                       <div>
                         <NumbersHeader isYellowBg={true} title="Jackpot 1" />
@@ -303,8 +304,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         logoImage={magnum}
                         logoName="magnum"
                         title={magnumJackpot.name}
-                        showButton={true}
-                        handleClick={showGoldenNumber}
                       />
                       <div>
                         <NumbersHeader

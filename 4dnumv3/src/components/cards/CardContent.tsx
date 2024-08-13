@@ -9,16 +9,18 @@ interface CardContentProps {
   children: (all: any) => React.ReactNode;
   allData: any[];
   handleMenu: () => void;
+  isArrowButton?: boolean;
+  handleClick?: () => void;
 }
 
 export const CardContent: React.FC<CardContentProps> = ({
   children,
   allData,
   handleMenu,
+  isArrowButton,
+  handleClick = () => {},
 }) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const handleClick = () => {};
 
   return (
     <Card allData={allData} cardRefs={cardRefs}>
@@ -53,7 +55,9 @@ export const CardContent: React.FC<CardContentProps> = ({
                 <div className="md:hidden">
                   <Hamburger handleClick={handleMenu} />
                 </div>
-                {magnum && <ArrowLeft handleClick={handleClick} />}
+                {isArrowButton && (
+                  <> {magnum && <ArrowLeft handleClick={handleClick} />}</>
+                )}
                 <div className="flex flex-col justify-center items-center gap-1 w-full">
                   <div className="logos-bg">
                     <img className="logos" src={all.cardImg} alt={all.name} />

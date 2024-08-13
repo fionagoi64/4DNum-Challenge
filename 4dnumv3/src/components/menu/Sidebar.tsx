@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { sidebar } from "../../data/sidebar";
 import { Close } from "../buttons/Close";
 import { NavLink } from "react-router-dom";
@@ -25,7 +25,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   return (
     <section className={`relative ${isShow}`}>
-      <div className="xl:hidden absolute h-screen w-full bg-black-100 opacity-50 z-40"></div>
+      <button
+        onClick={handleClose}
+        className="xl:hidden absolute h-screen w-full bg-black-100 opacity-50 z-40 !cursor-default"
+      />
       <div
         className={`fixed bg-white-100 dark:bg-gray-800 h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 ${isTransition}`}
       >
@@ -43,12 +46,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <li className="py-3">
                     <NavLink
                       to={listItem.url}
-                      className="flex gap-3 items-center xl:text-xs"
+                      className="flex gap-3 items-center font-medium text-sm xl:text-xs text-gray-300 dark:text-white-200 "
                     >
                       <img className="h-6" src={listItem.icon} alt="" />
-                      <p className="font-medium text-sm xl:text-xs text-gray-300 dark:text-white-200">
-                        {listItem.label}
-                      </p>
+
+                      {listItem.label}
                     </NavLink>
                   </li>
                 </ul>
