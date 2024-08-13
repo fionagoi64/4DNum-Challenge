@@ -70,7 +70,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
                 .slice(0, 6)
                 .map((numbers, numbersIndex) => {
                   const winner = singaporeJackpot.fdData[numbers];
-                  return <NumberBox number={winner} />;
+                  return <NumberBox key={numbersIndex} number={winner} />;
                 })}
 
               <p className="text-center">+</p>
