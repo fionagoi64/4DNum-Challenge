@@ -52,23 +52,16 @@ button {
   @apply flex-1 text-center space-y-3;
 }
 
-a.active {
-  background-color: theme("colors.blue.500");
-  padding: 10px 0;
-  color: theme("colors.purple.300");
-  @apply dark:bg-purple-300;
-}
-
 a.active::before {
   content: "";
-  transition: transform 0.4s ease; /* Ensure transition is applied */
+  transition: transform 0.4s ease;
   width: 8px;
   background: theme("colors.purple.300");
   background-size: 100%;
   height: 35px;
   left: 0;
   border-radius: 0 5px 5px 0;
-  transform: translateY(0); /* Ensure transform is defined */
+  transform: translateY(0);
   position: absolute;
 
   @apply dark:bg-gray-300;

@@ -27,7 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <section className={`relative ${isShow}`}>
       <button
         onClick={handleClose}
-        className="xl:hidden absolute h-screen w-full bg-black-100 opacity-50 z-40 !cursor-default"
+        className="fixed xl:hidden !cursor-default bg-black-100 opacity-50 h-full w-full z-40"
       />
       <div
         className={`fixed bg-white-100 dark:bg-gray-800 h-screen top-0 w-[300px] xl:w-[220px] 2xl:w-[300px] rounded-r-[45px] z-40 ${isTransition}`}
@@ -43,14 +43,32 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </h1>
               {sidebarItem.list_items.map((listItem, listItemIndex) => (
                 <ul key={listItemIndex}>
-                  <li className="py-3">
+                  <li>
                     <NavLink
                       to={listItem.url}
-                      className="flex gap-3 items-center font-medium text-sm xl:text-xs text-gray-300 dark:text-white-200 "
+                      onClick={handleClose}
+                      className={({ isActive }) =>
+                        `flex gap-3 items-center font-medium text-sm xl:text-xs py-3 ${
+                          isActive
+                            ? "bg-blue-500 dark:bg-purple-500 text-purple-300 dark:text-gray-900 active rounded-sm"
+                            : "text-gray-300"
+                        } dark:${isActive ? "text-blue-400" : "text-white-200"}`
+                      }
                     >
-                      <img className="h-6" src={listItem.icon} alt="" />
-
-                      {listItem.label}
+                      {({ isActive }) => (
+                        <>
+                          <img
+                            className=""
+                            src={
+                              isActive
+                                ? listItem.activeIcon
+                                : listItem.defaultIcon
+                            }
+                            alt="icon"
+                          />
+                          {listItem.label}
+                        </>
+                      )}
                     </NavLink>
                   </li>
                 </ul>
@@ -67,16 +85,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </li>
               <li className="flex items-center">
                 <Language />
-                {/* <select
-                  id="language"
-                  className="focus:outline-none bg-white-100 text-gray-300 dark:bg-gray-600 dark:text-white-200 text-sm w-full p-2.5 "
-                >
-                  <option value="bm">Malay</option>
-                  <option selected value="en">
-                    English
-                  </option>
-                  <option value="cn">中文</option>
-                </select> */}
               </li>
             </ul>
           </div>
@@ -86,6 +94,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </h1>
             <div className="flex items-center gap-5 pl-5 xl:pl-0 mt-2 ">
               <img src={app} alt="" className="h-8 " />
+
               <img src={apk} alt="" className="h-12 xl:h-10" />
             </div>
           </div>
