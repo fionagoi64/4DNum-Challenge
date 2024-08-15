@@ -6,11 +6,11 @@ import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
 import { Jackpot } from "./modules/jackpot/Jackpot";
 import { FourD } from "./modules/four-d/FourD";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 function App() {
   //#region variables
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   //#endregion
 
@@ -40,66 +40,48 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    let savedMode = localStorage.getItem("displayMode");
-    if (!savedMode) {
-      const savedMode = "light";
-      setDarkMode(false);
-      localStorage.setItem("displayMode", savedMode);
-    }
-    setDarkMode(savedMode === "dark" ? true : false);
-  }, []);
-
-  const handleTheme = () => {
-    setDarkMode(!darkMode);
-  };
   //#endregion
-
   return (
-    <div className={`${darkMode ? "dark" : ""}`}>
-      <BrowserRouter>
-        <Nav
-          handleMenu={handleOpen}
-          handleScroll={handleScroll}
-          handleTheme={handleTheme}
-          darkMode={darkMode}
-          onSelectDate={handleDateSelect}
-        />
-        {/* web view */}
-        <Sidebar
-          handleMenu={handleOpen}
-          handleClose={handleClose}
-          isShow="hidden xl:block"
-          handleTheme={handleTheme}
-          darkMode={darkMode}
-        />
-        {/* mobile view */}
-        <Sidebar
-          handleMenu={handleOpen}
-          handleClose={handleClose}
-          isShow={`${isOpen ? "block" : "hidden"}`}
-          isTransition={`
+    <ThemeProvider>
+      <div>
+        <BrowserRouter>
+          <Nav
+            handleMenu={handleOpen}
+            handleScroll={handleScroll}
+            onSelectDate={handleDateSelect}
+          />
+          {/* web view */}
+          <Sidebar
+            handleMenu={handleOpen}
+            handleClose={handleClose}
+            isShow="hidden xl:block"
+          />
+          {/* mobile view */}
+          <Sidebar
+            handleMenu={handleOpen}
+            handleClose={handleClose}
+            isShow={`${isOpen ? "block" : "hidden"}`}
+            isTransition={`
             ${isOpen ? "ml-0" : "-ml-60"}`}
-          handleTheme={handleTheme}
-          darkMode={darkMode}
-        />
-        <SpecialDraw />
-        <Routes>
-          <Route
-            index
-            element={
-              <FourD handleMenu={handleOpen} selectedDate={selectedDate} />
-            }
           />
-          <Route
-            path="jackpot"
-            element={
-              <Jackpot handleMenu={handleOpen} selectedDate={selectedDate} />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+          <SpecialDraw />
+          <Routes>
+            <Route
+              index
+              element={
+                <FourD handleMenu={handleOpen} selectedDate={selectedDate} />
+              }
+            />
+            <Route
+              path="jackpot"
+              element={
+                <Jackpot handleMenu={handleOpen} selectedDate={selectedDate} />
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 

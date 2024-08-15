@@ -16,9 +16,12 @@ body {
   @apply select-none font-roboto;
 }
 
-html,
 body {
-  @apply bg-white-400 dark:bg-black-500;
+  @apply bg-white-400 dark:bg-black-100;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 h1,

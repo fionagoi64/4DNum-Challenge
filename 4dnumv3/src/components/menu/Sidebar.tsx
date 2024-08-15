@@ -4,24 +4,20 @@ import { Close } from "../buttons/Close";
 import { NavLink } from "react-router-dom";
 import apk from "../../assets/images/apk.png";
 import app from "../../assets/images/appstore.svg";
-import { Theme } from "../buttons/Theme";
 import { Language } from "../buttons/Language";
+import { ThemeToggle } from "../buttons/ThemeToggle";
 
 interface SidebarProps {
   handleClose?: () => void;
   isShow: string;
   isTransition?: string;
-  darkMode: boolean;
   handleMenu: () => void;
-  handleTheme: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
   handleClose,
   isShow,
   isTransition,
-  darkMode,
-  handleTheme,
 }) => {
   return (
     <section className={`relative ${isShow}`}>
@@ -81,7 +77,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </h1>
             <ul className="space-y-3">
               <li>
-                <Theme darkMode={darkMode} handleTheme={handleTheme} />
+                <ThemeToggle />
               </li>
               <li className="flex items-center">
                 <Language />

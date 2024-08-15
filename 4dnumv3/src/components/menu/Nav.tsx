@@ -3,23 +3,19 @@ import dashboard from "../../assets/images/dashboard.svg";
 import { Datepicker } from "../buttons/Datepicker";
 import { Hamburger } from "../buttons/Hamburger";
 import { Logo } from "../buttons/Logo";
-import { Theme } from "../buttons/Theme";
 import { Refresh } from "../buttons/Refresh";
 import { ScrollToCard } from "../buttons/ScrollToCard";
 import { Language } from "../buttons/Language";
+import { ThemeToggle } from "../buttons/ThemeToggle";
 
 interface NavProps {
   onSelectDate: (date: Date) => void;
   handleScroll: (ref: HTMLDivElement | null) => void;
-  handleTheme: () => void;
-  darkMode: boolean;
   handleMenu: () => void;
 }
 
 export const Nav: React.FC<NavProps> = ({
   handleScroll,
-  darkMode,
-  handleTheme,
   handleMenu,
   onSelectDate,
 }) => {
@@ -41,7 +37,7 @@ export const Nav: React.FC<NavProps> = ({
               <ScrollToCard handleScroll={handleScroll} />
               <Datepicker onSelectDate={onSelectDate} />
               <Refresh />
-              <Theme darkMode={darkMode} handleTheme={handleTheme} />
+              <ThemeToggle />
               <Language />
             </div>
           </nav>
