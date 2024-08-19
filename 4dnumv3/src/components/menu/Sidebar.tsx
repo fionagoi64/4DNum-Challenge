@@ -6,6 +6,7 @@ import apk from "../../assets/images/apk.png";
 import app from "../../assets/images/appstore.svg";
 import { Language } from "../buttons/Language";
 import { ThemeToggle } from "../buttons/ThemeToggle";
+import { useTheme } from "../../context/ThemeProvider";
 
 interface SidebarProps {
   handleClose?: () => void;
@@ -19,6 +20,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isShow,
   isTransition,
 }) => {
+  const { themeMode } = useTheme();
+  const darkMode = themeMode === "dark";
+
   return (
     <section className={`relative ${isShow}`}>
       <button
@@ -57,7 +61,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             className=""
                             src={
                               isActive
-                                ? listItem.activeIcon
+                                ? darkMode
+                                  ? listItem.darkIcon
+                                  : listItem.activeIcon
                                 : listItem.defaultIcon
                             }
                             alt="icon"

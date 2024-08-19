@@ -1,5 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { localData } from "../../data/localData";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -15,7 +16,8 @@ export const Card: React.FC<CardProps> = ({ children, allData, cardRefs }) => {
   const pagination = {
     clickable: true,
     renderBullet: function (index: number, className: string) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
+      const imgSrc = localData[index].navImg;
+      return `<button class="${className}" style="background: none; border: none; padding: 0;"><img src="${imgSrc}" alt="logo" style="width: 100px; height: auto;"></button>`;
     },
   };
 
@@ -59,7 +61,7 @@ export const Card: React.FC<CardProps> = ({ children, allData, cardRefs }) => {
           </div>
 
           {/* mobile view */}
-          <div className="md:hidden">
+          <div className="md:hidden ">
             <Swiper pagination={pagination} modules={[Pagination]}>
               {allData.map((all, allIndex) => (
                 <SwiperSlide key={allIndex}>

@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  @apply bg-white-400 dark:bg-black-100;
+  @apply bg-white-100 md:bg-white-400 dark:bg-black-100;
 }
 
 body::-webkit-scrollbar {
@@ -66,10 +66,30 @@ a.active::before {
   border-radius: 0 5px 5px 0;
   transform: translateY(0);
   position: absolute;
-
-  @apply dark:bg-gray-300;
 }
 
 .swiper-pagination {
-  bottom: 90% !important;
+  display: flex;
+  height: 60px !important;
+  align-items: center;
+  justify-content: space-between !important;
+  padding: 8px 12px;
+  top: 0 !important;
+  border-radius: 0 0 24px 24px;
+  @apply bg-white-100 dark:bg-gray-600;
+}
+
+.swiper-pagination-bullet {
+  opacity: 1 !important;
+  row-gap: 20px !important;
+  width: 36px !important;
+  height: auto !important;
+  padding: 0 3px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #d2d2d2 !important;
+  border-radius: 20px !important;
+  padding: 0 3px !important;
+  height: 50px !important;
 }

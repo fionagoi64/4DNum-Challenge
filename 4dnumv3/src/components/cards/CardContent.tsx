@@ -52,7 +52,7 @@ export const CardContent: React.FC<CardContentProps> = ({
                 ${perdana && "bg-blue-400 dark:border-blue-400"}`}
             >
               <div className="flex flex-row items-start">
-                <div className="md:hidden">
+                <div className="md:opacity-0">
                   <Hamburger handleClick={handleMenu} />
                 </div>
                 {isArrowButton && (

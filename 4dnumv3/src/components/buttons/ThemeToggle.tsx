@@ -5,6 +5,7 @@ import { useTheme } from "../../context/ThemeProvider";
 
 export const ThemeToggle: React.FC = () => {
   const { themeMode, darkTheme, lightTheme } = useTheme();
+
   const darkMode = themeMode === "dark";
   const lightMode = themeMode === "light";
 
