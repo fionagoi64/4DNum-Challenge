@@ -7,7 +7,7 @@ type ScrollToCardProps = {
 
 export const ScrollToCard: React.FC<ScrollToCardProps> = ({ handleScroll }) => {
   return (
-    <div className="hidden bg-white-100 dark:bg-gray-600 rounded-b-3xl md:rounded-[20px] shadow-all">
+    <div className="hidden md:block bg-white-100 dark:bg-gray-600 rounded-b-3xl md:rounded-[20px] shadow-all">
       <ul className="flex flex-row pt-4 pb-2 px-3 xl:py-1 xl:px-14 md:py-2 md:px-5 lg:gap-1 justify-between items-center">
         {localData.map((logos, logosIndex) => {
           return (

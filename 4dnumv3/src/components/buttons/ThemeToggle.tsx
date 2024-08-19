@@ -21,20 +21,20 @@ export const ThemeToggle: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center md:justify-center w-full md:w-auto">
       <p
-        className={`flex items-center justify-center gap-2 text-xs
-          ${darkMode ? "text-white-100" : ""} `}
+        className={`flex items-center justify-center gap-2 
+          ${darkMode ? "text-white-100" : "text-gray-300 md:text-black-100"} `}
       >
         <span className="text-lg">
           {darkMode ? <AiFillMoon /> : <MdLightMode />}
         </span>
-        <span className="w-6 text-wrap mr-4">
+        <span className="md:w-6 text-wrap mr-4 text-sm md:text-xs">
           {darkMode ? t("darkMode") : t("lightMode")}
         </span>
       </p>
 
-      <div className="relative inline-block w-7">
+      <div className="relative inline-block w-7 ml-auto">
         <input
           type="checkbox"
           id="toggle"
