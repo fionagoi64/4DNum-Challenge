@@ -4,9 +4,10 @@ import { Close } from "../buttons/Close";
 import { NavLink } from "react-router-dom";
 import apk from "../../assets/images/apk.png";
 import app from "../../assets/images/appstore.svg";
-import { Language } from "../buttons/Language";
 import { ThemeToggle } from "../buttons/ThemeToggle";
-import { useTheme } from "../../context/ThemeProvider";
+import { useTheme } from "../../context/Theme";
+import { LanguageButton } from "../buttons/LanguageButton";
+import { useTranslation } from "react-i18next";
 
 interface SidebarProps {
   handleClose?: () => void;
@@ -20,6 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isShow,
   isTransition,
 }) => {
+  const { t } = useTranslation();
   const { themeMode } = useTheme();
   const darkMode = themeMode === "dark";
 
@@ -39,7 +41,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {sidebar.map((sidebarItem, sidebarIndex) => (
             <div key={sidebarIndex}>
               <h1 className="font-semibold text-sm xl:text-xs mt-8 dark:text-white-100">
-                {sidebarItem.label}
+                {t(sidebarItem.label)}
               </h1>
               {sidebarItem.list_items.map((listItem, listItemIndex) => (
                 <ul key={listItemIndex}>
@@ -68,7 +70,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             }
                             alt="icon"
                           />
-                          {listItem.label}
+                          {t(listItem.label)}
                         </>
                       )}
                     </NavLink>
@@ -79,20 +81,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
           ))}
           <div className="md:hidden">
             <h1 className="font-semibold text-sm mt-6 mb-3 dark:text-white-200">
-              Setting
+              {t("setting")}
             </h1>
             <ul className="space-y-3">
               <li>
                 <ThemeToggle />
               </li>
               <li className="flex items-center">
-                <Language />
+                <LanguageButton />
               </li>
             </ul>
           </div>
           <div>
             <h1 className="font-semibold text-sm mt-6 dark:text-white-200 xl:text-xs">
-              Install App
+              {t("installApp")}
             </h1>
             <div className="flex items-center gap-5 pl-5 xl:pl-0 mt-2 ">
               <img src={app} alt="" className="h-8 " />

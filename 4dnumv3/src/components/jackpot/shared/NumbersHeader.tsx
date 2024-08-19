@@ -40,9 +40,9 @@ export const NumbersHeader: React.FC<NumbersHeaderProps> = ({
     >
       {isDualTitle ? (
         <div className="flex items-center gap-2">
-          <h1 className="text-center text-white-100">{title}</h1>
+          <h1 className="text-center text-white-100 flex-1">{title}</h1>
           <div className="border-l border-solid border-gray-500 h-4 "></div>
-          <h1 className="text-center text-white-100">{secondTitle}</h1>
+          <h1 className="text-center text-white-100 flex-1">{secondTitle}</h1>
         </div>
       ) : (
         <>{title}</>

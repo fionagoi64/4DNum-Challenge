@@ -1,7 +1,7 @@
 import React from "react";
 import { NumberBox } from "../../shared/NumberBox";
 import { NumbersHeader } from "../../shared/NumbersHeader";
-
+import { useTranslation } from "react-i18next";
 
 interface Toto6DNumbersProps {
   title: string;
@@ -14,6 +14,8 @@ export const Toto6DNumbers: React.FC<Toto6DNumbersProps> = ({
   jackpotNumber,
   jackpotSecondNumber,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-row gap-2 text-center my-2">
       <NumbersHeader
@@ -26,7 +28,7 @@ export const Toto6DNumbers: React.FC<Toto6DNumbersProps> = ({
           className="!font-bold !rounded-lg p-0.5 px-4 !text-left"
           number={jackpotNumber}
         />
-        <p>or</p>
+        <p>{t("or")}</p>
         <NumberBox
           className="!font-bold !rounded-lg p-0.5 px-4 !text-right"
           number={jackpotSecondNumber}

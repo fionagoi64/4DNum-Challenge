@@ -5,8 +5,8 @@ import { Hamburger } from "../buttons/Hamburger";
 import { Logo } from "../buttons/Logo";
 import { Refresh } from "../buttons/Refresh";
 import { ScrollToCard } from "../buttons/ScrollToCard";
-import { Language } from "../buttons/Language";
 import { ThemeToggle } from "../buttons/ThemeToggle";
+import { LanguageButton } from "../buttons/LanguageButton";
 
 interface NavProps {
   onSelectDate: (date: Date) => void;
@@ -38,7 +38,7 @@ export const Nav: React.FC<NavProps> = ({
               <Datepicker onSelectDate={onSelectDate} />
               <Refresh />
               <ThemeToggle />
-              <Language />
+              <LanguageButton />
             </div>
           </nav>
 

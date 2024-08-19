@@ -5,13 +5,15 @@ import { API_V1, axiosPublic } from "../../../const/apiData";
 import { JackpotAmount } from "../shared/JackpotAmount";
 import { NumberBox } from "../shared/NumberBox";
 import { NumbersHeader } from "../shared/NumbersHeader";
+import { useTranslation } from "react-i18next";
 interface SabahJackpotProps {
   selectedDate: Date;
 }
 
-const localSabah = [{ type: "EEJP6/45", name: "Sports Toto Jackpot" }];
+const localSabah = [{ type: "EEJP6/45", name: "sportsToto" }];
 
 export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
+  const { t } = useTranslation();
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
@@ -53,10 +55,10 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
               backgroundColor="!bg-red-200"
               logoImage={sabah}
               logoName="sabah"
-              title={sabahJackpot.name}
+              title={t(sabahJackpot.name)}
             />
             <div>
-              <NumbersHeader isBlue400Bg={true} title="Winning Numbers" />
+              <NumbersHeader isBlue400Bg={true} title={t("winningNumbers")} />
 
               <div className="grid grid-cols-8 my-2 gap-2">
                 {Object.keys(sabahJackpot.fdData)
@@ -79,12 +81,12 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
               </div>
 
               <JackpotAmount
-                title="Jackpot 1"
+                title={t("jackpotOne")}
                 amount={sabahJackpot.fdData.jp1}
               />
 
               <JackpotAmount
-                title="Jackpot 2"
+                title={t("jackpotTwo")}
                 amount={sabahJackpot.fdData.jp2}
               />
             </div>

@@ -24,60 +24,60 @@ import darkLuckyBook from "../assets/images/sidemenu/dark-lucky-book.png";
 
 export const sidebar = [
     {
-        label: "Results",
+        label: "results",
         list_items: [
             {
                 defaultIcon: inactiveDashboard,
                 activeIcon: activeDashboard,
                 darkIcon: darkDashboard,
-                label: "Dashboard",
+                label: "dashboard",
                 url: "/",
             },
             {
                 defaultIcon: inactiveJackpot,
                 activeIcon: activeJackpot,
                 darkIcon: darkJackpot,
-                label: "Jackpot",
+                label: "jackpot",
                 url: "/jackpot",
             },
         ],
     },
     {
-        label: "Toolbox",
+        label: "toolbox",
         list_items: [
             {
                 defaultIcon: inactiveSpecialDraw,
                 activeIcon: activeSpecialDraw,
                 darkIcon: darkSpecialDraw,
-                label: "Sepcial Draw Date",
+                label: "specialDrawDate",
                 url: "/special-date",
             },
             {
                 defaultIcon: inactiveAnalysis,
                 activeIcon: activeAnalysis,
                 darkIcon: darkAnalysis,
-                label: "4D Number Analysis",
+                label: "fourDNumberAnalysis",
                 url: "/number-analysis",
             },
             {
                 defaultIcon: inactiveSpin,
                 activeIcon: activeSpin,
                 darkIcon: darkSpin,
-                label: "Spin My Luck",
+                label: "spinMyLuck",
                 url: "/spin-my-luck",
             },
             {
                 defaultIcon: inactiveHotFourD,
                 activeIcon: activeHotFourD,
                 darkIcon: darkHotFourD,
-                label: "Hot 4D Number",
+                label: "hotFourDNumber",
                 url: "/hot-dddd-num",
             },
             {
                 defaultIcon: inactiveLuckyBook,
                 activeIcon: activeLuckyBook,
                 darkIcon: darkLuckyBook,
-                label: "Lucky Book",
+                label: "luckyBook",
                 url: "/lucky-book",
             },
         ],

@@ -4,6 +4,7 @@ import { formatCurrency } from "../../const/formatCurreny";
 import { API_V1, axiosPublic } from "../../const/apiData";
 import { sectionTitle } from "../../data/sectionTitle";
 import { CardContent } from "../../components/cards/CardContent";
+import { useTranslation } from "react-i18next";
 
 interface FourDProps {
   handleMenu: () => void;
@@ -11,6 +12,7 @@ interface FourDProps {
 }
 
 export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
+  const { t } = useTranslation();
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
@@ -134,8 +136,8 @@ export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
                               magnum && "!text-black-100"
                             }`}
                           >
-                            {titleItem[0]}
-                            <span className="font-thin"> Prize</span>
+                            {t("first")}
+                            <span className="font-thin"> {t("prize")}</span>
                           </h1>
                         </div>
                         <div
@@ -154,8 +156,8 @@ export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
                             className={`text-white-100 
                               ${magnum && "!text-black-100"}`}
                           >
-                            {titleItem[1]}
-                            <span className="font-thin"> Prize</span>
+                            {t("second")}
+                            <span className="font-thin"> {t("prize")}</span>
                           </h1>
                         </div>
                         <div
@@ -175,8 +177,8 @@ export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
                               magnum && "!text-black-100"
                             }`}
                           >
-                            {titleItem[2]}
-                            <span className="font-thin"> Prize</span>
+                            {t("third")}
+                            <span className="font-thin"> {t("prize")}</span>
                           </h1>
                         </div>
                       </div>
@@ -215,11 +217,11 @@ export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
                           {titleItem.includes("4D Jackpot 1 Prize") ? (
                             <div className="flex items-center ">
                               <h1 className="flex-1 text-center text-white-100">
-                                {titleItem[0]}
+                                {t("fourDJackpotOne")}
                               </h1>
                               <div className="border-l border-solid border-gray-500 h-4 "></div>
                               <h1 className="flex-1 text-center text-white-100">
-                                {titleItem[1]}
+                                {t("fourDJackpotTwo")}
                               </h1>
                             </div>
                           ) : (
@@ -230,7 +232,9 @@ export const FourD: React.FC<FourDProps> = ({ handleMenu, selectedDate }) => {
                                   "!text-green-100 dark:!text-white-100"
                                 }`}
                             >
-                              {titleItem}
+                              {titleItem === "Special"
+                                ? t("special")
+                                : t("consolation")}
                             </h1>
                           )}
                         </div>

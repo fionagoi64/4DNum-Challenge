@@ -1,0 +1,78 @@
+{
+  "results":"Results",
+  "dashboard":"Dashboard",
+  "jackpot":"Jackpot",
+  "toolbox":"Toolbox",
+  "specialDrawDate":"Special Draw Date",
+  "fourDNumberAnalysis":"4D Number Analysis",
+  "spinMyLuck":"Spin My Luck",
+  "hotFourDNumber":"Hot 4D Number",
+  "luckyBook":"Lucky Book",
+  "setting":"Setting",
+  "installApp":"Install App",
+
+  "lightMode":"Light Mode",
+  "darkMode":"Dark Mode",
+
+  "upcomingSpecialDrawDate":"Upcoming Special Draw Date",
+  
+  "prize":"Prize",
+  "first":"1ST",
+  "second":"2ST",
+  "third":"3RD",
+  "fourth":"4TH",
+  "fifth":"5TH",
+  "sixth":"6TH", 
+  "seventh":"7TH",
+  "special":"Special",
+  "consolation":"Consolation",
+  "jackpotPool":"Jackpot Pool",
+  "jackpotOne":"Jackpot 1",
+  "jackpotTwo":"Jackpot 2",
+  "winningNumbers":"Winning Numbers",
+  
+  "date":"Date",
+  "drawNo":"Draw No.",
+  "viewDrawVideo":"View Draw Video",
+  
+  "magnum": "Magnum 4D",
+  "fourDJackpotOne":"4D Jackpot 1",
+  "fourDJackpotTwo":"4D Jackpot 2",
+  "goldJackpot":"Gold Jackpot",
+  "goldJackpotOnePrize":"Gold Jackpot 1 Prize",
+  "goldJackpotTwoPrize":"Gold Jackpot 2 Prize",
+  "magnumLife":"Magnum Life",
+  "bonusNumbers":"Bonus Numbers",
+  "goldenNumber":"Golden Number",
+  
+  "damacai" : "Da Ma Cai 1+3D",
+  "threePlusThreeDBonus" : "3+3D Bonus",
+  
+  "sportsToto" : "SportsToto 4D",
+  "sportsTotoJackpot" : "SportsToto Jackpot",
+  "supremeJackpot" : "Supreme jackpot 6/58",
+  "powerJackpot" : "Power Jackpot 6/55",
+  "starJackpot" : "Star Jackpot 6/50",
+  "totoFiveD" : "Toto 5D",
+  "or":"or",
+  "totoSixD" : "Toto 6D",
+  
+  "singaporeFourD" : "Singapore 4D",
+  "singaporeToto" : "Singapore Toto",
+  "prizeGroup" : "Prize Group",
+  "shareAmount" : "Share Amount",
+  "winningShares" : "Winning Shares",
+  
+  "sandakanFourD" : "Sandakan 4D",
+  
+  "sabahEEFourD" : "Sabah 88 4D",
+  "sabahLottoJackpot" : "Sabah Lotto Jackpot",
+  
+  "specialCashSweep" : "Special Cash Sweep",
+  
+  "luckyHariHari" : "Lucky Hari Hari",
+  "luckyHariHariSixD" : "Lucky Hari Hari 6D",
+  
+  "perdanaLottery" : "Perdana Lottery"
+
+}

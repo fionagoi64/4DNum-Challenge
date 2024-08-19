@@ -1,9 +1,12 @@
 import React from "react";
 import { AiFillMoon } from "react-icons/ai";
 import { MdLightMode } from "react-icons/md";
-import { useTheme } from "../../context/ThemeProvider";
+import { useTheme } from "../../context/Theme";
+import { useTranslation } from "react-i18next";
 
 export const ThemeToggle: React.FC = () => {
+  const { t } = useTranslation();
+
   const { themeMode, darkTheme, lightTheme } = useTheme();
 
   const darkMode = themeMode === "dark";
@@ -26,7 +29,9 @@ export const ThemeToggle: React.FC = () => {
         <span className="text-lg">
           {darkMode ? <AiFillMoon /> : <MdLightMode />}
         </span>
-        <span className="w-[12%]">{darkMode ? "Dark Mode" : "Light Mode"}</span>
+        <span className="w-6 text-wrap mr-4">
+          {darkMode ? t("darkMode") : t("lightMode")}
+        </span>
       </p>
 
       <div className="relative inline-block w-7">

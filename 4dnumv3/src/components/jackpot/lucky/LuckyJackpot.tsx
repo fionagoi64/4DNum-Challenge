@@ -5,6 +5,7 @@ import { JackpotContentHeader } from "../shared/JackpotContentHeader";
 import { NumbersHeader } from "../shared/NumbersHeader";
 import { NumbersMap } from "../shared/NumbersMap";
 import { LuckyNumbersMap } from "./LuckyNumbersMap";
+import { useTranslation } from "react-i18next";
 
 interface LuckyJackpotProps {
   selectedDate: Date;
@@ -13,6 +14,7 @@ interface LuckyJackpotProps {
 const localLucky = [{ type: "HJPT15:30", name: "Lucky Hari Hari 6D" }];
 
 export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
+  const { t } = useTranslation();
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
@@ -91,12 +93,18 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
               logoName="damacai"
               title={luckyJackpot.name}
             />
-            <NumbersHeader isBlue300Bg={true} title="1ST" />
+            <NumbersHeader
+              isBlue300Bg={true}
+              title={t("first") + t("prizeCN")}
+            />
             <div className="grid grid-cols-6 my-3 gap-2">
               <NumbersMap jackpotData={n1} />
             </div>
 
-            <NumbersHeader isBlue200Bg={true} title="2ND" />
+            <NumbersHeader
+              isBlue200Bg={true}
+              title={t("second") + t("prizeCN")}
+            />
             <LuckyNumbersMap
               jackpotData={n2}
               shadedData={[5]}
@@ -104,7 +112,10 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
               shadedSecondData={[0]}
             />
 
-            <NumbersHeader isBlue200Bg={true} title="3RD" />
+            <NumbersHeader
+              isBlue200Bg={true}
+              title={t("third") + t("prizeCN")}
+            />
             <LuckyNumbersMap
               jackpotData={n4}
               shadedData={[4, 5]}
@@ -112,7 +123,10 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
               shadedSecondData={[0, 1]}
             />
 
-            <NumbersHeader isBlue200Bg={true} title="4TH" />
+            <NumbersHeader
+              isBlue200Bg={true}
+              title={t("fourth") + t("prizeCN")}
+            />
             <LuckyNumbersMap
               jackpotData={n6}
               shadedData={[3, 4, 5]}
@@ -120,7 +134,10 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
               shadedSecondData={[0, 1, 2]}
             />
 
-            <NumbersHeader isBlue200Bg={true} title="5TH" />
+            <NumbersHeader
+              isBlue200Bg={true}
+              title={t("fifth") + t("prizeCN")}
+            />
             <LuckyNumbersMap
               jackpotData={n8}
               shadedData={[2, 3, 4, 5]}

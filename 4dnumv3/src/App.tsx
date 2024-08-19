@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/menu/Nav";
 import { Sidebar } from "./components/menu/Sidebar";
@@ -6,7 +6,8 @@ import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
 import { Jackpot } from "./modules/jackpot/Jackpot";
 import { FourD } from "./modules/four-d/FourD";
-import { ThemeProvider } from "./context/ThemeProvider";
+import { ThemeProvider } from "./context/Theme";
+import { LanguageProvider } from "./context/Language";
 
 function App() {
   //#region variables
@@ -42,46 +43,51 @@ function App() {
 
   //#endregion
   return (
-    <ThemeProvider>
-      <div>
-        <BrowserRouter>
-          <Nav
-            handleMenu={handleOpen}
-            handleScroll={handleScroll}
-            onSelectDate={handleDateSelect}
-          />
-          {/* web view */}
-          <Sidebar
-            handleMenu={handleOpen}
-            handleClose={handleClose}
-            isShow="hidden xl:block"
-          />
-          {/* mobile view */}
-          <Sidebar
-            handleMenu={handleOpen}
-            handleClose={handleClose}
-            isShow={`${isOpen ? "block" : "hidden"}`}
-            isTransition={`
+    <LanguageProvider>
+      <ThemeProvider>
+        <div>
+          <BrowserRouter>
+            <Nav
+              handleMenu={handleOpen}
+              handleScroll={handleScroll}
+              onSelectDate={handleDateSelect}
+            />
+            {/* web view */}
+            <Sidebar
+              handleMenu={handleOpen}
+              handleClose={handleClose}
+              isShow="hidden xl:block"
+            />
+            {/* mobile view */}
+            <Sidebar
+              handleMenu={handleOpen}
+              handleClose={handleClose}
+              isShow={`${isOpen ? "block" : "hidden"}`}
+              isTransition={`
             ${isOpen ? "ml-0" : "-ml-60"}`}
-          />
-          <SpecialDraw />
-          <Routes>
-            <Route
-              index
-              element={
-                <FourD handleMenu={handleOpen} selectedDate={selectedDate} />
-              }
             />
-            <Route
-              path="jackpot"
-              element={
-                <Jackpot handleMenu={handleOpen} selectedDate={selectedDate} />
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </ThemeProvider>
+            <SpecialDraw />
+            <Routes>
+              <Route
+                index
+                element={
+                  <FourD handleMenu={handleOpen} selectedDate={selectedDate} />
+                }
+              />
+              <Route
+                path="jackpot"
+                element={
+                  <Jackpot
+                    handleMenu={handleOpen}
+                    selectedDate={selectedDate}
+                  />
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

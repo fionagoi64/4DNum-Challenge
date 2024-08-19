@@ -5,6 +5,7 @@ import { API_V1, axiosPublic } from "../../../const/apiData";
 import { NumbersHeader } from "../shared/NumbersHeader";
 import { NumberBox } from "../shared/NumberBox";
 import { NumbersMap } from "../shared/NumbersMap";
+import { useTranslation } from "react-i18next";
 
 interface MagnumJackpotProps {
   selectedDate: Date;
@@ -13,8 +14,8 @@ interface MagnumJackpotProps {
 }
 
 const localMagnum = [
-  { type: "MJPLIFE", name: "Magnum Life" },
-  { type: "MJPGOLD", name: "Golden Jackpot" },
+  { type: "MJPLIFE", name: "magnumLife" },
+  { type: "MJPGOLD", name: "goldJackpot" },
 ];
 
 export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
@@ -24,6 +25,7 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
 }) => {
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
+  const { t } = useTranslation();
 
   const getResult = async (date: Date) => {
     try {
@@ -43,11 +45,11 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
     const joinData = apiData
       .filter((selectedData) =>
         localMagnum.some((localItem) => localItem.type === selectedData.type)
-      ) // filter data where type is in localData
+      )
       .map((apiItem) => {
         const all = localMagnum.find(
           (localItem) => localItem.type === apiItem.type
-        ); // join apiData & localData
+        );
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
@@ -78,38 +80,39 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
           const n4 = Array.from(n4Data);
 
           return (
-            <div key={magnumIndex}>
+            <div key={`${magnumJackpot.type}-${magnumIndex}`}>
               {isGoldenJackpot && (
                 <>
-                  {/* Golden Number */}
                   {isShow && (
                     <div>
                       <div className="flex flex-row gap-2 text-center my-2">
                         <NumbersHeader
                           className="w-1/2 !font-medium"
                           isYellowBg={true}
-                          title="Golden Number"
+                          title={t("goldenNumber")}
                         />
-
                         <div className="w-2/3 flex flex-row gap-2">
                           <NumbersMap jackpotData={n4} className="p-2" />
                         </div>
                       </div>
                       <div>
-                        <NumbersHeader isBlackBg={true} title="3RD Prize" />
+                        <NumbersHeader
+                          isBlackBg={true}
+                          title={t("third") + t("prize")}
+                        />
                         <div className="grid grid-cols-6 gap-2 my-2">
                           {Object.keys(magnumJackpot.fdData)
                             .filter((key) => key.startsWith("n"))
                             .slice(0, 3)
-                            .map((numbers) => {
+                            .map((numbers, index) => {
                               const winner = magnumJackpot.fdData[numbers];
                               const splitArray = Array.from(winner);
 
                               return (
-                                <React.Fragment key={numbers}>
-                                  {splitArray.map((item, index) => (
+                                <React.Fragment key={`${numbers}-${index}`}>
+                                  {splitArray.map((item, idx) => (
                                     <NumberBox
-                                      key={`${numbers}-${index}`}
+                                      key={`${numbers}-${idx}`}
                                       number={item as React.ReactNode}
                                     />
                                   ))}
@@ -119,15 +122,18 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         </div>
                       </div>
                       <div>
-                        <NumbersHeader isBlackBg={true} title="4TH Prize" />
+                        <NumbersHeader
+                          isBlackBg={true}
+                          title={t("fourth") + t("prize")}
+                        />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} shadedData={[1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0]} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} />
@@ -135,15 +141,18 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         </div>
                       </div>
                       <div>
-                        <NumbersHeader isBlackBg={true} title="5TH Prize" />
+                        <NumbersHeader
+                          isBlackBg={true}
+                          title={t("fifth") + t("prize")}
+                        />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} />
@@ -151,15 +160,18 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         </div>
                       </div>
                       <div>
-                        <NumbersHeader isBlackBg={true} title="6TH Prize" />
+                        <NumbersHeader
+                          isBlackBg={true}
+                          title={t("sixth") + t("prize")}
+                        />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} shadedData={[1]} />
                             <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n2} shadedData={[0]} />
                             <NumbersMap jackpotData={n3} />
@@ -167,21 +179,24 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         </div>
                       </div>
                       <div>
-                        <NumbersHeader isBlackBg={true} title="7TH Prize" />
+                        <NumbersHeader
+                          isBlackBg={true}
+                          title={t("seventh") + t("prize")}
+                        />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n2} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n3} />
                           </div>
                         </div>
-                        <div className="flex justify-center mx-[85px] gap-2 mb-2">
+                        <div className="flex justify-center mx-[22%] gap-2 mb-2">
                           <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                           <NumbersMap jackpotData={n2} />
                           <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
@@ -195,59 +210,62 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         backgroundColor="!bg-black-100 dark:!bg-black-500"
                         logoImage={magnum}
                         logoName="magnum"
-                        title={magnumJackpot.name}
+                        title={t(magnumJackpot.name)}
                         showButton={true}
                         handleClick={handleClick}
                       />
                       <div>
-                        <NumbersHeader isYellowBg={true} title="Jackpot 1" />
+                        <NumbersHeader
+                          isYellowBg={true}
+                          title={t("jackpotOne")}
+                        />
                         <div>
                           <div className="grid grid-cols-9 my-2 gap-2">
                             {Object.keys(magnumJackpot.fdData)
                               .filter((key) => key.startsWith("n"))
                               .slice(0, 3)
-                              .map((numbers) => {
+                              .map((numbers, index) => {
                                 const winner = magnumJackpot.fdData[numbers];
                                 const splitArray = Array.from(winner);
                                 return (
-                                  <React.Fragment key={numbers}>
-                                    {splitArray.map((item, index) => (
+                                  <React.Fragment key={`${numbers}-${index}`}>
+                                    {splitArray.map((item, idx) => (
                                       <NumberBox
-                                        key={`${numbers}-${index}`}
+                                        key={`${numbers}-${idx}`}
                                         number={item as React.ReactNode}
                                       />
                                     ))}
                                   </React.Fragment>
                                 );
                               })}
-
                             <p className="text-center">+</p>
-
                             <NumbersMap jackpotData={n4} />
                           </div>
                         </div>
                       </div>
                       <div>
-                        <NumbersHeader isYellowBg={true} title="Jackpot 2" />
+                        <NumbersHeader
+                          isYellowBg={true}
+                          title={t("jackpotTwo")}
+                        />
                         <div className="grid grid-cols-9 my-2 gap-2">
                           {Object.keys(magnumJackpot.fdData)
                             .filter((key) => key.startsWith("n"))
                             .slice(0, 2)
-                            .map((numbers) => {
+                            .map((numbers, index) => {
                               const winner = magnumJackpot.fdData[numbers];
                               const splitArray = Array.from(winner);
                               return (
-                                <React.Fragment key={numbers}>
-                                  {splitArray.map((item, index) => (
+                                <React.Fragment key={`${numbers}-${index}`}>
+                                  {splitArray.map((item, idx) => (
                                     <NumberBox
-                                      key={`${numbers}-${index}`}
+                                      key={`${numbers}-${idx}`}
                                       number={item as React.ReactNode}
                                     />
                                   ))}
                                 </React.Fragment>
                               );
                             })}
-
                           <NumbersMap jackpotData={n3} shadedData={[1]} />
                           <p className="text-center">+</p>
                           <NumbersMap jackpotData={n4} />
@@ -257,15 +275,15 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                           {Object.keys(magnumJackpot.fdData)
                             .filter((key) => key.startsWith("n"))
                             .slice(1, 3)
-                            .map((numbers) => {
+                            .map((numbers, index) => {
                               const winner = magnumJackpot.fdData[numbers];
                               const splitArray = Array.from(winner);
 
                               return (
-                                <React.Fragment key={numbers}>
-                                  {splitArray.map((item, index) => (
+                                <React.Fragment key={`${numbers}-${index}`}>
+                                  {splitArray.map((item, idx) => (
                                     <NumberBox
-                                      key={`${numbers}-${index}`}
+                                      key={`${numbers}-${idx}`}
                                       number={item as React.ReactNode}
                                     />
                                   ))}
@@ -273,19 +291,17 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                               );
                             })}
                           <p className="text-center">+</p>
-
                           <NumbersMap jackpotData={n4} />
                         </div>
                       </div>
                     </div>
                   )}
-
                   <div>
                     <NumbersHeader
                       isBlackBg={true}
                       isDualTitle={true}
-                      title="Gold Jackpot 1 Prize"
-                      secondTitle="Gold Jackpot 2 Prize"
+                      title={t("goldJackpotOnePrize")}
+                      secondTitle={t("goldJackpotTwoPrize")}
                     />
                     <div className="grid grid-cols-2 my-2 gap-2">
                       <NumberBox number={magnumJackpot.fdData.jp1} />
@@ -294,7 +310,6 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                   </div>
                 </>
               )}
-
               {isMagnumLife && (
                 <>
                   {!isShow && (
@@ -303,39 +318,44 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                         backgroundColor="!bg-black-100 dark:!bg-black-500"
                         logoImage={magnum}
                         logoName="magnum"
-                        title={magnumJackpot.name}
+                        title={t(magnumJackpot.name)}
                       />
                       <div>
                         <NumbersHeader
                           isYellowBg={true}
-                          title="Winning Numbers"
+                          title={t("winningNumbers")}
                         />
                         <div className="grid grid-cols-8 my-2 gap-2">
                           {Object.keys(magnumJackpot.fdData)
                             .filter((nData) => nData.startsWith("n"))
                             .slice(0, 8)
-                            .map((numbers, numbersIndex) => {
+                            .map((numbers, index) => {
                               const winner = magnumJackpot.fdData[numbers];
                               return (
-                                <NumberBox key={numbersIndex} number={winner} />
+                                <NumberBox
+                                  key={`${numbers}-${index}`}
+                                  number={winner}
+                                />
                               );
                             })}
                         </div>
                       </div>
-
                       <div>
                         <NumbersHeader
                           isBlackBg={true}
-                          title=" Bonus Numbers"
+                          title={t("bonusNumbers")}
                         />
                         <div className="grid grid-cols-2 my-2 gap-2">
                           {Object.keys(magnumJackpot.fdData)
                             .filter((nData) => nData.startsWith("n"))
                             .slice(8, 10)
-                            .map((numbers, numbersIndex) => {
+                            .map((numbers, index) => {
                               const winner = magnumJackpot.fdData[numbers];
                               return (
-                                <NumberBox key={numbersIndex} number={winner} />
+                                <NumberBox
+                                  key={`${numbers}-${index}`}
+                                  number={winner}
+                                />
                               );
                             })}
                         </div>

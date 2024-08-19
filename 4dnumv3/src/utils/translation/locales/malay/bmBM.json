@@ -1,0 +1,79 @@
+{ 
+  "results":"Keputusan",
+  "dashboard":"Pemuka",
+  "jackpot":"Jackpot",
+  "toolbox":"Alatan",
+  "specialDrawDate":"Tarikh Cabutan Khas",
+  "fourDNumberAnalysis":"Analisis Nombor 4D",
+  "spinMyLuck":"Putaran Bertuah",
+  "hotFourDNumber":"Nombor 4D Panas",
+  "luckyBook":"Buku Pertuah",
+  "setting":"Tetapan",
+  "installApp":"App Pemasangan",
+
+  "lightMode":"Mod Cahaya",
+  "darkMode":"Mod Gelap",
+
+  "upcomingSpecialDrawDate":"Tarikh Cabutan Istimewa Akan Datang",
+  
+  "prize":"",
+  "prizeCN":"",
+  "first":"Pertama",
+  "second":"Kedua",
+  "third":"Ketiga",
+  "fourth":"Keempat",
+  "fifth":"Kelima",
+  "sixth":"Keenam", 
+  "seventh":"Ketujuh",
+  "special":"Hadiah Istimewa",
+  "consolation":"Hadiah Saguhati",
+  "jackpotPool":"Jackpot Pool",
+  "jackpotOne":"Jackpot 1",
+  "jackpotTwo":"Jackpot 2",
+  "winningNumbers":"Nombor Menang",
+  
+  "date":"Tarikh",
+  "drawNo":"Cabutan No.",
+  "viewDrawVideo":"Lihat Video",
+  
+  "magnum": "Magnum 4D",
+  "fourDJackpotOne":"4D Jackpot Hadiah 1",
+  "fourDJackpotTwo":"4D Jackpot Hadiah 2",
+  "goldJackpot":"Jackpot Emas",
+  "goldJackpotOnePrize":"Jackpot Emas Hadiah 1",
+  "goldJackpotTwoPrize":"Jackpot Emas Hadiah 2",
+  "magnumLife":"Magnum Life",
+  "bonusNumbers":"Nombor Bonus",
+  "goldenNumber":"Nombor Emas",
+  
+  "damacai" : "Da Ma Cai 1+3D",
+  "threePlusThreeDBonus" : "3+3D Bonus",
+  
+  "sportsToto" : "SportsToto 4D",
+  "sportsTotoJackpot" : "SportsToto Jackpot",
+  "supremeJackpot" : "Supreme jackpot 6/58",
+  "powerJackpot" : "Power Jackpot 6/55",
+  "starJackpot" : "Star Jackpot 6/50",
+  "totoFiveD" : "Toto 5D",
+  "or":"atau",
+  "totoSixD" : "Toto 6D",
+  
+  "singaporeFourD" : "Singapore 4D",
+  "singaporeToto" : "Singapore Toto",
+  "prizeGroup" : "Kumpulan Hadiah",
+  "shareAmount" : "Share Amount",
+  "winningShares" : "Winning Shares",
+  
+  "sandakanFourD" : "Sandakan 4D",
+  
+  "sabahEEFourD" : "Sabah 88 4D",
+  "sabahLottoJackpot" : "Sabah Lotto Jackpot",
+  
+  "specialCashSweep" : "Special Cash Sweep",
+  
+  "luckyHariHari" : "Lucky Hari Hari",
+  "luckyHariHariSixD" : "Lucky Hari Hari 6D",
+  
+  "perdanaLottery" : "Perdana Lottery"
+
+}

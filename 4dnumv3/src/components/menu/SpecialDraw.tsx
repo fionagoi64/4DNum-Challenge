@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import billiards from "../../assets/images/billiards.png";
 import { API_V1, axiosPublic } from "../../const/apiData";
+import { useTranslation } from "react-i18next";
 
 export const SpecialDraw = () => {
+  const { t } = useTranslation();
   const [specialDraw, setSpecialDraw] = useState<any[]>([]);
 
   useEffect(() => {
@@ -35,10 +37,10 @@ export const SpecialDraw = () => {
         />
         <div className="">
           <h1 className="font-semibold text-[17px] text-gray-700 dark:text-white-100">
-            Special Draw Date
+            {t("specialDrawDate")}
           </h1>
           <p className="font-thin text-[15px] text-gray-700 dark:text-white-100">
-            Upcoming Special Draw Date
+            {t("upcomingSpecialDrawDate")}
           </p>
           <ul className="my-5">
             {specialDraw.map((specialDrawItem, index) => {

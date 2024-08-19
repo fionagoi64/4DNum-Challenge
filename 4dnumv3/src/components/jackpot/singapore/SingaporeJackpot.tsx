@@ -4,16 +4,18 @@ import { API_V1, axiosPublic } from "../../../const/apiData";
 import { JackpotContentHeader } from "../shared/JackpotContentHeader";
 import { NumberBox } from "../shared/NumberBox";
 import { NumbersHeader } from "../shared/NumbersHeader";
+import { useTranslation } from "react-i18next";
 
 interface SingaporeJackpotProps {
   selectedDate: Date;
 }
 
-const localSingapore = [{ type: "SGJP6/45", name: "Singapore Toto" }];
+const localSingapore = [{ type: "SGJP6/45", name: "singaporeToto" }];
 
 export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
   selectedDate,
 }) => {
+  const { t } = useTranslation();
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
@@ -62,7 +64,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
               dn={singaporeJackpot.fdData.dn}
             />
 
-            <NumbersHeader isBlue300Bg={true} title="Winning Numbers" />
+            <NumbersHeader isBlue300Bg={true} title={t("winningNumbers")} />
 
             <div className="grid grid-cols-8 my-2 gap-2">
               {Object.keys(singaporeJackpot.fdData)
@@ -80,13 +82,13 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
 
             <div className="flex flex-row gap-2 text-center my-2">
               <div className="w-[25%] bg-blue-100 text-white-100 rounded-xl p-2">
-                Prize Group
+                {t("prizeGroup")}
               </div>
               <div className="w-[40%] bg-blue-100 text-white-100 rounded-xl py-5">
-                Share Amount
+                {t("shareAmount")}
               </div>
               <div className="w-[40%] bg-blue-100 text-white-100 text-center rounded-xl p-2 lg:py-5">
-                Winning Shares
+                {t("winningNumbers")}
               </div>
             </div>
             <div className="flex flex-row gap-2 text-center">

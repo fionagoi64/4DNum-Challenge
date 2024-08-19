@@ -1,6 +1,6 @@
 import React from "react";
 import { NumbersHeader } from "../shared/NumbersHeader";
-import { NumberBox } from "../shared/NumberBox";
+import { useTranslation } from "react-i18next";
 
 export const GoldenNumber = () => {
   return (

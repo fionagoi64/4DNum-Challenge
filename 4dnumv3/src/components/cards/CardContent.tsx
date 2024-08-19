@@ -4,7 +4,7 @@ import { Refresh } from "../buttons/Refresh";
 import { Hamburger } from "../buttons/Hamburger";
 import { Card } from "./Card";
 import { ArrowLeft } from "../buttons/ArrowLeft";
-
+import { useTranslation } from "react-i18next";
 interface CardContentProps {
   children: (all: any) => React.ReactNode;
   allData: any[];
@@ -20,6 +20,7 @@ export const CardContent: React.FC<CardContentProps> = ({
   isArrowButton,
   handleClick = () => {},
 }) => {
+  const { t } = useTranslation();
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
@@ -60,14 +61,18 @@ export const CardContent: React.FC<CardContentProps> = ({
                 )}
                 <div className="flex flex-col justify-center items-center gap-1 w-full">
                   <div className="logos-bg">
-                    <img className="logos" src={all.cardImg} alt={all.name} />
+                    <img
+                      className="logos"
+                      src={all.cardImg}
+                      alt={t(all.name)}
+                    />
                   </div>
                   <h1
                     className={`text-white-100 text-lg font-bold ${
                       sandakan && "!text-green-100"
                     }`}
                   >
-                    {all.name}
+                    {t(all.name)}
                   </h1>
                 </div>
                 <div className="flex flex-col items-center gap-8">
@@ -86,7 +91,7 @@ export const CardContent: React.FC<CardContentProps> = ({
               <div className="flex flex-row rounded-2xl py-3 items-center">
                 <div className="date">
                   <p className="font-thin text-[10px] dark:text-white-100">
-                    Date
+                    {t("date")}
                   </p>
                   <p className="text-sm dark:text-white-100">
                     {all.fdData.dd} ({all.fdData.day})
@@ -95,7 +100,7 @@ export const CardContent: React.FC<CardContentProps> = ({
                 <div className="border-l-[0.2px] border-gray-300 h-8" />
                 <div className="draw">
                   <p className="font-thin text-[10px] dark:text-white-100">
-                    Draw No.
+                    {t("drawNo")}
                   </p>
                   <p className="text-sm dark:text-white-100">{all.fdData.dn}</p>
                 </div>

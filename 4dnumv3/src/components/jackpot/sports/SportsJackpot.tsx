@@ -7,6 +7,8 @@ import { JackpotAmount } from "../shared/JackpotAmount";
 import { NumbersHeader } from "../shared/NumbersHeader";
 import { NumberBox } from "../shared/NumberBox";
 import { Toto6DNumbers } from "./toto-six-d/Toto6DNumbers";
+import { useTranslation } from "react-i18next";
+
 interface SportsJackpotProps {
   selectedDate: Date;
 }
@@ -21,6 +23,7 @@ const localSports = [
 export const SportsJackpot: React.FC<SportsJackpotProps> = ({
   selectedDate,
 }) => {
+  const { t } = useTranslation();
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
@@ -60,77 +63,103 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
           backgroundColor="!bg-red-100"
           logoImage={sports}
           logoName="sports"
-          title="Sports Toto Jackpot"
+          title={t("sportsTotoJackpot")}
         />
-        {allData
-          .sort((a, b) => {
-            if (a.type === "STJP1" && b.type === "STJP6/50") return -1;
-            if (a.type === "STJP6/50" && b.type === "STJP1") return 1;
-            return 0;
-          })
-          .map((sportsJackpot, sportsJackpotIndex) => {
-            const isSTJP58 = sportsJackpot.type === "STJP6/58";
-            const isSTJP55 = sportsJackpot.type === "STJP6/55";
+        {allData.map((sportsJackpot, sportsJackpotIndex) => {
+          const isSTJP58 = sportsJackpot.type === "STJP6/58";
+          const isSTJP55 = sportsJackpot.type === "STJP6/55";
+          const isSTJP50 = sportsJackpot.type === "STJP6/50";
 
-            return (
-              <div key={sportsJackpotIndex}>
-                {isSTJP58 && (
-                  <>
-                    <div className="bg-black-100 dark:bg-gray-600 text-center text-white-100 font-bold p-2 rounded-lg">
-                      {sportsJackpot.name}
-                    </div>
-                    <div className="grid grid-cols-6 my-2 gap-2">
-                      {Object.keys(sportsJackpot.fdData)
-                        .filter((nData) => nData.startsWith("n"))
-                        .slice(0, 6)
-                        .map((numbers, numbersIndex) => {
-                          const winner = sportsJackpot.fdData[numbers];
-                          return (
-                            <div
-                              key={numbersIndex}
-                              className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                            >
-                              {winner}
-                            </div>
-                          );
-                        })}
-                    </div>
-                    <JackpotAmount
-                      title="Jackpot 1"
-                      amount={sportsJackpot.fdData.jp1}
-                    />
-                  </>
-                )}
-                {isSTJP55 && (
-                  <>
-                    <div className="bg-black-100 dark:bg-gray-600 text-center text-white-100 font-bold p-2 rounded-lg">
-                      {sportsJackpot.name}
-                    </div>
-                    <div className="grid grid-cols-6 my-2 gap-2">
-                      {Object.keys(sportsJackpot.fdData)
-                        .filter((nData) => nData.startsWith("n"))
-                        .slice(0, 6)
-                        .map((numbers, numbersIndex) => {
-                          const winner = sportsJackpot.fdData[numbers];
-                          return (
-                            <div
-                              key={numbersIndex}
-                              className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                            >
-                              {winner}
-                            </div>
-                          );
-                        })}
-                    </div>
-                    <JackpotAmount
-                      title="Jackpot 1"
-                      amount={sportsJackpot.fdData.jp1}
-                    />
-                  </>
-                )}
-              </div>
-            );
-          })}
+          return (
+            <div key={sportsJackpotIndex}>
+              {isSTJP58 && (
+                <>
+                  <div className="bg-black-100 dark:bg-gray-600 text-center text-white-100 font-bold p-2 rounded-lg">
+                    {sportsJackpot.name}
+                  </div>
+                  <div className="grid grid-cols-6 my-2 gap-2">
+                    {Object.keys(sportsJackpot.fdData)
+                      .filter((nData) => nData.startsWith("n"))
+                      .slice(0, 6)
+                      .map((numbers, numbersIndex) => {
+                        const winner = sportsJackpot.fdData[numbers];
+                        return (
+                          <div
+                            key={numbersIndex}
+                            className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                          >
+                            {winner}
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <JackpotAmount
+                    title={t("jackpotOne")}
+                    amount={sportsJackpot.fdData.jp1}
+                  />
+                </>
+              )}
+              {isSTJP55 && (
+                <>
+                  <div className="bg-black-100 dark:bg-gray-600 text-center text-white-100 font-bold p-2 rounded-lg">
+                    {sportsJackpot.name}
+                  </div>
+                  <div className="grid grid-cols-6 my-2 gap-2">
+                    {Object.keys(sportsJackpot.fdData)
+                      .filter((nData) => nData.startsWith("n"))
+                      .slice(0, 6)
+                      .map((numbers, numbersIndex) => {
+                        const winner = sportsJackpot.fdData[numbers];
+                        return (
+                          <div
+                            key={numbersIndex}
+                            className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                          >
+                            {winner}
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <JackpotAmount
+                    title={t("jackpotOne")}
+                    amount={sportsJackpot.fdData.jp1}
+                  />
+                </>
+              )}
+              {isSTJP50 && (
+                <>
+                  <NumbersHeader isBlackBg={true} title={sportsJackpot.name} />
+                  <div className="grid grid-cols-6 my-2 gap-2">
+                    {Object.keys(sportsJackpot.fdData)
+                      .filter((nData) => nData.startsWith("n"))
+                      .slice(0, 6)
+                      .map((numbers, numbersIndex) => {
+                        const winner = sportsJackpot.fdData[numbers];
+                        return (
+                          <div
+                            key={numbersIndex}
+                            className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
+                          >
+                            {winner}
+                          </div>
+                        );
+                      })}
+                  </div>
+
+                  <JackpotAmount
+                    title={t("jackpotOne")}
+                    amount={sportsJackpot.fdData.jp1}
+                  />
+
+                  <JackpotAmount
+                    title={t("jackpotTwo")}
+                    amount={sportsJackpot.fdData.jp2}
+                  />
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Toto 5D */}
@@ -139,7 +168,7 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
           backgroundColor="!bg-red-100"
           logoImage={sports}
           logoName="sports"
-          title="Toto 5D"
+          title={t("totoFiveD")}
         />
         {allData.map((sportsJackpot, sportsJackpotIndex) => {
           const isSTJP1 = sportsJackpot.type === "STJP1";
@@ -182,11 +211,10 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
           backgroundColor="!bg-red-100"
           logoImage={sports}
           logoName="sports"
-          title="Toto 6D"
+          title={t("totoSixD")}
         />
         {allData.map((sportsJackpot, sportsJackpotIndex) => {
           const isSTJP1 = sportsJackpot.type === "STJP1";
-          const isSTJP50 = sportsJackpot.type === "STJP6/50";
 
           return (
             <div key={sportsJackpotIndex}>
@@ -197,7 +225,7 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                       <NumbersHeader
                         className="w-1/2 uppercase !p-0.5"
                         isBlackBg={true}
-                        title="1ST"
+                        title={t("first") + t("prizeCN")}
                       />
                       <NumberBox
                         className="!font-bold !rounded-lg p-0.5 "
@@ -206,62 +234,31 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                     </div>
 
                     <Toto6DNumbers
-                      title="2ND"
+                      title={t("second") + t("prizeCN")}
                       jackpotNumber={sportsJackpot.fdData.n7}
                       jackpotSecondNumber={sportsJackpot.fdData.n8}
                     />
 
                     <Toto6DNumbers
-                      title="3RD"
+                      title={t("third") + t("prizeCN")}
                       jackpotNumber={sportsJackpot.fdData.n9}
                       jackpotSecondNumber={sportsJackpot.fdData.n10}
                     />
 
                     <Toto6DNumbers
-                      title="4TH"
+                      title={t("fourth") + t("prizeCN")}
                       jackpotNumber={sportsJackpot.fdData.n11}
                       jackpotSecondNumber={sportsJackpot.fdData.n12}
                     />
 
                     <Toto6DNumbers
-                      title="5TH"
+                      title={t("fifth") + t("prizeCN")}
                       jackpotNumber={sportsJackpot.fdData.n13}
                       jackpotSecondNumber={sportsJackpot.fdData.n14}
                     />
                   </div>
                 )}
               </div>
-              {isSTJP50 && (
-                <>
-                  <NumbersHeader isBlackBg={true} title={sportsJackpot.name} />
-                  <div className="grid grid-cols-6 my-2 gap-2">
-                    {Object.keys(sportsJackpot.fdData)
-                      .filter((nData) => nData.startsWith("n"))
-                      .slice(0, 6)
-                      .map((numbers, numbersIndex) => {
-                        const winner = sportsJackpot.fdData[numbers];
-                        return (
-                          <div
-                            key={numbersIndex}
-                            className="bg-white-100 dark:bg-black-400 border dark:text-white-100 border-transparent dark:border-gray-700 shadow-all rounded-md text-center font-medium"
-                          >
-                            {winner}
-                          </div>
-                        );
-                      })}
-                  </div>
-
-                  <JackpotAmount
-                    title="Jackpot 1"
-                    amount={sportsJackpot.fdData.jp1}
-                  />
-
-                  <JackpotAmount
-                    title="Jackpot 2"
-                    amount={sportsJackpot.fdData.jp2}
-                  />
-                </>
-              )}
             </div>
           );
         })}

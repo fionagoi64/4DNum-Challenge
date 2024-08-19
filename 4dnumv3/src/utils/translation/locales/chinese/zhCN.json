@@ -1,0 +1,79 @@
+{
+  "results":"奖项",
+  "dashboard":"目录",
+  "jackpot":"积宝",
+  "toolbox":"工具箱",
+  "specialDrawDate":"特别开奖日期",
+  "fourDNumberAnalysis":"万字解说及中奖记录",
+  "spinMyLuck":"幸运转转乐",
+  "hotFourDNumber":"热门万字号码",
+  "luckyBook":"幸运书体",
+  "setting":"设置",
+  "installApp":"安装应用",
+
+  "lightMode":"浅色模式",
+  "darkMode":"深色模式",
+
+  "upcomingSpecialDrawDate":"来临的特别开奖日期",
+
+  "prize":"奖",
+  "prizeCN":"奖",
+  "first":"头",
+  "second":"二",
+  "third":"三",
+  "fourth":"四",
+  "fifth":"五",
+  "sixth":"六", 
+  "seventh":"七",
+  "special":"特别奖",
+  "consolation":"安慰奖",
+  "jackpotPool":"积宝奖池奖",
+  "jackpotOne":"积宝一",
+  "jackpotTwo":"积宝二",
+  "winningNumbers":"中奖号码",
+  
+  "date":"日期",
+  "drawNo":"开奖期数",
+  "viewDrawVideo":"观看视频",
+  
+  "magnum": "萬能萬字",
+  "fourDJackpotOne":"万字积宝头奖",
+  "fourDJackpotTwo":"万字积宝二奖",
+  "goldJackpot":"黄金万字积宝",
+  "goldJackpotOnePrize":"黄金万字积宝一",
+  "goldJackpotTwoPrize":"黄金万字积宝二",
+  "magnumLife":"万能天天彩",
+  "bonusNumbers":"Bonus Numbers",
+  "goldenNumber":"黄金组合",
+  
+  "damacai" : "大馬彩 1+3D",
+  "threePlusThreeDBonus" : "3+3D Bonus",
+  
+  "sportsToto" : "多多萬字",
+  "sportsTotoJackpot" : "多多积宝",
+  "supremeJackpot" : "Supreme jackpot 6/58",
+  "powerJackpot" : "Power Jackpot 6/55",
+  "starJackpot" : "Star Jackpot 6/50",
+  "totoFiveD" : "Toto 5D",
+  "or":"或",
+  "totoSixD" : "Toto 6D",
+  
+  "singaporeFourD" : "新加坡萬字",
+  "singaporeToto" : "新加坡积宝",
+  "prizeGroup" : "奖金组别",
+  "shareAmount" : "奖金 （每份）",
+  "winningShares" : "中奖份额",
+  
+  "sandakanFourD" : "山打根賽馬會",
+  
+  "sabahEEFourD" : "沙巴88萬字",
+  "sabahLottoJackpot" : "沙巴88积宝",
+  
+  "specialCashSweep" : "砂勞越大萬",
+  
+  "luckyHariHari" : "天天好運",
+  "luckyHariHariSixD" : "天天好运积宝",
+  
+  "perdanaLottery" : "勇士"
+
+}

@@ -6,16 +6,17 @@ import { sectionTitle } from "../../../data/sectionTitle";
 import { JackpotContentHeader } from "../shared/JackpotContentHeader";
 import { NumberBox } from "../shared/NumberBox";
 import { NumbersHeader } from "../shared/NumbersHeader";
-
+import { useTranslation } from "react-i18next";
 interface DamacaiJackpotProps {
   selectedDate: Date;
 }
 
-const localDamacai = [{ type: "PMPJP1", name: "3+3D Bonus" }];
+const localDamacai = [{ type: "PMPJP1", name: "threePlusThreeDBonus" }];
 
 export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
   selectedDate,
 }) => {
+  const { t } = useTranslation();
   const [apiData, setApiData] = useState<any[]>([]);
   const [allData, setAllData] = useState<any[]>([]);
 
@@ -57,7 +58,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
               backgroundColor="!bg-blue-300"
               logoImage={damacai}
               logoName="damacai"
-              title={damacaiJackpot.name}
+              title={t(damacaiJackpot.name)}
             />
             {Object.keys(damacaiJackpot.fdData)
               .filter((nData) => nData.startsWith("n"))
@@ -102,7 +103,7 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
                 <div key={titleIndex}>
                   {isSpecial && (
                     <div>
-                      <NumbersHeader isBlue300Bg={true} title="Special" />
+                      <NumbersHeader isBlue300Bg={true} title={t("special")} />
                       <div className="grid grid-cols-3 my-3 gap-2">
                         {sData.map((sItems, sIndex) => {
                           return (
@@ -118,7 +119,10 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
 
                   {isConsolation && (
                     <div>
-                      <NumbersHeader isBlue300Bg={true} title="Consolation" />
+                      <NumbersHeader
+                        isBlue300Bg={true}
+                        title={t("consolation")}
+                      />
                       <div className="grid grid-cols-3 my-3 gap-2">
                         {cData.map((cItems, cIndex) => {
                           return (
