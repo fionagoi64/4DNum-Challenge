@@ -37,6 +37,9 @@ module.exports = {
         yellow: {
           100: "#F5C530", //sandakan
         },
+        orange: {
+          100: "#FEB92C",
+        },
         red: {
           100: "#EC2024", //sports
           200: "#FA0504", //sabah
@@ -59,6 +62,9 @@ module.exports = {
           300: "#F0F0F0", //date picker
           400: "#F5F5F5", //bg
           500: "#F3F3F3",
+        },
+        brown: {
+          100: "#822702",
         },
       },
       margin: {

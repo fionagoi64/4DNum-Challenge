@@ -13,6 +13,9 @@ import { SpecialDrawDate } from "./modules/special-draw-date/SpecialDrawDate";
 import { NumberAnalysis } from "./modules/number-analysis/NumberAnalysis";
 import { SpinMyLuck } from "./modules/spin-my-luck/SpinMyLuck";
 import { HotNumber } from "./modules/hot-number/HotNumber";
+import { TuaPekKongQian } from "./components/dictionary/TuaPekKongQian";
+import { TuaPekKongWan } from "./components/dictionary/TuaPekKongWan";
+import { GuanYinMa } from "./components/dictionary/GuanYinMa";
 
 function App() {
   //#region variables
@@ -93,6 +96,18 @@ function App() {
               <Route path="spin-my-luck" element={<SpinMyLuck />} />
               <Route path="hot-dddd-num" element={<HotNumber />} />
               <Route path="lucky-book" element={<LuckyBook />} />
+              <Route
+                path="lucky-book-category-list"
+                element={<TuaPekKongWan />}
+              />
+              <Route
+                path="lucky-book-category-list#gzt"
+                element={<GuanYinMa />}
+              />
+              <Route
+                path="lucky-book-category-list#qzt"
+                element={<TuaPekKongQian />}
+              />
             </Routes>
           </BrowserRouter>
         </div>
