@@ -51,13 +51,31 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
   return (
     <div>
       {allData.map((singaporeJackpot, singaporeIndex) => {
+        const others = singaporeJackpot.fdData.others;
+        const cleanedOthers = others.slice(1, -1);
+        const array = cleanedOthers
+          .split('","')
+          .map((item: string) => item.replace(/(^"|"$)/g, ""));
+        const sharingAmount = array.filter(
+          (num: string, index: number) => index % 2 !== 0
+        );
+        const winningNumbers = array.filter(
+          (num: string, index: number) => index % 2 === 0
+        );
+
+        const data = sharingAmount.map((amount: string, index: number) => ({
+          index: index + 1,
+          sharingAmount: amount,
+          winningNumber: winningNumbers[index] || "", // Handle case where winningNumbers may have fewer elements
+        }));
+
         return (
           <div key={singaporeIndex}>
             <JackpotContentHeader
               backgroundColor="!bg-blue-100"
               logoImage={singapore}
               logoName="damacai"
-              title={singaporeJackpot.name}
+              title={t(singaporeJackpot.name)}
               isSingapore={true}
               dd={singaporeJackpot.fdData.dd}
               day={singaporeJackpot.fdData.day}
@@ -91,97 +109,33 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
                 {t("winningNumbers")}
               </div>
             </div>
-            <div className="flex flex-row gap-2 text-center">
-              <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                1
-              </div>
-              <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                $2,934,077
-              </div>
-              <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                2
-              </div>
-            </div>
-            {/* remove me */}
-            <div className="space-y-2 mt-2 mb-5">
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
+
+            {data.map(
+              ({
+                index,
+                sharingAmount,
+                winningNumber,
+              }: {
+                index: number;
+                sharingAmount: string;
+                winningNumber: string;
+              }) => (
+                <div
+                  key={index}
+                  className="flex flex-row gap-2 text-center mt-2"
+                >
+                  <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
+                    {index}
+                  </div>
+                  <div className="w-[40%] bg-white-100 shadow-all rounded-md">
+                    {sharingAmount}
+                  </div>
+                  <div className="w-[40%] bg-white-100 shadow-all rounded-md">
+                    {winningNumber}
+                  </div>
                 </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 text-center">
-                <div className="w-[25%] bg-blue-300 text-white-100 rounded-md">
-                  1
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  $2,934,077
-                </div>
-                <div className="w-[40%] bg-white-100 shadow-all rounded-md">
-                  2
-                </div>
-              </div>
-            </div>
+              )
+            )}
           </div>
         );
       })}

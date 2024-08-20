@@ -83,7 +83,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <h1 className="font-semibold text-sm mt-6 mb-3 dark:text-white-200">
               {t("setting")}
             </h1>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mr-4">
               <li>
                 <ThemeToggle />
               </li>

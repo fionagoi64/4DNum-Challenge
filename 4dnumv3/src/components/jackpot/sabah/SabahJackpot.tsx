@@ -43,7 +43,7 @@ export const SabahJackpot: React.FC<SabahJackpotProps> = ({ selectedDate }) => {
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    // console.log(joinData);
+
   }, [apiData]);
 
   return (

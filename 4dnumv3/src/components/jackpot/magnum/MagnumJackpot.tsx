@@ -127,13 +127,13 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                           title={t("fourth") + t("prize")}
                         />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} shadedData={[1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0]} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} />
@@ -146,13 +146,13 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                           title={t("fifth") + t("prize")}
                         />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n2} />
                             <NumbersMap jackpotData={n3} />
@@ -165,13 +165,13 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                           title={t("sixth") + t("prize")}
                         />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} shadedData={[1]} />
                             <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n2} shadedData={[0]} />
                             <NumbersMap jackpotData={n3} />
@@ -184,13 +184,13 @@ export const MagnumJackpot: React.FC<MagnumJackpotProps> = ({
                           title={t("seventh") + t("prize")}
                         />
                         <div className="flex flex-row items-center gap-2">
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} />
                             <NumbersMap jackpotData={n2} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n3} shadedData={[0, 1]} />
                           </div>
                           <div className="border-l border-gray-300 h-4" />
-                          <div className="grid grid-cols-6 gap-1 my-2 w-full">
+                          <div className="grid grid-cols-6 gap-2 my-2 w-full">
                             <NumbersMap jackpotData={n1} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n2} shadedData={[0, 1]} />
                             <NumbersMap jackpotData={n3} />

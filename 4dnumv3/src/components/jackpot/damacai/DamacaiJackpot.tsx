@@ -46,7 +46,6 @@ export const DamacaiJackpot: React.FC<DamacaiJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    // console.log(joinData);
   }, [apiData]);
 
   return (

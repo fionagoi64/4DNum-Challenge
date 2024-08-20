@@ -24,7 +24,6 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
       const formattedDate = date.toISOString().split("T")[0]; // YYYY-MM-DD
       const res = await axiosPublic.get(`/${API_V1}/result/${formattedDate}`);
       setApiData(res.data);
-      console.log(res.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -51,7 +50,6 @@ export const Jackpot: React.FC<HomeProps> = ({ handleMenu, selectedDate }) => {
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
   }, [apiData]);
 
   const handleGoldenNumber = () => {

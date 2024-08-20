@@ -40,7 +40,7 @@ export const JackpotContentHeader: React.FC<JackpotContentHeaderProps> = ({
         <button className="absolute -top-8 right-0">
           <IoIosInformationCircle
             onClick={handleClick}
-            className="text-2xl mb-3"
+            className="text-2xl mb-3 dark:text-white-100"
           />
         </button>
       )}

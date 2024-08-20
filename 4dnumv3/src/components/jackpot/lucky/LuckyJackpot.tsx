@@ -44,7 +44,6 @@ export const LuckyJackpot: React.FC<LuckyJackpotProps> = ({ selectedDate }) => {
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    // console.log(joinData);
   }, [apiData]);
 
   return (

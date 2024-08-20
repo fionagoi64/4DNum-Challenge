@@ -13,9 +13,7 @@ export const SpecialDraw = () => {
         .get(`/${API_V1}/specialDraw`)
         .then((res) => {
           setSpecialDraw(res.data);
-          // console.log(res);
         })
-        // .then((data) => console.log(data))
         .catch((err) => console.log(err));
     } catch (error) {
       console.error("Error fetching data:", error);

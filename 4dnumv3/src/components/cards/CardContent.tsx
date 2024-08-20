@@ -56,9 +56,20 @@ export const CardContent: React.FC<CardContentProps> = ({
                 <div className="md:opacity-0">
                   <Hamburger handleClick={handleMenu} />
                 </div>
-                {isArrowButton && (
-                  <> {magnum && <ArrowLeft handleClick={handleClick} />}</>
-                )}
+                <div className="self-end">
+                  {isArrowButton ? (
+                    <>
+                      {magnum ? (
+                        <ArrowLeft handleClick={handleClick} />
+                      ) : (
+                        <ArrowLeft className="opacity-0" />
+                      )}
+                    </>
+                  ) : (
+                    <ArrowLeft className="opacity-0" />
+                  )}
+                </div>
+
                 <div className="flex flex-col justify-center items-center gap-1 w-full">
                   <div className="logos-bg">
                     <img

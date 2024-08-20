@@ -35,7 +35,7 @@ export const LanguageButton = () => {
         </label>
         <select
           id="language"
-          className="focus:outline-none w-full text-sm text-gray-300 bg-transparent"
+          className="focus:outline-none w-full text-sm text-gray-300 dark:text-white-100 bg-transparent"
           value={language}
           onChange={handleLanguageChange}
         >
