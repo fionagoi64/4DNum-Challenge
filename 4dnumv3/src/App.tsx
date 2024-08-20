@@ -5,9 +5,14 @@ import { Sidebar } from "./components/menu/Sidebar";
 import { SpecialDraw } from "./components/menu/SpecialDraw";
 import "react-datepicker/dist/react-datepicker.css";
 import { Jackpot } from "./modules/jackpot/Jackpot";
-import { FourD } from "./modules/four-d/FourD";
+import { FourD } from "./modules/dashboard/Dashboard";
 import { ThemeProvider } from "./context/Theme";
 import { LanguageProvider } from "./context/Language";
+import { LuckyBook } from "./modules/lucky-book/LuckyBook";
+import { SpecialDrawDate } from "./modules/special-draw-date/SpecialDrawDate";
+import { NumberAnalysis } from "./modules/number-analysis/NumberAnalysis";
+import { SpinMyLuck } from "./modules/spin-my-luck/SpinMyLuck";
+import { HotNumber } from "./modules/hot-number/HotNumber";
 
 function App() {
   //#region variables
@@ -83,6 +88,11 @@ function App() {
                   />
                 }
               />
+              <Route path="special-date" element={<SpecialDrawDate />} />
+              <Route path="number-analysis" element={<NumberAnalysis />} />
+              <Route path="spin-my-luck" element={<SpinMyLuck />} />
+              <Route path="hot-dddd-num" element={<HotNumber />} />
+              <Route path="lucky-book" element={<LuckyBook />} />
             </Routes>
           </BrowserRouter>
         </div>

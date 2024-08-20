@@ -1,4 +1,12 @@
 { 
+  "Sun":"Ahad",
+  "Mon":"Isnin",
+  "Tue":"Selasa",
+  "Wed":"Rabu",
+  "Thu":"Khamis",
+  "Fri":"Jumaat",
+  "Sat":"Sabtu",
+
   "results":"Keputusan",
   "dashboard":"Pemuka",
   "jackpot":"Jackpot",

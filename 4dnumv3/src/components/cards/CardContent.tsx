@@ -104,8 +104,10 @@ export const CardContent: React.FC<CardContentProps> = ({
                   <p className="font-thin text-[10px] dark:text-white-100">
                     {t("date")}
                   </p>
-                  <p className="text-sm dark:text-white-100">
-                    {all.fdData.dd} ({all.fdData.day})
+                  <p className="text-sm dark:text-white-100 text-wrap">
+                    {all.fdData.dd} {"("}
+                    {t(all.fdData.day)}
+                    {")"}
                   </p>
                 </div>
                 <div className="border-l-[0.2px] border-gray-300 h-8" />

@@ -19,6 +19,7 @@ module.exports = {
           100: "#A5A5A5", //dark picker text
           200: "#CBD5E0", //theme button
           300: "#9E9E9E", //icon
+          350: "#929292", //icon
           400: "#6D6D6D", //picker text
           500: "#767676", //special draw
           600: "#464646", //dark prize

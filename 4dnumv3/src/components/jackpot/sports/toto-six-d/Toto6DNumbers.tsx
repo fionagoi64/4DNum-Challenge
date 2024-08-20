@@ -25,12 +25,12 @@ export const Toto6DNumbers: React.FC<Toto6DNumbersProps> = ({
       />
       <div className="flex flex-row gap-2 text-center w-2/3">
         <NumberBox
-          className="!font-bold !rounded-lg p-0.5 px-4 !text-left"
+          className="!font-bold !rounded-lg p-0.5 px-3 !text-left w-20"
           number={jackpotNumber}
         />
-        <p>{t("or")}</p>
+        <span className="">{t("or")}</span>
         <NumberBox
-          className="!font-bold !rounded-lg p-0.5 px-4 !text-right"
+          className="!font-bold !rounded-lg p-0.5 px-3 !text-right w-20"
           number={jackpotSecondNumber}
         />
       </div>

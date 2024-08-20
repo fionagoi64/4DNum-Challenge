@@ -24,6 +24,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
       const formattedDate = date.toISOString().split("T")[0]; // YYYY-MM-DD
       const res = await axiosPublic.get(`/${API_V1}/result/${formattedDate}`);
       setApiData(res.data);
+      console.log(res.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -45,7 +46,6 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
         return { ...apiItem, ...all };
       });
     setAllData(joinData);
-    console.log(joinData);
   }, [apiData]);
 
   return (
@@ -70,7 +70,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
         }));
 
         return (
-          <div key={singaporeIndex}>
+          <div key={singaporeIndex} className="md:mb-6">
             <JackpotContentHeader
               backgroundColor="!bg-blue-100"
               logoImage={singapore}
@@ -78,7 +78,7 @@ export const SingaporeJackpot: React.FC<SingaporeJackpotProps> = ({
               title={t(singaporeJackpot.name)}
               isSingapore={true}
               dd={singaporeJackpot.fdData.dd}
-              day={singaporeJackpot.fdData.day}
+              day={t(singaporeJackpot.fdData.day)}
               dn={singaporeJackpot.fdData.dn}
             />
 

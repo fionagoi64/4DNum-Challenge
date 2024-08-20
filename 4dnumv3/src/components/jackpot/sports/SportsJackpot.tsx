@@ -222,7 +222,7 @@ export const SportsJackpot: React.FC<SportsJackpotProps> = ({
                   <div className="space-y-2">
                     <div className="flex flex-row gap-2 text-center my-2">
                       <NumbersHeader
-                        className="w-1/2 uppercase !p-0.5"
+                        className="w-[45%] uppercase !p-0.5"
                         isBlackBg={true}
                         title={t("first") + t("prizeCN")}
                       />

@@ -1,4 +1,13 @@
 {
+
+  "Sun":"Sun",
+  "Mon":"Mon",
+  "Tue":"Tue",
+  "Wed":"Wed",
+  "Thu":"Thu",
+  "Fri":"Fri",
+  "Sat":"Sat",
+
   "results":"Results",
   "dashboard":"Dashboard",
   "jackpot":"Jackpot",
